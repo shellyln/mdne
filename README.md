@@ -11,6 +11,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/shellyln/mdne.svg?style=social&label=Star)](https://github.com/shellyln/mdne)
 
 
+<img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png?sanitize=true" title="logo" style="width: 400px">
+
+
 ## Features
 * Live preview of Markdown, HTML, [LSX](https://github.com/shellyln/liyad#what-is-lsx) formats.
 * Export Markdown, HTML, LSX into PDF or HTML.
