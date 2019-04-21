@@ -1,0 +1,43 @@
+{
+  "name": "mdne",
+  "version": "0.1.0",
+  "private": false,
+  "description": "MDNE - Markdown Neo Edit. A simple markdown and code editor powered by Markdown-it, Ace and Carlo.",
+  "keywords": [
+    "Markdown",
+    "Editor",
+    "markdown-it",
+    "Ace",
+    "PDF",
+    "Lisp",
+    "LSX",
+    "Ménneu",
+    "Liyad",
+    "Carlo",
+    "puppeteer"
+  ],
+  "main": "index.mjs",
+  "module": "index.mjs",
+  "engines": {
+    "node": ">=10.0"
+  },
+  "bin": {
+    "mdne": "index.mjs"
+  },
+  "dependencies": {
+    "carlo": "^0.9.45",
+    "menneu": "^0.0.58"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node --experimental-modules --no-warnings index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shellyln/mdne.git"
+  },
+  "author": "shellyln",
+  "homepage": "https://shellyln.github.io/",
+  "license": "ISC"
+}
