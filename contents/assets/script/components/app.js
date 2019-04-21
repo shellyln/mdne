@@ -47,8 +47,19 @@ export default class App extends React.Component {
                 },
             }, {
                 name: 'open',
-                fn: (state, name) => (...args) => {
-                    return 0;
+                fn: (state, name) => async (filePath) => {
+                    if (filePath) {
+                        const dirName = AppState.filePath ? await getDirName(AppState.filePath) : null;
+                        const fullPath = await pathJoin(dirName, filePath);
+                        const text = await loadFile(fullPath);
+                        this.refs.fileDropDialog.openFile(fullPath, text);
+
+                        this.afterFileOpen();
+                        return '';
+                    } else {
+                        this.handleFileOpenClick({});
+                        return '';
+                    }
                 },
             }, {
                 name: 'save',
@@ -245,21 +256,23 @@ export default class App extends React.Component {
         });
     }
 
+    afterFileOpen() {
+        this.refs.root.contentWindow.location.replace('empty.html');
+
+        this.setState({stretched: true});
+        this.savedEditorStyleWidth = null;
+        this.savedPreviewScrollY = 0;
+        this.refs.editor.refs.outerWrap.style.width = null;
+        this.refs.editorPlaceholder.style.width = null;
+
+        document.activeElement.blur();
+    }
+
     openFileOpenDialog() {
         this.refs.fileDropDialog.showModal({
             aceId: this.state.currentAceId,
             fileOpenDialog: this.refs.fileOpenDialog,
-        }, () => {
-            this.refs.root.contentWindow.location.replace('empty.html');
-
-            this.setState({stretched: true});
-            this.savedEditorStyleWidth = null;
-            this.savedPreviewScrollY = 0;
-            this.refs.editor.refs.outerWrap.style.width = null;
-            this.refs.editorPlaceholder.style.width = null;
-
-            document.activeElement.blur();
-        });
+        }, () => this.afterFileOpen());
     }
 
     handleFileOpenClick(ev) {

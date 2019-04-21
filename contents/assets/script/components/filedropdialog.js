@@ -34,6 +34,10 @@ export default class FileDropDialog extends React.Component {
         editor.setValue(text);
         editor.clearSelection();
         editor.session.getUndoManager().markClean();
+    }
+
+    openFileAndClose(path, text) {
+        this.openFile(path, text);
 
         document.activeElement.blur();
         this.refs.dialog.close();
@@ -55,7 +59,7 @@ export default class FileDropDialog extends React.Component {
             const paths = await Promise.all(files);
             const texts = await Promise.all(paths.map(x => loadFile(x.path)));
 
-            this.openFile(paths[0].path, texts[0]);
+            this.openFileAndClose(paths[0].path, texts[0]);
         } catch (e) {
             alert(e);
             AppState.filePath = null;
@@ -87,7 +91,7 @@ export default class FileDropDialog extends React.Component {
                 const path = await pathJoin(currentDir, fileName);
                 const text = await loadFile(path);
 
-                this.openFile(path, text);
+                this.openFileAndClose(path, text);
             });
         } catch (e) {
             alert(e);
