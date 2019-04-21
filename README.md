@@ -75,6 +75,12 @@ mdne README.md
 ```
 
 
+## Security warning
+
+Exposing of Node side functions by RPC is enabled in preview iframe.  
+**DON'T OPEN links to untrusted sites from the preview.**  
+Exposed functions have the ability to list / read / write local files.
+
 ## License
 [ISC](https://github.com/shellyln/mdne/blob/master/LICENSE.md)  
 Copyright (c) 2019 Shellyl_N and Authors.
