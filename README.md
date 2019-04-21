@@ -11,7 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/shellyln/mdne.svg?style=social&label=Star)](https://github.com/shellyln/mdne)
 
 
-<img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png?sanitize=true" title="logo" style="width: 400px">
+<img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png" title="screenshot" style="width: 400px">
 
 
 ## Features
