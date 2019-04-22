@@ -32,7 +32,7 @@
   "scripts": {
     "build": "echo \"no build specified\"",
     "clean": "echo \"no clean specified\"",
-    "lint": "eslint index.js lib/**/*.js",
+    "lint": "eslint index.mjs lib/**/*.js lib/**/*.mjs contents/assets/script/**/*.js contents/assets/script/**/*.mjs",
     "start": "node --experimental-modules --no-warnings index.mjs",
     "test": "echo \"no test specified\" && exit 0"
   },
