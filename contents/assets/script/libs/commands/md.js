@@ -20,6 +20,7 @@ export function getSuggests() {
         'md hr': null,
         'md math': null,
         'md inline-math': null,
+        'md mathjax': null,
         'md code': null,
         'md inline-code': null,
         'md uml': null,
@@ -99,14 +100,14 @@ export function getOperators({getCurrentAceId}) {
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(),
-                            ' [This is inline-style link with title](https://github.com/shellyln/mdne "mdne") ');
+                            '\n[This is inline-style link with title](https://github.com/shellyln/mdne "mdne")\n');
                     }
                     return '';
                 case 'image':
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(),
-                            ' ![alt text](https://raw.githubusercontent.com/shellyln/mdne/master/contents/logo.svg?sanitize=true "Logo" =300x100) ');
+                            '\n![alt text](https://raw.githubusercontent.com/shellyln/mdne/master/contents/logo.svg?sanitize=true "Logo" =300x100)\n');
                     }
                     return '';
                 case 'toc':
@@ -131,6 +132,14 @@ export function getOperators({getCurrentAceId}) {
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(), ' $$sum_(i=1)^n i^3=((n(n+1))/2)^2$$ ');
+                    }
+                    return '';
+                case 'mathjax':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"' +
+                            ' crossorigin="anonymous"></script>\n');
                     }
                     return '';
                 case 'code':
