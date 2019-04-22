@@ -35,7 +35,6 @@ if (isWebpack) {
     thisFileName = __filename;
     thisDirName = __dirname;
 } else {
-    // eslint-disable-next-line
     thisFileName = url.fileURLToPath(import.meta.url);
     thisDirName = path.dirname(thisFileName);
 }
