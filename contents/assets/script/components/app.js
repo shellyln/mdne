@@ -7,7 +7,15 @@ import start                from '../libs/start.js';
 import { getInputFormat,
          isPreviewable,
          getAceEditorMode } from '../libs/modes.js';
-import commandRunner        from '../libs/cmdrunner.js'
+import commandRunner        from '../libs/cmdrunner.js';
+
+import { getSuggests as getAppSuggests,
+         getOperators as getAppOperators }  from '../libs/commands/app.js';
+import { getSuggests as getModeSuggests,
+         getOperators as getModeOperators } from '../libs/commands/mode.js';
+import { getSuggests as getMdSuggests,
+         getOperators as getMdOperators }   from '../libs/commands/md.js';
+
 
 
 export default class App extends React.Component {
@@ -39,296 +47,18 @@ export default class App extends React.Component {
         }
 
         commandRunner.install(config => {
-            const operators = [{
-                name: 'new-window',
-                fn: (state, name) => (...args) => {
-                    openNewWindow();
-                    return '';
-                },
-            }, {
-                name: 'open',
-                fn: (state, name) => async (filePath) => {
-                    if (filePath) {
-                        const dirName = AppState.filePath ? await getDirName(AppState.filePath) : null;
-                        const fullPath = await pathJoin(dirName, filePath);
-                        const text = await loadFile(fullPath);
-                        this.refs.fileDropDialog.openFile(fullPath, text);
-
-                        this.afterFileOpen();
-                        return '';
-                    } else {
-                        this.handleFileOpenClick({});
-                        return '';
-                    }
-                },
-            }, {
-                name: 'save',
-                fn: (state, name) => (...args) => {
-                    this.handleSaveClick({});
-                    return 'Saving...';
-                },
-            }, {
-                name: 'saveas',
-                fn: (state, name) => async (filePath) => {
-                    if (filePath) {
-                        const dirName = AppState.filePath ? await getDirName(AppState.filePath) : null;
-                        await this.fileSaveAs(dirName, filePath);
-                        return 'Saved.';
-                    } else {
-                        this.handleSaveAsClick({});
-                        return '';
-                    }
-                },
-            }, {
-                name: 'export',
-                fn: (state, name) => async (filePath) => {
-                    if (! isPreviewable(AppState.inputFormat)) {
-                        throw new Error(`Exporting of ${AppState.inputFormat} format is not supported.`);
-                    }
-                    if (filePath) {
-                        const dirName = AppState.filePath ? await getDirName(AppState.filePath) : null;
-                        await this.fileExport(dirName, filePath);
-                        return 'Exported.';
-                    } else {
-                        this.handleExportClick({});
-                        return '';
-                    }
-                },
-            }, {
-                name: 'preview',
-                fn: (state, name) => (...args) => {
-                    this.handleShowClick({});
-                    return '';
-                },
-            }, {
-                name: 'sync',
-                fn: (state, name) => (onoff) => {
-                    this.setState({syncPreview: onoff === 'on' || onoff === true});
-                    return '';
-                },
-            }, {
-                name: 'preview-format',
-                fn: (state, name) => (format) => {
-                    this.setState({isPdf: format === 'pdf'});
-                    return '';
-                },
-            }, {
-                name: 'scripting',
-                fn: (state, name) => (onoff) => {
-                    this.setState({useScripting: onoff === 'on' || onoff === true});
-                    return '';
-                },
-            }, {
-                name: 'mode',
-                fn: (state, name) => (modeName) => {
-                    if (!modeName) {
-                        throw new Error('Editor mode name is not specified.');
-                    }
-                    AppState.inputFormat = modeName;
-                    const aceMode = getAceEditorMode(modeName);
-                    if (aceMode) {
-                        const editor = AppState.AceEditor[this.state.currentAceId];
-                        editor.session.setMode(aceMode);
-                        return '';
-                    } else {
-                        throw new Error('Invalid editor mode name: ' + modeName);
-                    }
-                },
-            }, {
-                name: 'md',
-                fn: (state, name) => (...args) => {
-                    switch (args[0]) {
-                    case 'table':
-                        {
-                            const rows = Math.max(1, Number(args[1] || 3));
-                            const cols = Math.max(1, Number(args[2] || 3));
-                            let s = `\n|${Array(cols).fill('').map((_, i) => `R_C${i}`).join('|')}|\n|${
-                                          Array(cols).fill('').map((_, i) => '----'   ).join('|')}|\n`;
-                            for (let r = 0; r < rows; r++) {
-                                s += `|${Array(cols).fill('').map((_, i) => `R${r}C${i}`).join('|')}|\n`;
-                            }
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), s);
-                        }
-                        return '';
-                    case 'list':
-                        {
-                            const rows = Math.max(1, Number(args[1] || 3));
-                            let s = '\n';
-                            for (let r = 0; r < rows; r++) {
-                                s += `* item ${r}\n`;
-                            }
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), s);
-                        }
-                        return '';
-                    case 'o-list':
-                        {
-                            const rows = Math.max(1, Number(args[1] || 3));
-                            let s = '\n';
-                            for (let r = 0; r < rows; r++) {
-                                s += `1. item ${r}\n`;
-                            }
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), s);
-                        }
-                        return '';
-                    case 'checkbox':
-                        {
-                            const rows = Math.max(1, Number(args[1] || 3));
-                            let s = '\n';
-                            for (let r = 0; r < rows; r++) {
-                                s += `* [${r % 2 === 0 ? 'X' : ' '}] item ${r}\n`;
-                            }
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), s);
-                        }
-                        return '';
-                    case 'blockquote': case 'quote':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n> This is blockquote.\n>> This is blockquote.\n');
-                        }
-                        return '';
-                    case 'link':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(),
-                                ' [This is inline-style link with title](https://github.com/shellyln/mdne "mdne") ');
-                        }
-                        return '';
-                    case 'image':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(),
-                                ' ![alt text](https://raw.githubusercontent.com/shellyln/mdne/master/contents/logo.svg?sanitize=true "Logo" =300x100) ');
-                        }
-                        return '';
-                    case 'toc':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n[[TOC]]\n');
-                        }
-                        return '';
-                    case 'hr':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n----\n');
-                        }
-                        return '';
-                    case 'math':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n$$$\nsum_(i=1)^n i^3=((n(n+1))/2)^2\n$$$\n');
-                        }
-                        return '';
-                    case 'inline-math':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), ' $$sum_(i=1)^n i^3=((n(n+1))/2)^2$$ ');
-                        }
-                        return '';
-                    case 'code':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n```javascript\n\nconst x = 0;\n\n```\n');
-                        }
-                        return '';
-                    case 'inline-code':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), ' `const x = 0` ');
-                        }
-                        return '';
-                    case 'uml':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(),
-                                '\n@startuml\n' +
-                                'Alice -> Bob: Authentication Request\n' +
-                                'Bob --> Alice: Authentication Response\n\n' +
-                                'Alice -> Bob: Another authentication Request\n' +
-                                'Alice <-- Bob: Another authentication Response\n' +
-                                '@enduml\n');
-                        }
-                        return '';
-                    case 'emoji':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), ' :wink: :crush: :cry: :tear: :laughing: :yum: ');
-                        }
-                        return '';
-                    case 'italic':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), ' *This is italic* ');
-                        }
-                        return '';
-                    case 'bold':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), ' **This is bold** ');
-                        }
-                        return '';
-                    case 'strikethrough': case 'strikethru':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), ' ~~This is strikethrough~~ ');
-                        }
-                        return '';
-                    case 'h1':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n# This is a header.\n');
-                        }
-                        return '';
-                    case 'h2':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n## This is a header.\n');
-                        }
-                        return '';
-                    case 'h3':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n### This is a header.\n');
-                        }
-                        return '';
-                    case 'h4':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n#### This is a header.\n');
-                        }
-                        return '';
-                    case 'h5':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n##### This is a header.\n');
-                        }
-                        return '';
-                    case 'h6':
-                        {
-                            const editor = AppState.AceEditor[this.state.currentAceId];
-                            editor.session.insert(editor.getCursorPosition(), '\n###### This is a header.\n');
-                        }
-                        return '';
-                    default:
-                        return '';
-                    }
-                },
-            }, {
-                name: 'help',
-                fn: (state, name) => (topic) => {
-                    openURL('https://github.com/shellyln/mdne');
-                    return '';
-                },
-            }];
+            const getCurrentAceId = () => this.state.currentAceId;
+            const operators = [
+                ...getAppOperators({app: this}),
+                ...getModeOperators({getCurrentAceId}),
+                ...getMdOperators({getCurrentAceId}),
+            ];
             config.funcs = (config.funcs || []).concat(operators);
             // config.macros = (config.macros || []).concat(macros);
             // config.symbols = (config.symbols || []).concat(symbols);
             return config;
         });
-        commandRunner.setGlobals({});
+        // commandRunner.setGlobals({});
     }
 
     componentDidMount() {
@@ -349,69 +79,11 @@ export default class App extends React.Component {
         {
             const elems = document.querySelectorAll('.command-box-input.autocomplete');
             const instances = M.Autocomplete.init(elems, {
-                data: {
-                    'new-window': null,
-                    'open': null,
-                    'open "path/to/file/opening"': null,
-                    'save': null,
-                    'saveas': null,
-                    'saveas "path/to/file/to/save/as"': null,
-                    'export': null,
-                    'export "path/to/file/to/export"': null,
-                    'preview': null,
-                    'sync on': null,
-                    'sync off': null,
-                    'preview-format pdf': null,
-                    'preview-format html': null,
-                    'scripting on': null,
-                    'scripting off': null,
-                    'mode md': null,
-                    'mode html': null,
-                    'mode css': null,
-                    'mode json': null,
-                    'mode lisp': null,
-                    'mode less': null,
-                    'mode sass': null,
-                    'mode scss': null,
-                    'mode js': null,
-                    'mode ts': null,
-                    'mode tsx': null,
-                    'mode svg': null,
-                    'mode xml': null,
-                    'mode yaml': null,
-                    'mode protobuf': null,
-                    'mode sql': null,
-                    'mode graphql': null,
-                    'mode csharp': null,
-                    'mode python': null,
-                    'mode text': null,
-                    'md table rows cols': null,
-                    'md list rows': null,
-                    'md o-list rows': null,
-                    'md checkbox rows': null,
-                    'md blockquote': null,
-                    'md link': null,
-                    'md image': null,
-                    'md toc': null,
-                    'md hr': null,
-                    'md math': null,
-                    'md inline-math': null,
-                    'md code': null,
-                    'md inline-code': null,
-                    'md uml': null,
-                    'md emoji': null,
-                    'md italic': null,
-                    'md bold': null,
-                    'md strikethru': null,
-                    'md h1': null,
-                    'md h2': null,
-                    'md h3': null,
-                    'md h4': null,
-                    'md h5': null,
-                    'md h6': null,
-                    'help': null,
-                    'help topic-name': null,
-                },
+                data: Object.assign(
+                    getAppSuggests(),
+                    getModeSuggests(),
+                    getMdSuggests(),
+                ),
             });
         }
 
