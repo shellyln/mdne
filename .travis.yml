@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "10"
+  - "11"
+
+#branches:
+#  only:
+#    - master
+
+sudo: false
+
+before_script:
+  - npm install -g eslint
+  - npm run clean
+  - npm run lint
+  - npm run build
+  - npm test

@@ -1,0 +1,19 @@
+{
+    "extends": ["eslint:recommended"],
+    "plugins": [],
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "globals": {
+        "SharedArrayBuffer": true,
+        "Atomics": true
+    },
+    "rules": {
+        "no-console": 0
+    }
+}
