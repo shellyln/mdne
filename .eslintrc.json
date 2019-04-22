@@ -1,8 +1,9 @@
 {
     "extends": ["eslint:recommended"],
     "plugins": [],
+    "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": 8,
+        "ecmaVersion": 9,
         "sourceType": "module"
     },
     "env": {
@@ -11,9 +12,36 @@
     },
     "globals": {
         "SharedArrayBuffer": true,
-        "Atomics": true
+        "Atomics": true,
+        "window": true,
+        "document": true,
+        "M": true,
+        "ace": true,
+        "React": true,
+        "ReactDOM": true,
+        "carlo": true,
+        "rpc": true,
+        "liyad": true,
+        "lsx": true,
+        "renderByMenneu": true,
+        "loadFile": true,
+        "saveFile": true,
+        "listDirectory": true,
+        "listDesktopDirectory": true,
+        "listHomeDirectory": true,
+        "fileExists": true,
+        "pathJoin": true,
+        "getDirName": true,
+        "getBaseName": true,
+        "getStartupFile": true,
+        "openURL": true,
+        "openNewWindow": true,
+        "alert": true,
+        "confirm": true
     },
     "rules": {
-        "no-console": 0
+        "no-console": "warn",
+        "no-unused-vars": "warn",
+        "no-empty": "warn"
     }
 }
