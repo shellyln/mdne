@@ -28,8 +28,18 @@ export function getSuggests() {
         'md italic': null,
         'md bold': null,
         'md strikethru': null,
+        'md mark': null,
+        'md ins': null,
+        'md footnote': null,
+        'md inline-footnote': null,
+        'md deflist': null,
+        'md lazy-deflist': null,
+        'md abbr': null,
+        'md pagebreak': null,
         'md h1': null,
+        'md h1-no-toc': null,
         'md h2': null,
+        'md h2-no-toc': null,
         'md h3': null,
         'md h4': null,
         'md h5': null,
@@ -169,7 +179,8 @@ export function getOperators({getCurrentAceId}) {
                 case 'emoji':
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
-                        editor.session.insert(editor.getCursorPosition(), ' :wink: :crush: :cry: :tear: :laughing: :yum: ');
+                        editor.session.insert(editor.getCursorPosition(),
+                            ' :wink: :crush: :cry: :tear: :laughing: :yum: ');
                     }
                     return '';
                 case 'italic':
@@ -190,16 +201,90 @@ export function getOperators({getCurrentAceId}) {
                         editor.session.insert(editor.getCursorPosition(), ' ~~This is strikethrough~~ ');
                     }
                     return '';
+                case 'mark':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(), ' ==This is mark== ');
+                    }
+                    return '';
+                case 'ins':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(), ' ++This is ins++ ');
+                    }
+                    return '';
+                case 'footnote':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\nThis is footnote 1 link[^first].\n[^first]: Footnote text.\n');
+                    }
+                    return '';
+                case 'inline-footnote':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\nThis is inline footnote^[Text of inline footnote.].\n');
+                    }
+                    return '';
+                case 'deflist':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\nTerm 1\n    ~ Definition 1a\n    ~ Definition 1b\n');
+                    }
+                    return '';
+                case 'lazy-deflist':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\nTerm 1\n:   Definition 1a\nwith lazy continuation.\n\n' +
+                            '    paragraph 1\n\n        { code block }\n    paragraph 3\n' +
+                            ':   Definition 1b\n\n');
+                    }
+                    return '';
+                case 'abbr':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\nThis is HTML abbreviation example.\n*[HTML]: Hyper Text Markup Language\n');
+                    }
+                    return '';
+                case 'pagebreak':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n<div style="page-break-before:always"></div>\n');
+                    }
+                    return '';
                 case 'h1':
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(), '\n# This is a header.\n');
                     }
                     return '';
+                case 'h1-no-toc':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n<p style="font-size: 2em; font-weight: bold; ' +
+                            'border-bottom: 1px solid #eaecef; padding-bottom: .3em;">' +
+                            'This is a header.</p>\n');
+                    }
+                    return '';
                 case 'h2':
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(), '\n## This is a header.\n');
+                    }
+                    return '';
+                case 'h2-no-toc':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n<p style="font-size: 1.5em; font-weight: bold; ' +
+                            'border-bottom: 1px solid #eaecef; padding-bottom: .3em;">' +
+                            'This is a header.</p>\n');
                     }
                     return '';
                 case 'h3':
