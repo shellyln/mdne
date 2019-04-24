@@ -101,8 +101,6 @@ npm install -g mdne
     ...
     ```
 
-</div>
-
 
 
 ### Create a desktop and 'send to' menu shoorcuts (Windows)
