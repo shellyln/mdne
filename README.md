@@ -56,8 +56,10 @@
 npm install -g mdne
 ```
 
-> NOTE: To run on `node 12` or leter, you need to fix lacking of the node CLI option  
+> NOTE: To run on `node 12` or leter, you need to fix lacking of the node CLI option
 > `--es-module-specifier-resolution=node` after installed.
+>> If you are using Windows and only use the app from the desktop or "send-to"
+>> shortcuts described below, there is no need to fix it.
 
 
 * `%AppData%\npm\mdne.cmd` (Windows; cmd.exe)
@@ -103,7 +105,7 @@ npm install -g mdne
 
 
 
-### Create a desktop and 'send to' menu shoorcuts (Windows)
+### Create desktop and 'send to' menu shoorcuts (Windows)
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
 * Extract zip archive and run `make-shortcut.cmd`.
   > NOTE: To run on `node 12` or leter, run `make-shortcut-node12.cmd` instead.
