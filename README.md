@@ -56,7 +56,7 @@
 npm install -g mdne
 ```
 
-### Create a desktop shoorcut (Windows)
+### Create a desktop and 'send to' menu shoorcuts (Windows)
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
 * Extract zip archive and run `make-shortcut.cmd`.
 
