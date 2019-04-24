@@ -56,57 +56,59 @@
 npm install -g mdne
 ```
 
-> NOTE: To run on `node 12` or leter, you need to fix lacking of the node CLI option
+> NOTE: To run on `node 12` or leter, you need to fix lacking of the node CLI option  
 > `--es-module-specifier-resolution=node` after installed.
 
+
 * `%AppData%\npm\mdne.cmd` (Windows; cmd.exe)
-```cmd
-@IF EXIST "%~dp0\node.exe" (
-  "%~dp0\node.exe"  --experimental-modules --es-module-specifier-resolution=node --no-warnings "%~dp0\node_modules\mdne\index.mjs" %*
-) ELSE (
-  @SETLOCAL
-  @SET PATHEXT=%PATHEXT:;.JS;=;%
-  node  --experimental-modules --es-module-specifier-resolution=node --no-warnings "%~dp0\node_modules\mdne\index.mjs" %*
-)
-```
+    ```cmd
+    @IF EXIST "%~dp0\node.exe" (
+      "%~dp0\node.exe"  --experimental-modules --es-module-specifier-resolution=node --no-warnings "%~dp0\node_modules\mdne\index.mjs" %*
+    ) ELSE (
+      @SETLOCAL
+      @SET PATHEXT=%PATHEXT:;.JS;=;%
+      node  --experimental-modules --es-module-specifier-resolution=node --no-warnings "%~dp0\node_modules\mdne\index.mjs" %*
+    )
+    ```
+* `%AppData%\npm\mdne` (Windows; MinGW64, cygwin, ...)
+    ```sh
+    #!/bin/sh
+    basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
 
-* `%AppData%\npm\mdne` (Windows; cygwin,...)
-```sh
-#!/bin/sh
-basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+    case `uname` in
+        *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
+    esac
 
-case `uname` in
-    *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
-esac
-
-if [ -x "$basedir/node" ]; then
-  "$basedir/node"  --experimental-modules --es-module-specifier-resolution=node --no-warnings "$basedir/node_modules/mdne/index.mjs" "$@"
-  ret=$?
-else 
-  node  --experimental-modules --es-module-specifier-resolution=node --no-warnings "$basedir/node_modules/mdne/index.mjs" "$@"
-  ret=$?
-fi
-exit $ret
-```
-
+    if [ -x "$basedir/node" ]; then
+      "$basedir/node"  --experimental-modules --es-module-specifier-resolution=node --no-warnings "$basedir/node_modules/mdne/index.mjs" "$@"
+      ret=$?
+    else 
+      node  --experimental-modules --es-module-specifier-resolution=node --no-warnings "$basedir/node_modules/mdne/index.mjs" "$@"
+      ret=$?
+    fi
+    exit $ret
+    ```
 * `$(whereis mdne)` (Linux)
-```js
-#!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
+    ```js
+    #!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
 
-// Copyright (c) 2019 Shellyl_N and Authors
-// license: ISC
-// https://github.com/shellyln
+    // Copyright (c) 2019 Shellyl_N and Authors
+    // license: ISC
+    // https://github.com/shellyln
 
-import './lib/extension';
+    import './lib/extension';
 
-...
-```
+    ...
+    ```
+
+</div>
+
+
 
 ### Create a desktop and 'send to' menu shoorcuts (Windows)
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
 * Extract zip archive and run `make-shortcut.cmd`.
-
-> NOTE: To run on `node 12` or leter, run `make-shortcut-node12.cmd` instead.
+  > NOTE: To run on `node 12` or leter, run `make-shortcut-node12.cmd` instead.
 
 
 ## Run
