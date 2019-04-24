@@ -90,7 +90,7 @@ npm install -g mdne
     fi
     exit $ret
     ```
-* `$(whereis mdne)` (Linux)
+* `$(which mdne)` (Linux)
     ```js
     #!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
 
