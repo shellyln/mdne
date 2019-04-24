@@ -33,8 +33,10 @@
     "build": "echo \"no build specified\"",
     "clean": "echo \"no clean specified\"",
     "lint": "eslint index.mjs lib/**/*.js lib/**/*.mjs contents/assets/script/**/*.js",
-    "start": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs",
-    "version": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs --app-version",
+    "start": "node --experimental-modules --no-warnings index.mjs",
+    "start12": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs",
+    "version": "node --experimental-modules --no-warnings index.mjs --app-version",
+    "version12": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs --app-version",
     "test": "echo \"no test specified\" && exit 0"
   },
   "repository": {
