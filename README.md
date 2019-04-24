@@ -56,7 +56,7 @@
 npm install -g mdne
 ```
 
-> NOTE: To run on `node 12` or leter, you need to fix lacking of the node CLI option
+> NOTE: To run on `node 12` or leter, you need to fix lacking of the node CLI option  
 > `--es-module-specifier-resolution=node` after installed.
 >> If you are using Windows and only use the app from the desktop or "send-to"
 >> shortcuts described below, there is no need to fix it.
