@@ -16,6 +16,7 @@
         "window": true,
         "document": true,
         "M": true,
+        "parinfer": true,
         "ace": true,
         "React": true,
         "ReactDOM": true,

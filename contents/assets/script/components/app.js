@@ -34,6 +34,7 @@ export default class App extends React.Component {
         this.scheduleRerenderPreview = false;
         this.savedEditorStyleWidth = null;
         this.savedPreviewScrollY = 0;
+        this.aceOnChangeSilent = false;
 
         window.onbeforeunload = (ev) => {
             // TODO: check all Ace editors
@@ -350,6 +351,25 @@ export default class App extends React.Component {
     }
 
     handleAceEditorOnChange(o) {
+        // if (AppState.inputFormat === 'lisp') {
+        //     const editor = AppState.AceEditor[this.state.currentAceId];
+        //     if (editor.curOp && editor.curOp.command.name && !this.aceOnChangeSilent) {
+        //         const cur = editor.getCursorPosition();
+        //         const s = editor.getValue();
+        //         const m = parinfer.indentMode(s, {
+        //             cursorLine: cur.row,
+        //             cursorX: cur.column,
+        //         });
+        //         this.aceOnChangeSilent = true;
+        //         try {
+        //             editor.setValue(m.text);
+        //             editor.clearSelection();
+        //             editor.gotoLine(m.cursorLine + 1, m.cursorX);
+        //         } finally {
+        //             this.aceOnChangeSilent = false;
+        //         }
+        //     }
+        // }
         if (! AppState.fileChanged) {
             const editor = AppState.AceEditor[this.state.currentAceId];
             if (!(editor.curOp && editor.curOp.command.name)) {
