@@ -106,7 +106,7 @@ import './lib/extension';
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
 * Extract zip archive and run `make-shortcut.cmd`.
 
-> NOTE: To run on `node 12` or leter, run `make-shortcut-node12.cmd`.
+> NOTE: To run on `node 12` or leter, run `make-shortcut-node12.cmd` instead.
 
 
 ## Run
