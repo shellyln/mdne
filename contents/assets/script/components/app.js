@@ -351,25 +351,29 @@ export default class App extends React.Component {
     }
 
     handleAceEditorOnChange(o) {
-        // if (AppState.inputFormat === 'lisp') {
-        //     const editor = AppState.AceEditor[this.state.currentAceId];
-        //     if (editor.curOp && editor.curOp.command.name && !this.aceOnChangeSilent) {
-        //         const cur = editor.getCursorPosition();
-        //         const s = editor.getValue();
-        //         const m = parinfer.indentMode(s, {
-        //             cursorLine: cur.row,
-        //             cursorX: cur.column,
-        //         });
-        //         this.aceOnChangeSilent = true;
-        //         try {
-        //             editor.setValue(m.text);
-        //             editor.clearSelection();
-        //             editor.gotoLine(m.cursorLine + 1, m.cursorX);
-        //         } finally {
-        //             this.aceOnChangeSilent = false;
-        //         }
-        //     }
-        // }
+        if (AppState.inputFormat === 'lisp') {
+            const editor = AppState.AceEditor[this.state.currentAceId];
+            if (editor.curOp && editor.curOp.command.name && !this.aceOnChangeSilent) {
+                const cur = editor.getCursorPosition();
+                const ch = editor.session.getLine(cur.row).charAt(cur.column - 1);
+                const cs = (ch === '(' ? cur : editor.session.$findOpeningBracket(')', cur)) || cur;
+                const ce = (ch === ')' ? cur : editor.session.$findClosingBracket('(', cur)) || cur;
+                const s = editor.getValue();
+                const m = parinfer.indentMode(s, {
+                    cursorLine: cur.row,
+                    cursorX: cur.column,
+                    selectionStartLine: cur.row,
+                });
+                this.aceOnChangeSilent = true;
+                try {
+                    editor.setValue(m.text);
+                    editor.clearSelection();
+                    editor.gotoLine(m.cursorLine + 1, m.cursorX);
+                } finally {
+                    this.aceOnChangeSilent = false;
+                }
+            }
+        }
         if (! AppState.fileChanged) {
             const editor = AppState.AceEditor[this.state.currentAceId];
             if (!(editor.curOp && editor.curOp.command.name)) {
