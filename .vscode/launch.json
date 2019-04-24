@@ -11,6 +11,7 @@
             "program": "${workspaceFolder}\\index.mjs",
             "runtimeArgs": [
                 "--experimental-modules",
+                "--es-module-specifier-resolution=node",
                 "--no-warnings"
             ]
         }
