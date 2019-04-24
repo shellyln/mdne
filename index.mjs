@@ -1,4 +1,4 @@
-#!/usr/bin/env node --experimental-modules --no-warnings
+#!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
 
 // Copyright (c) 2019 Shellyl_N and Authors
 // license: ISC
