@@ -44,6 +44,20 @@ export function getSuggests() {
         'md h4': null,
         'md h5': null,
         'md h6': null,
+        'md style': null,
+        'md comment': null,
+        'md char-entity-ref': null,
+        'md escape': null,
+        'md embedded-image': null,
+        'md embedded-uml': null,
+        'md embedded-style': null,
+        'md svg': null,
+        'md canvas': null,
+        'md qr': null,
+        'md code128': null,
+        'md code39': null,
+        'md gtin13': null,
+        'md gtin8': null,
     };
 }
 
@@ -117,7 +131,7 @@ export function getOperators({getCurrentAceId}) {
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(),
-                            '\n![alt text](https://raw.githubusercontent.com/shellyln/mdne/master/contents/logo.svg?sanitize=true "Logo" =300x100)\n');
+                            '\n![alt text](https://shellyln.github.io/assets/image/mdne-logo.svg "Logo" =300x100)\n');
                     }
                     return '';
                 case 'toc':
@@ -309,6 +323,123 @@ export function getOperators({getCurrentAceId}) {
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(), '\n###### This is a header.\n');
+                    }
+                    return '';
+                case 'style':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n<style>h4 { background-color: cyan; }</style>\n');
+                    }
+                    return '';
+                case 'comment':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(), '\n<!-- This is a comment. -->\n');
+                    }
+                    return '';
+                case 'char-entity-ref':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n&amp;&lt;&gt;&quot;&apos;&nbsp;\n' +
+                            '&sup3;&frac34;&plusmn;&times;&divide;&para;&sect;&middot;&laquo;&raquo;\n' +
+                            '&copy;&reg;&trade;&yen;&euro;$&curren;&pound;&cent;\n');
+                    }
+                    return '';
+                case 'escape':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n\\\\<style>h5 { background-color: cyan; }\\\\</style>\n');
+                    }
+                    return '';
+                case 'embedded-image':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n%%%(Image(@(src"https://shellyln.github.io/assets/image/mdne-logo.svg")(width 300)(height 100)(unit "px")(alt "Logo")))\n');
+                    }
+                    return '';
+                case 'embedded-uml':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n%%%(PlantUml """\n' +
+                            'Alice -> Bob: Authentication Request\n' +
+                            'Bob --> Alice: Authentication Response\n\n' +
+                            'Alice -> Bob: Another authentication Request\n' +
+                            'Alice <-- Bob: Another authentication Response\n' +
+                            '""")\n');
+                    }
+                    return '';
+                case 'embedded-style':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n%%%(Style(@(src"https://shellyln.github.io/menneu/assets/style/playground.css")))\n');
+                    }
+                    return '';
+                case 'svg':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n%%%(Svg (@ (width 100)(height 100)(unit "mm"))\n\n)\n');
+                    }
+                    return '';
+                case 'canvas':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n' +
+                            '(Canvas (-> (ctx) (::ctx@moveTo  10  10)\n' +
+                            '                  (::ctx@lineTo 190 190)\n' +
+                            '                  (::ctx:strokeStyle="rgba(255,128,0,0.2)")\n' +
+                            '                  (::ctx@stroke)\n' +
+                            '                  (::ctx@beginPath) ))\n');
+                    }
+                    return '';
+                case 'qr':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                        '\n(Qr (@ (x 5)(y 7)(cellSize 0.8)(fill)(fillColor "darkblue")(data "Hello")))\n');
+                    }
+                    return '';
+                case 'code128':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n' +
+                            '(Code128 (@ (x 5)(y 7)(elementWidth 0.66)(height 15)(quietHeight 0)(textHeight 7)\n' +
+                            '            (font "7px \'OCRB\'")(fill)(fillColor "darkblue")(data "Hello") ))\n');
+                    }
+                    return '';
+                case 'code39':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n' +
+                            '(Code39 (@ (x 5)(y 7)(narrowWidth 0.66)(wideWidth 1.32)(height 15)(quietHeight 0)(textHeight 7)\n' +
+                            '           (font "7px \'OCRB\'")(fill)(fillColor "darkblue")(data "HELLO") ))\n');
+                    }
+                    return '';
+                case 'gtin13':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n' +
+                            '(Gtin13 (@ (x 5)(y 7)(elementWidth 0.66)(height 15)(quietHeight 0)(textHeight 7)\n' +
+                            '           (font "7px \'OCRB\'")(fill)(fillColor "darkblue")(data "123456789012") ))\n');
+                    }
+                    return '';
+                case 'gtin8':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n' +
+                            '(Gtin8 (@ (x 5)(y 7)(elementWidth 0.66)(height 15)(quietHeight 0)(textHeight 7)\n' +
+                            '          (font "7px \'OCRB\'")(fill)(fillColor "darkblue")(data "1234567") ))\n');
                     }
                     return '';
                 default:
