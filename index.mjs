@@ -107,7 +107,7 @@ function getDesktopPath() {
         app.serveHandler(async (request) => {
             const reqUrl = request.url();
             if (reqUrl === 'https://domain/out/preview.pdf') {
-                const x = await readFileAsync(path.join(startUpCurDir, 'contents/out/preview.pdf'));
+                const x = await readFileAsync(path.join(thisDirName, 'contents/out/preview.pdf'));
                 request.fulfill({
                     body: x,
                     status: 200,
@@ -117,7 +117,7 @@ function getDesktopPath() {
                     },
                 });
             } else if (reqUrl === 'https://domain/out/preview.html') {
-                const x = await readFileAsync(path.join(startUpCurDir, 'contents/out/preview.html'));
+                const x = await readFileAsync(path.join(thisDirName, 'contents/out/preview.html'));
                 request.fulfill({
                     body: x,
                     status: 200,
