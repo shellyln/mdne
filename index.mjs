@@ -61,6 +61,14 @@ const startUpCurDir = curDir;
 let lastSrcDir = path.join(curDir, 'contents');
 
 
+if (process.argv[2] === '--app-version') {
+    const c = fs.readFileSync(path.join(thisDirName, 'package.json'));
+    const o = JSON.parse(c);
+    console.log(`${o.name} ${o.version}`);
+    process.exit(0);
+}
+
+
 function getDesktopPath() {
     return path.join(process.env[process.platform == 'win32' ? 'USERPROFILE' : 'HOME'], 'Desktop');
 }
