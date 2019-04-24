@@ -213,7 +213,7 @@ function getDesktopPath() {
             }
 
             const outPath = exportPath.length === 0 ?
-                path.normalize(path.join(curDir, './contents/out/preview.' + options.outputFormat)) :
+                path.normalize(path.join(thisDirName, './contents/out/preview.' + options.outputFormat)) :
                 path.normalize(path.join(...exportPath));
             await writeFileAsync(outPath, buf);
 
