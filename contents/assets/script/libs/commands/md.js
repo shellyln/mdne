@@ -26,7 +26,9 @@ export function getSuggests() {
         'md uml': null,
         'md emoji': null,
         'md italic': null,
+        'md italic-alt': null,
         'md bold': null,
+        'md bold-alt': null,
         'md strikethru': null,
         'md mark': null,
         'md ins': null,
@@ -203,10 +205,22 @@ export function getOperators({getCurrentAceId}) {
                         editor.session.insert(editor.getCursorPosition(), ' *This is italic* ');
                     }
                     return '';
+                case 'italic-alt':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(), ' _This is italic_ ');
+                    }
+                    return '';
                 case 'bold':
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(), ' **This is bold** ');
+                    }
+                    return '';
+                case 'bold-alt':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(), ' __This is bold__ ');
                     }
                     return '';
                 case 'strikethrough': case 'strikethru':
