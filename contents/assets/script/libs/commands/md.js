@@ -55,6 +55,9 @@ export function getSuggests() {
         'md embedded-style': null,
         'md svg': null,
         'md canvas': null,
+        'md line': null,
+        'md rect': null,
+        'md roundrect': null,
         'md qr': null,
         'md code128': null,
         'md code39': null,
@@ -365,7 +368,7 @@ export function getOperators({getCurrentAceId}) {
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(),
-                            '\n\\\\<style>h5 { background-color: cyan; }\\\\</style>\n');
+                            '\n\\<style>h5 { background-color: cyan; }\\</style>\n');
                     }
                     return '';
                 case 'embedded-image':
@@ -413,11 +416,35 @@ export function getOperators({getCurrentAceId}) {
                             '                  (::ctx@beginPath) ))\n');
                     }
                     return '';
+                case 'line':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n(Line (@(x 0)(y 0)(lineWidth 1)(stroke)(strokeColor "blue")' +
+                            '(points ($list 10 10 20 40 30 90 ))))\n');
+                    }
+                    return '';
+                case 'rect':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n(Rect(@(x 5)(y 5)(width 70)(height 20)(lineWidth 3)' +
+                            '(stroke)(strokeColor "blue")(fill)(fillColor "darkblue")))\n');
+                    }
+                    return '';
+                case 'roundrect':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '\n(RoundRect(@(x 5)(y 5)(width 70)(height 20)(lineWidth 3)(r 3)' +
+                            '(stroke)(strokeColor "blue")(fill)(fillColor "darkblue")))\n');
+                    }
+                    return '';
                 case 'qr':
                     {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(),
-                        '\n(Qr (@ (x 5)(y 7)(cellSize 0.8)(fill)(fillColor "darkblue")(data "Hello")))\n');
+                            '\n(Qr (@ (x 5)(y 7)(cellSize 0.8)(fill)(fillColor "darkblue")(data "Hello")))\n');
                     }
                     return '';
                 case 'code128':
