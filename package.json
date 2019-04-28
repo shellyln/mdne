@@ -1,6 +1,6 @@
 {
   "name": "mdne",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": false,
   "description": "MDNE - Markdown Neo Edit. A simple markdown and code editor powered by Markdown-it, Ace and Carlo.",
   "keywords": [
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "carlo": "^0.9.45",
-    "menneu": "^0.0.59"
+    "menneu": "^0.0.60"
   },
   "devDependencies": {},
   "scripts": {
