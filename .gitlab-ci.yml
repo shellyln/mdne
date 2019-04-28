@@ -16,6 +16,8 @@ test:lint:
 # LTS
 test:node:12:
   script:
+    - node -v
+    - npm -v
     - npm run clean
     - npm run build
     - npm test
@@ -23,6 +25,8 @@ test:node:12:
 
 test:node:11:
   script:
+    - node -v
+    - npm -v
     - npm run clean
     - npm run build
     - npm test
@@ -32,6 +36,8 @@ test:node:11:
 test:node:10:
   image: node:10
   script:
+    - node -v
+    - npm -v
     - npm run clean
     - npm run build
     - npm test
