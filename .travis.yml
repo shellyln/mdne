@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "10"
   - "11"
+  - "12"
 
 #branches:
 #  only:
@@ -16,4 +17,4 @@ before_script:
   - npm run lint
   - npm run build
   - npm test
-  - npm run version
+  - if [[ $(node -e "console.log(process.version.match(/^v(\\d+)\\.\\d+\\.\\d+/)[1])") -ge 12 ]]; then npm run version12; else npm run version; fi

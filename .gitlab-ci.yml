@@ -1,4 +1,4 @@
-image: node:11
+image: node:12
 
 before_script:
   - npm install -g eslint
@@ -12,6 +12,14 @@ before_script:
 test:lint:
   script:
     - npm run lint
+
+# LTS
+test:node:12:
+  script:
+    - npm run clean
+    - npm run build
+    - npm test
+    - npm run version12
 
 test:node:11:
   script:
