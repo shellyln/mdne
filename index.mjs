@@ -1,5 +1,5 @@
 #!/bin/sh
-":" //# comment; exec /usr/bin/env node --experimental-modules --no-warnings "$0" "$@"
+":" //# comment; exec /usr/bin/env node --experimental-modules --no-warnings "$0" "$@" # do not pass CR
 
 // Copyright (c) 2019 Shellyl_N and Authors
 // license: ISC
