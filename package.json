@@ -22,7 +22,9 @@
     "node": ">=10.0"
   },
   "bin": {
-    "mdne": "index.mjs"
+    "mdne": "index.mjs",
+    "mdne10": "index.mjs",
+    "mdne12": "index12.mjs"
   },
   "dependencies": {
     "carlo": "^0.9.45",
