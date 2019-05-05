@@ -23,8 +23,11 @@
   },
   "bin": {
     "mdne": "index.mjs",
+    "mdnew": "index-win.mjs",
     "mdne10": "index.mjs",
-    "mdne12": "index12.mjs"
+    "mdnew10": "index-win.mjs",
+    "mdne12": "index12.mjs",
+    "mdnew12": "index12-win.mjs"
   },
   "dependencies": {
     "carlo": "^0.9.45",

@@ -71,14 +71,16 @@ Open blank editor:
 ```sh
 mdne
 
-## To run on node>=12, use `mdne12` instead
+## To run on node>=12, use `mdne12` instead.
+## TO run on Windows, use `mdnew` or `mdnew12` instead.
 ```
 
 Open file:
 ```sh
 mdne README.md
 
-## To run on node>=12, use `mdne12` instead
+## To run on node>=12, use `mdne12` instead.
+## TO run on Windows, use `mdnew` or `mdnew12` instead.
 ```
 
 
