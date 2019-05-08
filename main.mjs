@@ -97,7 +97,9 @@ async function main() {
             const x = win.paramsForReuse();
             if (x && typeof x.pid === 'number' && process.pid !== x.pid) {
                 // TODO: This has concurrency issue.
-                startupFile = x.startupFile ? TextEncoding.decodeUtf8(Base64.decode(x.startupFile)) : x.startupFile;
+                startupFile = x.startupFile ?
+                    TextEncoding.decodeUtf8(Base64.decode(x.startupFile)).replace(/[\x00-\x1F\x7F-\x9F]/g, '').trim() :
+                    x.startupFile;
                 win.load('index.html', rpc.handle(new Backend));
             }
         });
