@@ -98,6 +98,7 @@ async function main() {
             if (x && typeof x.pid === 'number' && process.pid !== x.pid) {
                 // TODO: This has concurrency issue.
                 startupFile = x.startupFile ?
+                    // eslint-disable-next-line no-control-regex
                     TextEncoding.decodeUtf8(Base64.decode(x.startupFile)).replace(/[\x00-\x1F\x7F-\x9F]/g, '').trim() :
                     x.startupFile;
                 win.load('index.html', rpc.handle(new Backend));
