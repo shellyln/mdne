@@ -85,7 +85,7 @@ async function main() {
             // args: ['--auto-open-devtools-for-tabs']
             paramsForReuse: {
                 pid: process.pid,
-                startupFile,
+                startupFile: encodeURIComponent(startupFile),
             },
         });
 
@@ -95,7 +95,7 @@ async function main() {
             const x = win.paramsForReuse();
             if (x && typeof x.pid === 'number' && process.pid !== x.pid) {
                 // TODO: This has concurrency issue.
-                startupFile = x.startupFile;
+                startupFile = decodeURIComponent(x.startupFile);
                 win.load('index.html', rpc.handle(new Backend));
             }
         });
