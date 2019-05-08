@@ -6,6 +6,8 @@ import './lib/extension';
 
 import findChrome       from 'carlo/lib/find_chrome';
 import { HtmlRenderer } from 'red-agate/modules/red-agate/renderer';
+import { Base64 }       from 'red-agate-util/modules/convert/Base64';
+import { TextEncoding } from 'red-agate-util/modules/convert/TextEncoding';
 import requireDynamic   from 'red-agate-util/modules/runtime/require-dynamic';
 import { render,
          getAppEnv }    from 'menneu/modules';
@@ -80,12 +82,12 @@ async function main() {
         HtmlRenderer.launchOptions = {
             executablePath: (await findChrome({})).executablePath,
         };
-    
+
         const app = await carlo.launch({
             // args: ['--auto-open-devtools-for-tabs']
             paramsForReuse: {
                 pid: process.pid,
-                startupFile: encodeURIComponent(startupFile),
+                startupFile: startupFile ? Base64.encode(TextEncoding.encodeToUtf8(startupFile)) : startupFile,
             },
         });
 
@@ -95,7 +97,7 @@ async function main() {
             const x = win.paramsForReuse();
             if (x && typeof x.pid === 'number' && process.pid !== x.pid) {
                 // TODO: This has concurrency issue.
-                startupFile = decodeURIComponent(x.startupFile);
+                startupFile = x.startupFile ? TextEncoding.decodeUtf8(Base64.decode(x.startupFile)) : x.startupFile;
                 win.load('index.html', rpc.handle(new Backend));
             }
         });
