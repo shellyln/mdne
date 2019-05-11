@@ -438,6 +438,12 @@ export default class App extends React.Component {
                     if (typeof r === 'string' && r.trim() === '') {
                         return;
                     }
+                    if (r === null || r === void 0) {
+                        return;
+                    }
+                    if (Array.isArray(r) && r.length === 0) {
+                        return;
+                    }
                     M.toast({
                         html: escapeHtml(String(r)).replace(/\r?\n/g, '<br>'),
                         classes: 'teal darken-4',

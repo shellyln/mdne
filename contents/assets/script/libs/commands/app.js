@@ -28,7 +28,7 @@ export function getSuggests() {
         'scripting off': null,
         'selected-text': null,
         'insert "text"': null,
-        '$resolve-pipe ($> ls -al) (<- insert)': null,
+        '$resolve-pipe ($> ls -al) (<- insert) (-> () nil)': null,
         '$> some-shell-cmd cmd-options': null,
         'help': null,
         'help topic-name': null,
