@@ -63,6 +63,7 @@ export function getSuggests() {
         'md code39': null,
         'md gtin13': null,
         'md gtin8': null,
+        'md print-preview': null,
     };
 }
 
@@ -481,6 +482,13 @@ export function getOperators({getCurrentAceId}) {
                             '\n' +
                             '(Gtin8 (@ (x 5)(y 7)(elementWidth 0.66)(height 15)(quietHeight 0)(textHeight 7)\n' +
                             '          (font "7px \'OCRB\'")(fill)(fillColor "darkblue")(data "1234567") ))\n');
+                    }
+                    return '';
+                case 'print-preview':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '<script>window.print()</script>');
                     }
                     return '';
                 default:

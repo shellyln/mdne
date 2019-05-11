@@ -26,6 +26,9 @@ export function getSuggests() {
         'preview-format html': null,
         'scripting on': null,
         'scripting off': null,
+        'selected-text': null,
+        'insert "text"': null,
+        '$resolve-pipe ($> ls -al) (<- insert)': null,
         '$> some-shell-cmd cmd-options': null,
         'help': null,
         'help topic-name': null,
@@ -113,6 +116,16 @@ export function getOperators({app}) {
             fn: (state, name) => (onoff) => {
                 app.setState({useScripting: onoff === 'on' || onoff === true});
                 return '';
+            },
+        }, {
+            name: 'selected-text',
+            fn: (state, name) => (text) => {
+                return app.getSelectedText(text);
+            },
+        }, {
+            name: 'insert',
+            fn: (state, name) => (text) => {
+                return app.insertText(text);
             },
         }, {
             name: '$>',

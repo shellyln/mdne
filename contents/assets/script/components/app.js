@@ -318,6 +318,17 @@ export default class App extends React.Component {
         }, null, AppState.filePath, currentDir, fileName);
     }
 
+    getSelectedText() {
+        const editor = AppState.AceEditor[this.state.currentAceId];
+        return editor.getSelectedText();
+    }
+
+    insertText(text) {
+        const editor = AppState.AceEditor[this.state.currentAceId];
+        editor.session.insert(editor.getCursorPosition(), text);
+        return text;
+    }
+
     handleExportClick(ev) {
         if (! isPreviewable(AppState.inputFormat)) {
             alert(`Preview of ${AppState.inputFormat} format is not supported.`);
