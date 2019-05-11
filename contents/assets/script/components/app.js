@@ -7,6 +7,7 @@ import start                from '../libs/start.js';
 import { getInputFormat,
          isPreviewable,
          getAceEditorMode } from '../libs/modes.js';
+import { escapeHtml }       from '../libs/escape.js';
 import commandRunner        from '../libs/cmdrunner.js';
 
 import { getSuggests as getAppSuggests,
@@ -427,16 +428,14 @@ export default class App extends React.Component {
                         return;
                     }
                     M.toast({
-                        // TODO: escaping
-                        html: String(r),
+                        html: escapeHtml(String(r)).replace(/\r?\n/g, '<br>'),
                         classes: 'teal darken-4',
                     });
                 })
                 .catch(e => {
                     clearBox();
                     M.toast({
-                        // TODO: escaping
-                        html: e,
+                        html: escapeHtml(String(e)),
                         classes: 'red darken-4',
                     });
                 });

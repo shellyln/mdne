@@ -5,6 +5,7 @@
 
 import AppState          from '../appstate.js';
 import { isPreviewable } from '../modes.js';
+import { backend }       from '../remote.js';
 
 
 
@@ -25,6 +26,7 @@ export function getSuggests() {
         'preview-format html': null,
         'scripting on': null,
         'scripting off': null,
+        '$> some-shell-cmd cmd-options': null,
         'help': null,
         'help topic-name': null,
     };
@@ -111,6 +113,11 @@ export function getOperators({app}) {
             fn: (state, name) => (onoff) => {
                 app.setState({useScripting: onoff === 'on' || onoff === true});
                 return '';
+            },
+        }, {
+            name: '$>',
+            fn: (state, name) => (...commands) => {
+                return backend().runCommandAST([[{'symbol': '$>'}, commands.join(' ')]]);
             },
         }, {
             name: 'help',

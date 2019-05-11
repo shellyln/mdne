@@ -2,11 +2,13 @@
 // license: ISC
 // https://github.com/shellyln
 
+import commandRunner from './cmdrunner.js';
+
+
 
 class Frontend {
-    hello(name) {
-        console.log(`Bonjour ${name}`);
-        return 'Frontend is happy';
+    runCommand(command) {
+        return commandRunner(command);
     }
 }
 
@@ -20,7 +22,6 @@ export async function initBackend() {
         return backend_;
     }
     backend_ = (await carlo.loadParams())[0];
-    // console.log(await backend.hello('from frontend'));
     await backend_.setFrontend(rpc.handle(frontend_));
 }
 

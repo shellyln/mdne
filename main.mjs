@@ -11,7 +11,8 @@ import { TextEncoding } from 'red-agate-util/modules/convert/TextEncoding';
 import requireDynamic   from 'red-agate-util/modules/runtime/require-dynamic';
 import { render,
          getAppEnv }    from 'menneu/modules';
-import getContentType   from './lib/mime'
+import getContentType   from './lib/mime';
+import Backend          from './lib/backend';
 import fs    from 'fs';
 import util  from 'util';
 import path  from 'path';
@@ -28,6 +29,7 @@ const readdirAsync = util.promisify(fs.readdir);
 const statAsync = util.promisify(fs.stat);
 
 
+
 const isWebpack = typeof __webpack_require__ === 'function';
 let thisFileName = '';
 let thisDirName = '';
@@ -37,22 +39,6 @@ if (isWebpack) {
 } else {
     thisFileName = url.fileURLToPath(import.meta.url);
     thisDirName = path.dirname(thisFileName);
-}
-
-
-class Backend {
-    hello(name) {
-        console.log(`Hello ${name}`);
-        return 'Backend is happy';
-    }
-
-    setFrontend(frontend) {
-        // Node world can now use frontend RPC handle.
-        this.frontend_ = frontend;
-        (async () => {
-            // console.log(await this.frontend_.hello('from backend'));
-        })();
-    }
 }
 
 
