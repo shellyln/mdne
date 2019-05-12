@@ -77,7 +77,8 @@ export default class FileSaveDialog extends React.Component {
             this.setState({inputFileName: name});
         })
         .catch(e => {
-            alert(e);
+            // ignore error
+            // alert(e);
         });
     }
 
@@ -208,19 +209,19 @@ export default class FileSaveDialog extends React.Component {
                                   (width "9em") )
                            (className "btn grey darken-3")
                            (onClick ${(ev) => this.handleCancelClick(ev)}) )
-                        (i (@ (className "material-icons large")) "cancel")
-                        (span (@ (style (margin "0 10px 10px 10px")
-                                        (display "inline-block")
-                                        (vertical-align "middle") )) "Cancel") )
+                    (i (@ (className "material-icons large")) "cancel")
+                    (span (@ (style (margin "0 10px 10px 10px")
+                                    (display "inline-block")
+                                    (vertical-align "middle") )) "Cancel") )
                 (button (@ (style (textTransform "none")
                                   (margin "0 3px 0 3px")
                                   (width "9em") )
                            (className "btn blue darken-2")
                            (onClick ${(ev) => this.handleOkClick(ev)}) )
-                        (i (@ (className "material-icons large")) "check")
-                        (span (@ (style (margin "0 10px 10px 10px")
-                                        (display "inline-block")
-                                        (vertical-align "middle") )) "OK") ) ))`
+                    (i (@ (className "material-icons large")) "check")
+                    (span (@ (style (margin "0 10px 10px 10px")
+                                    (display "inline-block")
+                                    (vertical-align "middle") )) "OK") ) ))`
         );
     }
 }

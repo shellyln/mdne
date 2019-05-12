@@ -134,10 +134,10 @@ export default class FileDropDialog extends React.Component {
                                   (width "9em") )
                            (className "btn grey darken-3")
                            (onClick ${(ev) => this.handleCancelClick(ev)}) )
-                        (i (@ (className "material-icons large")) "cancel")
-                        (span (@ (style (margin "0 10px 10px 10px")
-                                        (display "inline-block")
-                                        (vertical-align "middle") )) "Cancel") )))`
+                    (i (@ (className "material-icons large")) "cancel")
+                    (span (@ (style (margin "0 10px 10px 10px")
+                                    (display "inline-block")
+                                    (vertical-align "middle") )) "Cancel") )))`
         );
     }
 }
