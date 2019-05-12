@@ -319,6 +319,11 @@ export default class App extends React.Component {
         }, null, AppState.filePath, currentDir, fileName);
     }
 
+    getEntireText() {
+        const editor = AppState.AceEditor[this.state.currentAceId];
+        return editor.getValue();
+    }
+
     getSelectedText() {
         const editor = AppState.AceEditor[this.state.currentAceId];
         return editor.getSelectedText();

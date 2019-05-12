@@ -26,6 +26,7 @@ export function getSuggests() {
         'preview-format html': null,
         'scripting on': null,
         'scripting off': null,
+        'entire-text': null,
         'selected-text': null,
         'insert "text"': null,
         '$resolve-pipe ($> ls -al) (<- insert) (-> () nil)': null,
@@ -116,6 +117,11 @@ export function getOperators({app}) {
             fn: (state, name) => (onoff) => {
                 app.setState({useScripting: onoff === 'on' || onoff === true});
                 return '';
+            },
+        }, {
+            name: 'entire-text',
+            fn: (state, name) => (text) => {
+                return app.getEntireText(text);
             },
         }, {
             name: 'selected-text',
