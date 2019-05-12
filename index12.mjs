@@ -5,8 +5,7 @@
 // license: ISC
 // https://github.com/shellyln
 
+
 import main from './main';
-
-
 
 main();
