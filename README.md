@@ -52,10 +52,17 @@
 * Node>=10
 
 ### Install from NPM
+
+#### Linux
 ```sh
-npm install -g mdne
+env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
 ```
 
+#### Windows
+```cmd
+set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE
+npm install -g mdne
+```
 
 
 
