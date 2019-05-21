@@ -32,7 +32,7 @@
   "dependencies": {
     "carlo": "^0.9.45",
     "liyad": "^0.0.53",
-    "menneu": "^0.0.64",
+    "menneu": "^0.0.65",
     "red-agate-util": "^0.2.19"
   },
   "devDependencies": {},
