@@ -221,8 +221,8 @@ export default class App extends React.Component {
                      AppState.inputFormat !== 'html') ||
                         this.state.useScripting ? false : true,
             }, null, AppState.filePath)
-            .then(_ => {
-                this.refs.root.contentWindow.location.replace('embed.html');
+            .then(outputUrl => {
+                this.refs.root.contentWindow.location.replace(outputUrl);
             })
             .catch(async (e) => {
                 console.error(e);
@@ -237,8 +237,8 @@ export default class App extends React.Component {
                      AppState.inputFormat !== 'html') ||
                         this.state.useScripting ? false : true,
             }, null, AppState.filePath)
-            .then(_ => {
-                this.refs.root.contentWindow.location.replace('out/preview.html');
+            .then(outputUrl => {
+                this.refs.root.contentWindow.location.replace(outputUrl);
                 setTimeout(() => this.refs.root.contentWindow.scrollTo(
                     this.refs.root.contentWindow.scrollX,
                     Math.min(
@@ -394,8 +394,12 @@ export default class App extends React.Component {
                              AppState.inputFormat !== 'html') ||
                                 this.state.useScripting ? false : true,
                     }, null, AppState.filePath)
-                    .then(_ => {
-                        this.refs.root.contentWindow.location.reload(true);
+                    .then(outputUrl => {
+                        if (outputUrl.startsWith('data:')) {
+                            this.refs.root.contentWindow.location.replace(outputUrl);
+                        } else {
+                            this.refs.root.contentWindow.location.reload(true);
+                        }
                         this.scheduleRerenderPreview = false;
                     })
                     .catch(e => {

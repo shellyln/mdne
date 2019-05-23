@@ -207,7 +207,9 @@ async function main() {
                 path.normalize(path.join(...exportPath));
             await writeFileAsync(outPath, buf);
 
-            return outPath;
+            return options.outputFormat.toLowerCase() === 'pdf' ?
+                'embed.html' :
+                'out/preview.' + options.outputFormat;
         });
 
         await app.exposeFunction('loadFile', (...filePath) => {

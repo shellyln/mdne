@@ -5,7 +5,7 @@
 
 
 const start = (async (text, cf, data, srcPath, ...exportPath) => {
-    await renderByMenneu(text, data, Object.assign({
+    return await renderByMenneu(text, data, Object.assign({
         inputFormat: 'md',
         dataFormat: 'object',
     }, cf || {}), srcPath, ...exportPath);

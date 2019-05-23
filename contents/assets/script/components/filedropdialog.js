@@ -58,7 +58,11 @@ export default class FileDropDialog extends React.Component {
                 files.push(carlo.fileInfo(ev.dataTransfer.files[i]));
             }
             const paths = await Promise.all(files);
-            const texts = await Promise.all(paths.map(x => loadFile(x.path)));
+            const texts = await Promise.all(
+                paths.map(x => x.fileBodyText ?
+                    Promise.resolve(x.fileBodyText) : // emulation
+                    loadFile(x.path)                  // carlo
+                ));
 
             this.openFileAndClose(paths[0].path, texts[0]);
         } catch (e) {
