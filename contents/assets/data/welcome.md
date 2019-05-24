@@ -207,6 +207,6 @@ $$$
 P(A | B) = (P(B | A)P(A)) / P(B)
 $$$
 
-<srecipt src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
     crossorigin="anonymous" async></script>
 
