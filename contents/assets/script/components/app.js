@@ -185,8 +185,12 @@ export default class App extends React.Component {
             ), 30);
         } else {
             // stretched
-            this.savedEditorStyleWidth = this.refs.editor.refs.outerWrap.style.width;
-            this.savedPreviewScrollY = this.refs.root.contentWindow.scrollY;
+            try {
+                this.savedEditorStyleWidth = this.refs.editor.refs.outerWrap.style.width;
+                this.savedPreviewScrollY = this.refs.root.contentWindow.scrollY;
+            } catch (e) {
+                // emulation
+            }
             this.refs.editor.refs.outerWrap.style.width = null;
             this.refs.editorPlaceholder.style.width = null;
         }
