@@ -39,14 +39,8 @@
         const b = await window.getBaseName(p);
         // eslint-disable-next-line no-undef
         const util = menneu.getAppEnv().RedAgateUtil;
-        const url = 'data:text/html;base64,' + util.Base64.encode(util.TextEncoding.encodeToUtf8(text));
-        const link = document.createElement('a');
-        link.download = b;
-        link.href = url;
-        link.click();
-        setTimeout(() => {
-            link.remove();
-        }, 3000);
+        await util.FileSaver.saveTextAs(b, text);
+
         return {
             path: p,
             name: b,

@@ -91,9 +91,12 @@ export default class App extends React.Component {
         // eslint-disable-next-line no-undef
         if (window.dialogPolyfill) {
             // emulation
-            const dialog = document.querySelector('dialog');
-            // eslint-disable-next-line no-undef
-            dialogPolyfill.registerDialog(dialog);
+            const dialogs = document.querySelectorAll('dialog');
+            for (let i = 0; i < dialogs.length; i++) {
+                const dialog = dialogs[i];
+                // eslint-disable-next-line no-undef
+                dialogPolyfill.registerDialog(dialog);
+            }
         }
 
         document.onkeyup = (ev) => {
