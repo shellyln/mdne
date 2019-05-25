@@ -90,6 +90,7 @@ export default class App extends React.Component {
         }
         // eslint-disable-next-line no-undef
         if (window.dialogPolyfill) {
+            // emulation
             const dialog = document.querySelector('dialog');
             // eslint-disable-next-line no-undef
             dialogPolyfill.registerDialog(dialog);
@@ -402,8 +403,10 @@ export default class App extends React.Component {
                     }, null, AppState.filePath)
                     .then(outputUrl => {
                         if (outputUrl.startsWith('data:')) {
+                            // emulation
                             this.refs.root.contentWindow.location.replace(outputUrl);
                         } else {
+                            // carlo
                             this.refs.root.contentWindow.location.reload(true);
                         }
                         this.scheduleRerenderPreview = false;

@@ -15,7 +15,11 @@
         // eslint-disable-next-line no-undef
         const buf = await menneu.render(source, {}, Object.assign({}, options, {}));
         // eslint-disable-next-line no-undef
-        return 'data:text/html;base64,' + menneu.getAppEnv().RedAgateUtil.Base64.encode(buf);
+        const resultUrl = 'data:text/html;base64,' + menneu.getAppEnv().RedAgateUtil.Base64.encode(buf);
+        if (exportPath.length > 0) {
+            saveFile(buf.toString(), ...exportPath);
+        }
+        return resultUrl;
     };
 
     // eslint-disable-next-line no-unused-vars
