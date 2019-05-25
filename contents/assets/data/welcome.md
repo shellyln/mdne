@@ -1,5 +1,19 @@
 <h1>mdne - Markdown Neo Edit</h1>
 
+![alt text](https://shellyln.github.io/assets/image/mdne-logo.svg "Logo" =200x200)
+
+<h3>
+
+A simple markdown and code editor powered by [Markdown-it](https://github.com/markdown-it/markdown-it),
+[Ace](https://ace.c9.io/) and [Carlo](https://github.com/GoogleChromeLabs/carlo).
+
+</h3>
+
+* [npm](https://www.npmjs.com/package/mdne)
+* [github](https://github.com/shellyln/mdne)
+
+
+<h2>Table of contents</h2>
 
 [[TOC]]
 
