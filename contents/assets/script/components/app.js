@@ -422,13 +422,17 @@ export default class App extends React.Component {
 
     handleAceEditorOnChangeScrollTop(y, totalHeight) {
         if (!this.state.stretched && !this.state.isPdf) {
-            const w = y / totalHeight;
-            const scrollY = this.refs.root.contentWindow.document.documentElement.scrollHeight * w;
-            this.refs.root.contentWindow.scrollTo(
-                this.refs.root.contentWindow.scrollX,
-                scrollY,
-            );
-            this.savedPreviewScrollY = scrollY;
+            try {
+                const w = y / totalHeight;
+                const scrollY = this.refs.root.contentWindow.document.documentElement.scrollHeight * w;
+                this.refs.root.contentWindow.scrollTo(
+                    this.refs.root.contentWindow.scrollX,
+                    scrollY,
+                );
+                this.savedPreviewScrollY = scrollY;
+            } catch (e) {
+                // emulation
+            }
         }
     }
 

@@ -1,7 +1,15 @@
-# mdne - Markdown Neo Edit
+<h1>mdne - Markdown Neo Edit</h1>
 
 
 [[TOC]]
+
+
+# Live demo restrictions
+
+* Scrolling sync is not available.
+* Rendering / exporting to PDF is not available.
+* You can only open files by dropping local files.
+* Save and SaveAs commands download the file being edited.
 
 
 # Heading
