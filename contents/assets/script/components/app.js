@@ -88,6 +88,12 @@ export default class App extends React.Component {
                 ),
             });
         }
+        // eslint-disable-next-line no-undef
+        if (window.dialogPolyfill) {
+            const dialog = document.querySelector('dialog');
+            // eslint-disable-next-line no-undef
+            dialogPolyfill.registerDialog(dialog);
+        }
 
         document.onkeyup = (ev) => {
             if (ev.ctrlKey && ev.shiftKey && ev.keyCode === 79) {
