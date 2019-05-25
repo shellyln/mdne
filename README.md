@@ -91,6 +91,22 @@ mdne README.md
 ```
 
 
+## Live demo
+
+[https://shellyln.github.io/mdne/online.html](https://shellyln.github.io/mdne/online.html)
+
+#### Live demo browser requirements
+* Google Chrome: latest
+* Firefox: latest
+
+#### Live demo restrictions
+* Scrolling sync is not available.
+* Rendering / exporting to PDF is not available.
+* You can only open files by dropping local files.
+* Save and SaveAs commands download the file being edited.
+
+
+
 ## Security warning
 
 Exposing of Node side functions by RPC is enabled in preview iframe.  

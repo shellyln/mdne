@@ -26,6 +26,12 @@ A simple markdown and code editor powered by [Markdown-it](https://github.com/ma
 * Save and SaveAs commands download the file being edited.
 
 
+# Live demo browser requirements
+
+* Google Chrome: latest
+* Firefox: latest
+
+
 # Heading
 
 # h1
