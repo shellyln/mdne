@@ -237,3 +237,53 @@ $$$
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
     crossorigin="anonymous" async></script>
 
+
+# Scripting
+
+In the markdown or HTML documents,
+you can start `Lisp LSX` block. The block starts with <code>&#x0025;&#x0025;&#x0025;(</code> and ends with pair parenthesis `)` .
+
+See [https://github.com/shellyln/menneu#lisp-block-expansion](https://github.com/shellyln/menneu#lisp-block-expansion).
+
+To evaluate the following scripts, turn on the `scripting` switch at the top of the screen.
+
+
+%%%($last
+    ($let table-data '(1 2 3 4 5 6 7 8 9))
+    nil)
+
+| Left align           | Right align             | Center align                               |
+|:---------------------|------------------------:|:------------------------------------------:| %%%($=for table-data """
+| %%%($get $data)      | %%%($get $index)        | %%%($get $array ($get $index))             | """)
+| %%%(+ ...table-data) | %%%($length table-data) | %%%($reduce table-data (-> (a b) (+ a b))) |
+
+
+# Macro
+
+In this demo, `replacementMacros` are preconfigured.  
+`replacementMacros` use RegExp to replace source strings before the scripting and markdown evaluation phases.
+
+See [https://github.com/shellyln/menneu#config-file](https://github.com/shellyln/menneu#config-file).
+
+
+### Preconfigured macro
+
+* <code>&#x0021;&#x0021;&#x0021;lsx (...) &#x0021;&#x0021;&#x0021;</code>
+  * Evaluate as independent lisp LSX code.
+
+
+!!!lsx (Qr (@ (cellSize 0.8) (data "Hello"))) !!!
+
+Fibonacci number: !!!lsx
+($local ()
+    ($let fib-sub (-> (n a b)
+        ($if (< n 3)
+            ($cond (=== n 2) (+ a b)
+                   (=== n 1) a
+                   true      0)
+            ($self (- n 1) (+ a b) a) ) ))
+    ($capture (fib-sub)
+        ($defun fib (n) (fib-sub n 1 0)) ))
+
+($join ($map ($range 0 20) (<- fib)) ",")
+!!!

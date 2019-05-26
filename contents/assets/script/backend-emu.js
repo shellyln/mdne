@@ -12,7 +12,12 @@
 
     // eslint-disable-next-line no-unused-vars
     window.renderByMenneu = async (source, data, options, srcPath, ...exportPath) => {
-        const opts = Object.assign({}, options, {});
+        const opts = Object.assign({}, options, {
+            replacementMacros: [{
+                re: /!!!lsx\s([\s\S]+?)!!!/g,
+                fn: 'lsx', // evaluate input as LSX script
+            }],
+        });
         if (!opts.outputFormat || opts.outputFormat.toLowerCase() !== 'html') {
             const errText = `output format ${opts.outputFormat} is not available.`;
             throw new Error(errText);
