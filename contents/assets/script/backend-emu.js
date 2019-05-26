@@ -123,12 +123,30 @@
     };
 
     window.getStartupFile = async () => {
+        let targetPath = '/welcome.md';
+        let targetUrl = welcomeFile;
+        if (window.location.hash && window.location.hash.indexOf('open.url=') >= 0) {
+            const result = {};
+            window.location.hash.substring(1).split('&').forEach((part) => {
+                const item = part.split('=');
+                result[item[0]] = decodeURIComponent(item[1]);
+            });
+            if (result['open.url']) {
+                targetPath = result['open.url']
+                    .substring(result['open.url'].lastIndexOf('/') + 1) ||
+                    'index';
+                targetUrl = result['open.url'];
+            }
+        }
         // eslint-disable-next-line no-undef
-        const response = await fetch(welcomeFile);
-        return {
-            path: '/welcome.md',
-            text: await response.text(),
-        };
+        const response = await fetch(targetUrl, {});
+        if (response.ok) {
+            return {
+                path: targetPath,
+                text: await response.text(),
+            };
+        }
+        throw new Error('Fetching url failed. Network response was not ok, or CORB error.');
     };
 
     window.openURL = async (url) => {
