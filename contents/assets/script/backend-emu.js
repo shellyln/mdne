@@ -19,11 +19,20 @@
         }
         // eslint-disable-next-line no-undef
         const buf = await menneu.render(source, {}, opts);
+
+        // NOTE: Browsers treat Data URLs as cross-origin.
+        //       To avoid cross-origin, use Blob URLs instead.
+        // const resultUrl = 'data:text/html;base64,' + menneu.getAppEnv().RedAgateUtil.Base64.encode(buf);
+
         // eslint-disable-next-line no-undef
-        const resultUrl = 'data:text/html;base64,' + menneu.getAppEnv().RedAgateUtil.Base64.encode(buf);
+        const resultUrl = URL.createObjectURL(new Blob([buf.toString()], { type: 'text/html' }));
+
         if (exportPath.length > 0) {
             saveFile(buf.toString(), ...exportPath);
         }
+
+        // schedule revoking the Blob URL.
+        setTimeout(() => URL.revokeObjectURL(resultUrl), 5000);
         return resultUrl;
     };
 

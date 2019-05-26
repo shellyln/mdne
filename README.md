@@ -100,7 +100,6 @@ mdne README.md
 * Firefox: latest
 
 #### Live demo restrictions
-* Scrolling sync is not available.
 * Rendering / exporting to PDF is not available.
 * You can only open files by dropping local files.
 * Save and SaveAs commands download the file being edited.

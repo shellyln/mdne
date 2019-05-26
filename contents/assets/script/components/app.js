@@ -409,7 +409,7 @@ export default class App extends React.Component {
                                 this.state.useScripting ? false : true,
                     }, null, AppState.filePath)
                     .then(outputUrl => {
-                        if (outputUrl.startsWith('data:')) {
+                        if (outputUrl.startsWith('data:') || outputUrl.startsWith('blob:')) {
                             // emulation
                             this.refs.root.contentWindow.location.replace(outputUrl);
                         } else {

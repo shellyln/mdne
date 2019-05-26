@@ -20,7 +20,6 @@ A simple markdown and code editor powered by [Markdown-it](https://github.com/ma
 
 # Live demo restrictions
 
-* Scrolling sync is not available.
 * Rendering / exporting to PDF is not available.
 * You can only open files by dropping local files.
 * Save and SaveAs commands download the file being edited.
