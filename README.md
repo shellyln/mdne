@@ -102,6 +102,7 @@ mdne README.md
     * Fetching of files is restricted by the Same-Origin Policy.
 * Set zipped data to a location hash.
   * example: [hello.md](https://shellyln.github.io/mdne/online.html#filename=hello.md&open.d=eJwtyjEOgCAMBdCdU3zjit6BuLh4CKQdiIWSSkK8vYnxzW_GziLqUajy5FzAnUsTRol2kY6KWAlJicGUuxqaDjYmnA-O_yy5e4TE392iia7uBTWXHe8)
+    * location hash is generated when `Save` or `SaveAs` commands are done.
 
 #### Live demo browser requirements
 * Google Chrome: latest
