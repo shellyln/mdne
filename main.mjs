@@ -173,7 +173,7 @@ async function main() {
                     }
                 }
             }
-            cf = cf || {};
+            cf = Object.assign({}, cf || {});
 
             let d = data;
             if (! d) {
