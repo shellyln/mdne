@@ -525,7 +525,7 @@ export default class App extends React.Component {
         (Template
             (div (@ (className "AppMainMenuWrap"))
                 (a (@ (className "AppMainMenu dropdown-trigger btn-floating")
-                      (href "#")
+                      (href "javascript:void 0")
                       (data-target "dropdown1") )
                     (i (@ (className "AppMainMenuIcon material-icons large")) "dehaze") )
                 (ul (@ (id "dropdown1")

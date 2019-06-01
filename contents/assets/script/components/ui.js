@@ -6,7 +6,7 @@
 
 export const MenuItem = ({icon, caption, onClick}) => {
     return (lsx`
-        (li (a (@ (href "#!")
+        (li (a (@ (href "javascript:void 0")
             (onClick ${onClick}) )
             (i (@ (className "material-icons")) ${icon})
             ${caption} ))`

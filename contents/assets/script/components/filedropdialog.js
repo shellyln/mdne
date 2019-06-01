@@ -126,7 +126,7 @@ export default class FileDropDialog extends React.Component {
                     (onDrop ${async (ev) => {await this.handleOnDrop(ev)}}) )
                 (i (@ (className "material-icons large")) "insert_drive_file")(br)
                 "Drop file here." (br)(br)(br)
-                (a (@ (href "#!")
+                (a (@ (href "javascript:void 0")
                       (style (color "white")
                              (border-bottom "1px solid white") )
                       (onClick ${(ev) => {this.handleOnOpenDialogClick(ev)}}) )

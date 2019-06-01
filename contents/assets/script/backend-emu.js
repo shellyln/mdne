@@ -55,6 +55,14 @@
         const util = menneu.getAppEnv().RedAgateUtil;
         await util.FileSaver.saveTextAs(b, text);
 
+        try {
+            // eslint-disable-next-line no-undef
+            window.location.hash = `filename=${encodeURIComponent(b)}&open.d=${util.Base64.encode(pako.deflate(
+                util.TextEncoding.encodeToUtf8(text)))
+                .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')}`;
+        // eslint-disable-next-line no-empty
+        } catch (e) {}
+
         return {
             path: p,
             name: b,
@@ -139,17 +147,38 @@
     window.getStartupFile = async () => {
         let targetPath = '/welcome.md';
         let targetUrl = welcomeFile;
-        if (window.location.hash && window.location.hash.indexOf('open.url=') >= 0) {
-            const result = {};
-            window.location.hash.substring(1).split('&').forEach((part) => {
-                const item = part.split('=');
-                result[item[0]] = decodeURIComponent(item[1]);
-            });
-            if (result['open.url']) {
-                targetPath = result['open.url']
-                    .substring(result['open.url'].lastIndexOf('/') + 1) ||
-                    'index';
-                targetUrl = result['open.url'];
+        // eslint-disable-next-line no-undef
+        const util = menneu.getAppEnv().RedAgateUtil;
+
+        if (window.location.hash) {
+            if (window.location.hash.indexOf('open.d=') >= 0) {
+                const result = {};
+                window.location.hash.substring(1).split('&').forEach((part) => {
+                    const item = part.split('=');
+                    result[item[0]] = decodeURIComponent(item[1]);
+                });
+                if (result['open.d']) {
+                    targetPath = result['filename'] || '/Untitled.md';
+                    try {
+                        // eslint-disable-next-line no-undef
+                        targetUrl = `data:text/plain;base64,${util.Base64.encode(pako.inflate(
+                            util.Base64.decode(
+                                result['open.d'].replace(/-/g, '+').replace(/_/g, '/'))))}`;
+                    // eslint-disable-next-line no-empty
+                    } catch (e) {}
+                }
+            } else if (window.location.hash.indexOf('open.url=') >= 0) {
+                const result = {};
+                window.location.hash.substring(1).split('&').forEach((part) => {
+                    const item = part.split('=');
+                    result[item[0]] = decodeURIComponent(item[1]);
+                });
+                if (result['open.url']) {
+                    targetPath = result['open.url']
+                        .substring(result['open.url'].lastIndexOf('/') + 1) ||
+                        'index';
+                    targetUrl = result['open.url'];
+                }
             }
         }
         // eslint-disable-next-line no-undef

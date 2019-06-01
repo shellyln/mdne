@@ -173,7 +173,7 @@ export default class FileSaveDialog extends React.Component {
                         ($=for ${this.getFilteredCurrentDirFiles()}
                             (li (@ (key $index)
                                    (className "collection-item"))
-                                (a (@ (href "#!")
+                                (a (@ (href "javascript:void 0")
                                       (onClick (|-> (ev) use ($data)
                                           (${(ev, name, isDir) => this.handleFileListItemClick(ev, name, isDir)}
                                               ev ::$data:name ::$data:isDirectory )))
