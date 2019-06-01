@@ -95,13 +95,20 @@ mdne README.md
 
 [https://shellyln.github.io/mdne/online.html](https://shellyln.github.io/mdne/online.html)
 
+#### Open external files from live demo
+* Drop a local file into FileDropOpenDialog.
+* Set the target URL to a location hash.
+  * example: [react-dom.development.js](https://shellyln.github.io/mdne/online.html#open.url=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Freact-dom%2F16.7.0%2Fumd%2Freact-dom.development.js)
+    * Fetching of files is restricted by the Same-Origin Policy.
+* Set zipped data to a location hash.
+  * example: [hello.md](https://shellyln.github.io/mdne/online.html#filename=hello.md&open.d=eJwtyjEOgCAMBdCdU3zjit6BuLh4CKQdiIWSSkK8vYnxzW_GziLqUajy5FzAnUsTRol2kY6KWAlJicGUuxqaDjYmnA-O_yy5e4TE392iia7uBTWXHe8)
+
 #### Live demo browser requirements
 * Google Chrome: latest
 * Firefox: latest
 
 #### Live demo restrictions
 * Rendering / exporting to PDF is not available.
-* You can only open files by dropping local files.
 * Save and SaveAs commands download the file being edited.
 
 
