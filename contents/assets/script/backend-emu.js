@@ -6,12 +6,12 @@
 {
     const welcomeFile = 'assets/data/welcome.md';
 
-    window.rpc = {};
-    window.rpc.handle = x => x;
-    window.carlo = {};
+    window.rpc = window.rpc || {};
+    window.rpc.handle = window.rpc.handle || (x => x);
+    window.carlo = window.carlo || {};
 
     // eslint-disable-next-line no-unused-vars
-    window.renderByMenneu = async (source, data, options, srcPath, ...exportPath) => {
+    window.renderByMenneu = window.renderByMenneu || (async (source, data, options, srcPath, ...exportPath) => {
         const opts = Object.assign({}, options, {
             replacementMacros: [{
                 re: /!!!lsx\s([\s\S]+?)!!!/g,
@@ -39,16 +39,16 @@
         // schedule revoking the Blob URL.
         setTimeout(() => URL.revokeObjectURL(resultUrl), 5000);
         return resultUrl;
-    };
+    });
 
     // eslint-disable-next-line no-unused-vars
-    window.loadFile = async (...filePath) => {
+    window.loadFile = window.loadFile || (async (...filePath) => {
         // eslint-disable-next-line no-undef
         const response = await fetch(welcomeFile);
         return await response.text();
-    };
+    });
 
-    window.saveFile = async (text, ...filePath) => {
+    window.saveFile = window.saveFile || (async (text, ...filePath) => {
         const p = await window.pathJoin(...filePath);
         const b = await window.getBaseName(p);
         // eslint-disable-next-line no-undef
@@ -67,10 +67,10 @@
             path: p,
             name: b,
         };
-    };
+    });
 
     // eslint-disable-next-line no-unused-vars
-    window.listDirectory = async (...dirPath) => {
+    window.listDirectory = window.listDirectory || (async (...dirPath) => {
         return {
             directory: '',
             files: [{
@@ -78,9 +78,9 @@
                 isDirectory: true,
             }],
         };
-    };
+    });
 
-    window.listDesktopDirectory = async () => {
+    window.listDesktopDirectory = window.listDesktopDirectory || (async () => {
         return {
             directory: '/',
             files: [{
@@ -88,9 +88,9 @@
                 isDirectory: true,
             }],
         };
-    };
+    });
 
-    window.listHomeDirectory = async () => {
+    window.listHomeDirectory = window.listHomeDirectory || (async () => {
         return {
             directory: '/',
             files: [{
@@ -98,14 +98,14 @@
                 isDirectory: true,
             }],
         };
-    };
+    });
 
     // eslint-disable-next-line no-unused-vars
-    window.fileExists = async (...filePath) => {
+    window.fileExists = window.fileExists || (async (...filePath) => {
         return false;
-    };
+    });
 
-    window.pathJoin = async (...filePath) => {
+    window.pathJoin = window.pathJoin || (async (...filePath) => {
         const p = filePath.filter(x => x.length > 0).join('/').replace(/\/+/g, '/');
         const a = p.split('/');
         const stack = [];
@@ -126,9 +126,9 @@
             }
         }
         return (p.startsWith('/') ? '/' : '') + stack.join('/');
-    };
+    });
 
-    window.getDirName = async (filePath) => {
+    window.getDirName = window.getDirName || (async (filePath) => {
         let dir = filePath;
         if (dir.lastIndexOf('/') !== -1) {
             dir = dir.substring(0, dir.lastIndexOf('/'));
@@ -137,14 +137,14 @@
             dir = '/';
         }
         return dir;
-    };
+    });
 
-    window.getBaseName = async (filePath) => {
+    window.getBaseName = window.getBaseName || (async (filePath) => {
         let base = filePath.substring(filePath.lastIndexOf('/') + 1);
         return base;
-    };
+    });
 
-    window.getStartupFile = async () => {
+    window.getStartupFile = window.getStartupFile || (async () => {
         let targetPath = '/welcome.md';
         let targetUrl = welcomeFile;
         // eslint-disable-next-line no-undef
@@ -190,17 +190,17 @@
             };
         }
         throw new Error('Fetching url failed. Network response was not ok, or CORB error.');
-    };
+    });
 
-    window.openURL = async (url) => {
+    window.openURL = window.openURL || (async (url) => {
         window.open(url, '_blank');
         return true;
-    };
+    });
 
-    window.openNewWindow = async () => {
+    window.openNewWindow = window.openNewWindow || (async () => {
         window.open(window.location.pathname, '_blank');
         return true;
-    };
+    });
 
 
     const LM_async_ = (() => {
@@ -260,11 +260,11 @@
     const backend_ = new Backend;
 
 
-    window.carlo.loadParams = async () => {
+    window.carlo.loadParams = window.carlo.loadParams || (async () => {
         return [backend_];
-    };
+    });
 
-    window.carlo.fileInfo = async (file) => {
+    window.carlo.fileInfo = window.carlo.fileInfo || (async (file) => {
         const promise = new Promise((resolve, reject) => {
             // eslint-disable-next-line no-undef
             const reader = new FileReader();
@@ -282,5 +282,5 @@
             reader.readAsText(file, 'UTF-8');
         });
         return promise;
-    };
+    });
 }
