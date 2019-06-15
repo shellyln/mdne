@@ -111,7 +111,7 @@
         const stack = [];
         for (const x of a) {
             switch (x) {
-            case '.':
+            case '.': case '':
                 break;
             case '..':
                 stack.pop();
