@@ -91,6 +91,12 @@ mdne README.md
 ```
 
 
+## Integrations
+
+* [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
+  * Edit kintone record's field. (browser app)
+
+
 ## Live demo
 
 [https://shellyln.github.io/mdne/online.html](https://shellyln.github.io/mdne/online.html)
