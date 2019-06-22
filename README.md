@@ -14,6 +14,12 @@
 <img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png" title="screenshot" style="width: 400px">
 
 
+## Note
+As of 2019-06-22, PDF preview and output functions are broken in the latest versions of
+Google Chrome, Carlo, Puppeteer and mdne.  
+The same issue is occured for revisions that have worked correctly in the past (<= @0.1.33).
+
+
 ## Features
 * Live preview of Markdown, HTML, [LSX](https://github.com/shellyln/liyad#what-is-lsx) formats.
 * Export Markdown, HTML, LSX into PDF or HTML.
