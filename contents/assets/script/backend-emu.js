@@ -13,10 +13,15 @@
     // eslint-disable-next-line no-unused-vars
     window.renderByMenneu = window.renderByMenneu || (async (source, data, options, srcPath, ...exportPath) => {
         const opts = Object.assign({}, options, {
+            // NOTE: to enhance macros, define Vx02PGUB3NFWwhsd__replacementMacros.
             replacementMacros: [{
                 re: /!!!lsx\s([\s\S]+?)!!!/g,
                 fn: 'lsx', // evaluate input as LSX script
-            }],
+            }].concat(
+                window.Vx02PGUB3NFWwhsd__replacementMacros &&
+                Array.isArray(window.Vx02PGUB3NFWwhsd__replacementMacros) ?
+                    window.Vx02PGUB3NFWwhsd__replacementMacros:
+                    []),
         });
         if (!opts.outputFormat || opts.outputFormat.toLowerCase() !== 'html') {
             const errText = `output format ${opts.outputFormat} is not available.`;
