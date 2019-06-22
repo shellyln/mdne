@@ -17,7 +17,8 @@
 ## Note
 As of 2019-06-22, PDF preview and output functions are broken in the latest versions of
 Google Chrome, Carlo, Puppeteer and mdne.  
-The same issue is occured for revisions that have worked correctly in the past (<= @0.1.33).
+The same issue is occured for revisions that have worked correctly in the past (<= @0.1.33).  
+To output as PDF, please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 
 
 ## Features
@@ -101,6 +102,10 @@ mdne README.md
 
 * [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
   * Edit kintone record's field. (browser app)
+
+
+## CLI
+Please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 
 
 ## Live demo
