@@ -3,10 +3,6 @@
 // https://github.com/shellyln
 
 
-import AppState           from '../libs/appstate.js';
-import { getInputFormat } from '../libs/modes.js';
-
-
 
 export default class FileSaveDialog extends React.Component {
     constructor(props, context) {
@@ -53,12 +49,14 @@ export default class FileSaveDialog extends React.Component {
             this.setState({currentDir: info.directory});
             this.setState({currentDirFiles: info.files});
         })
+        // eslint-disable-next-line no-unused-vars
         .catch(e => {
             listDesktopDirectory()
             .then(info => {
                 this.setState({currentDir: info.directory});
                 this.setState({currentDirFiles: info.files});
             })
+            // eslint-disable-next-line no-unused-vars
             .catch(e2 => {
                 listHomeDirectory()
                 .then(info => {
@@ -76,6 +74,7 @@ export default class FileSaveDialog extends React.Component {
             this.refs.fileName.focus();
             this.setState({inputFileName: name});
         })
+        // eslint-disable-next-line no-unused-vars
         .catch(e => {
             // ignore error
             // alert(e);
@@ -100,6 +99,7 @@ export default class FileSaveDialog extends React.Component {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     async handleOkClick(ev) {
         try {
             if (this.state.inputFileName.trim() === '') {
@@ -147,6 +147,7 @@ export default class FileSaveDialog extends React.Component {
         });
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleCancelClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
@@ -190,12 +191,12 @@ export default class FileSaveDialog extends React.Component {
                                   (style (color "white"))
                                   (type "text")
                                   (spellcheck "false")
-                                  (onChange ${(ev) => this.setState({inputFileName: this.refs.fileName.value})})
+                                  (onChange ${() => this.setState({inputFileName: this.refs.fileName.value})})
                                   (value ${this.state.inputFileName}) )))
                     (div (@ (className "input-field col s2"))
                         (select (@ (ref "fileType")
                                    (className "browser-default")
-                                   (onChange ${(ev) => this.setState({selectedFileType: this.refs.fileType.value})}) )
+                                   (onChange ${() => this.setState({selectedFileType: this.refs.fileType.value})}) )
                             ($=for ${this.state.fileTypes}
                                 (option (@ (key   ::$data:value)
                                            (value ::$data:value)

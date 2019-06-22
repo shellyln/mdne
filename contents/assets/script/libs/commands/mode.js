@@ -38,6 +38,7 @@ export function getOperators({getCurrentAceId}) {
     return ([
         {
             name: 'mode',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (modeName) => {
                 if (!modeName) {
                     throw new Error('Editor mode name is not specified.');

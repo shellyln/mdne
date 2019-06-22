@@ -1,18 +1,15 @@
 image: node:12
 
 before_script:
-  - npm install -g eslint
-  - npm install -g babel-eslint
   - npm ci
 
 #cache:
 #  paths:
 #    - node_modules/
 
-# TODO: Error: Failed to load parser 'babel-eslint' declared in '.eslintrc.json': Cannot find module 'babel-eslint'
-#test:lint:
-#  script:
-#    - npm run lint
+test:lint:
+  script:
+    - npm run lint
 
 # LTS
 test:node:12:

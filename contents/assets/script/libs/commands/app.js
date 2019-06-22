@@ -41,12 +41,14 @@ export function getOperators({app}) {
     return ([
         {
             name: 'new-window',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (...args) => {
                 openNewWindow();
                 return '';
             },
         }, {
             name: 'open',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => async (filePath) => {
                 if (filePath) {
                     const dirName = AppState.filePath ? await getDirName(AppState.filePath) : null;
@@ -63,12 +65,14 @@ export function getOperators({app}) {
             },
         }, {
             name: 'save',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (...args) => {
                 app.handleSaveClick({});
                 return 'Saving...';
             },
         }, {
             name: 'saveas',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => async (filePath) => {
                 if (filePath) {
                     const dirName = AppState.filePath ? await getDirName(AppState.filePath) : null;
@@ -81,6 +85,7 @@ export function getOperators({app}) {
             },
         }, {
             name: 'export',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => async (filePath) => {
                 if (! isPreviewable(AppState.inputFormat)) {
                     throw new Error(`Exporting of ${AppState.inputFormat} format is not supported.`);
@@ -96,50 +101,59 @@ export function getOperators({app}) {
             },
         }, {
             name: 'preview',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (...args) => {
                 app.handleShowClick({});
                 return '';
             },
         }, {
             name: 'sync',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (onoff) => {
                 app.setState({syncPreview: onoff === 'on' || onoff === true});
                 return '';
             },
         }, {
             name: 'preview-format',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (format) => {
                 app.setState({isPdf: format === 'pdf'});
                 return '';
             },
         }, {
             name: 'scripting',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (onoff) => {
                 app.setState({useScripting: onoff === 'on' || onoff === true});
                 return '';
             },
         }, {
             name: 'entire-text',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (text) => {
                 return app.getEntireText(text);
             },
         }, {
             name: 'selected-text',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (text) => {
                 return app.getSelectedText(text);
             },
         }, {
             name: 'insert',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (text) => {
                 return app.insertText(text);
             },
         }, {
             name: '$>',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (...commands) => {
                 return backend().runCommandAST([[{'symbol': '$>'}, commands.join(' ')]]);
             },
         }, {
             name: 'help',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (topic) => {
                 openURL('https://github.com/shellyln/mdne');
                 return '';

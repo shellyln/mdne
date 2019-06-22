@@ -72,6 +72,7 @@ export function getOperators({getCurrentAceId}) {
     return ([
         {
             name: 'md',
+            // eslint-disable-next-line no-unused-vars
             fn: (state, name) => (...args) => {
                 switch (args[0]) {
                 case 'table':
@@ -79,7 +80,8 @@ export function getOperators({getCurrentAceId}) {
                         const rows = Math.max(1, Number(args[1] || 3));
                         const cols = Math.max(1, Number(args[2] || 3));
                         let s = `\n|${Array(cols).fill('').map((_, i) => `R_C${i}`).join('|')}|\n|${
-                                    Array(cols).fill('').map((_, i) => '----'   ).join('|')}|\n`;
+                                    // eslint-disable-next-line no-unused-vars
+                                    Array(cols).fill('').map((_, i) => '----').join('|')}|\n`;
                         for (let r = 0; r < rows; r++) {
                             s += `|${Array(cols).fill('').map((_, i) => `R${r}C${i}`).join('|')}|\n`;
                         }

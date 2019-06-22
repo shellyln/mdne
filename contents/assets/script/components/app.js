@@ -66,21 +66,21 @@ export default class App extends React.Component {
     componentDidMount() {
         {
             const elems = document.querySelectorAll('.dropdown-trigger');
-            const instances = M.Dropdown.init(elems, {
+            /* const instances = */ M.Dropdown.init(elems, {
                 constrainWidth: false,
             });
         }
         {
             const elems = document.querySelectorAll('.tooltipped');
-            const instances = M.Tooltip.init(elems, {});
+            /* const instances = */ M.Tooltip.init(elems, {});
         }
         {
             const elems = document.querySelectorAll('select');
-            const instances = M.FormSelect.init(elems, {});
+            /* const instances = */ M.FormSelect.init(elems, {});
         }
         {
             const elems = document.querySelectorAll('.command-box-input.autocomplete');
-            const instances = M.Autocomplete.init(elems, {
+            /* const instances = */ M.Autocomplete.init(elems, {
                 data: Object.assign(
                     getAppSuggests(),
                     getModeSuggests(),
@@ -140,6 +140,7 @@ export default class App extends React.Component {
                 this.openFileOpenDialog();
             }
         })
+        // eslint-disable-next-line no-unused-vars
         .catch(e => {
             setEditorNewFile();
             this.openFileOpenDialog();
@@ -165,6 +166,7 @@ export default class App extends React.Component {
         }, () => this.afterFileOpen());
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleFileOpenClick(ev) {
         const editor = AppState.AceEditor[this.state.currentAceId];
         const isClean = editor.session.getUndoManager().isClean();
@@ -176,6 +178,7 @@ export default class App extends React.Component {
         this.openFileOpenDialog();
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleStretchedClick(ev) {
         this.setState({stretched: !this.state.stretched});
         if (this.state.stretched) {
@@ -200,21 +203,25 @@ export default class App extends React.Component {
         document.activeElement.blur();
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleSyncPreviewClick(ev) {
         this.setState({syncPreview: !this.state.syncPreview});
         document.activeElement.blur();
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleIsPdfClick(ev) {
         this.setState({isPdf: !this.state.isPdf});
         document.activeElement.blur();
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleUseScriptingClick(ev) {
         this.setState({useScripting: !this.state.useScripting});
         document.activeElement.blur();
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleShowClick(ev) {
         if (this.state.stretched) {
             this.refs.editor.refs.outerWrap.style.width = this.savedEditorStyleWidth;
@@ -224,6 +231,7 @@ export default class App extends React.Component {
         const editor = AppState.AceEditor[this.state.currentAceId];
 
         if (! isPreviewable(AppState.inputFormat)) {
+            // eslint-disable-next-line no-console
             console.error(`Preview of ${AppState.inputFormat} format is not supported.`);
             this.refs.root.contentWindow.location.replace('error.html');
         } else if (this.state.isPdf) {
@@ -239,6 +247,7 @@ export default class App extends React.Component {
                 this.refs.root.contentWindow.location.replace(outputUrl);
             })
             .catch(async (e) => {
+                // eslint-disable-next-line no-console
                 console.error(e);
                 this.refs.root.contentWindow.location.replace('error.html');
             });
@@ -262,6 +271,7 @@ export default class App extends React.Component {
                 ), 30);
             })
             .catch(async (e) => {
+                // eslint-disable-next-line no-console
                 console.error(e);
                 this.refs.root.contentWindow.location.replace('error.html');
             });
@@ -282,14 +292,18 @@ export default class App extends React.Component {
         const editor = AppState.AceEditor[this.state.currentAceId];
 
         const fileInfo = await saveFile(editor.getValue(), currentDir, fileName);
+        // eslint-disable-next-line require-atomic-updates
         AppState.filePath = fileInfo.path;
+        // eslint-disable-next-line require-atomic-updates
         AppState.inputFormat = getInputFormat(AppState.filePath);
 
         editor.session.getUndoManager().markClean();
+        // eslint-disable-next-line require-atomic-updates
         AppState.fileChanged = false;
         document.title = `${AppState.AppName} - ${AppState.filePath}`;
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleSaveAsClick(ev) {
         this.refs.fileSaveDialog.showModal({
             title: 'Save as',
@@ -349,6 +363,7 @@ export default class App extends React.Component {
         return text;
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleExportClick(ev) {
         if (! isPreviewable(AppState.inputFormat)) {
             alert(`Preview of ${AppState.inputFormat} format is not supported.`);
@@ -381,6 +396,7 @@ export default class App extends React.Component {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleAceEditorOnChange(o) {
         if (! AppState.fileChanged) {
             const editor = AppState.AceEditor[this.state.currentAceId];
@@ -420,6 +436,7 @@ export default class App extends React.Component {
                     })
                     .catch(e => {
                         this.scheduleRerenderPreview = false;
+                        // eslint-disable-next-line no-console
                         console.error(e);
                     });
                 }, 3000);
@@ -443,6 +460,7 @@ export default class App extends React.Component {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleAceEditorOnChangeScrollLeft(x) {
         // if (!this.state.stretched && !this.state.isPdf) {
         //     this.refs.root.contentWindow.scrollTo(x, this.refs.root.contentWindow.scrollTop);
@@ -493,6 +511,7 @@ export default class App extends React.Component {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleCommandBoxOnBlur(ev) {
         M.Toast.dismissAll();
     }
@@ -532,7 +551,7 @@ export default class App extends React.Component {
                        (className "dropdown-content") )
                     (MenuItem (@ (icon "add_box")
                                  (caption "New window")
-                                 (onClick ${(ev) => { openNewWindow() }}) ))
+                                 (onClick ${() => { openNewWindow() }}) ))
                     (MenuItem (@ (icon "folder_open")
                                  (caption "Open...")
                                  (onClick ${(ev) => this.handleFileOpenClick(ev)}) ))
@@ -548,17 +567,17 @@ export default class App extends React.Component {
                     (MenuDivider)
                     (MenuItem (@ (icon "find_in_page")
                                  (caption "Find... (Ctrl+F)")
-                                 (onClick ${(ev) => {
+                                 (onClick ${() => {
                                      const editor = AppState.AceEditor['editor'];
                                      editor.execCommand('find');
                                  }}) ))
                     (MenuDivider)
                     (MenuItem (@ (icon "settings")
                                  (caption "Settings...")
-                                 (onClick ${(ev) => this.refs.settingsDialog.showModal({}, _ => {})}) ))
+                                 (onClick ${() => this.refs.settingsDialog.showModal({}, () => {})}) ))
                     (MenuItem (@ (icon "help_outline")
                                  (caption "Help")
-                                 (onClick ${(ev) => openURL('https://github.com/shellyln/mdne')}) )) )
+                                 (onClick ${() => openURL('https://github.com/shellyln/mdne')}) )) )
                 (Switch (@ (caption "Sync preview")
                            (offText "OFF")
                            (onText  "ON")

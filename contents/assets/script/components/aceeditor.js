@@ -28,6 +28,7 @@ export default class AceEditor extends React.Component {
                     try {
                         await saveFile(editor.getValue(), AppState.filePath);
                         editor.session.getUndoManager().markClean();
+                        // eslint-disable-next-line require-atomic-updates
                         AppState.fileChanged = false;
                         document.title = `${AppState.AppName} - ${AppState.filePath}`;
                     } catch (e) {

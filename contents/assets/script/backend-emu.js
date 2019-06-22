@@ -56,7 +56,7 @@
         await util.FileSaver.saveTextAs(b, text);
 
         try {
-            // eslint-disable-next-line no-undef
+            // eslint-disable-next-line require-atomic-updates, no-undef
             window.location.hash = `filename=${encodeURIComponent(b)}&open.d=${util.Base64.encode(pako.deflate(
                 util.TextEncoding.encodeToUtf8(text)))
                 .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')}`;

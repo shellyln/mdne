@@ -22,6 +22,7 @@ export async function initBackend() {
     if (backend_) {
         return backend_;
     }
+    // eslint-disable-next-line require-atomic-updates
     backend_ = (await carlo.loadParams())[0];
     await backend_.setFrontend(rpc.handle(frontend_));
 }

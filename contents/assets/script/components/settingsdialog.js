@@ -3,11 +3,6 @@
 // https://github.com/shellyln
 
 
-import AppState             from '../libs/appstate.js';
-import { getInputFormat,
-         getAceEditorMode } from '../libs/modes.js';
-
-
 
 export default class SettingsDialog extends React.Component {
     constructor(props, context) {
@@ -21,12 +16,14 @@ export default class SettingsDialog extends React.Component {
         this.handler = handler;
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleOkClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
         this.handler();
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleCancelClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();

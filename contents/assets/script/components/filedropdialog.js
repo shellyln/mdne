@@ -105,6 +105,7 @@ export default class FileDropDialog extends React.Component {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleCancelClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
@@ -122,7 +123,7 @@ export default class FileDropDialog extends React.Component {
                            (textAlign "center")
                            (verticalAlign "middle") )
                     (onDragOver ${(ev) => {this.handleOnDragOver(ev)}})
-                    (onDragLeave ${(ev) => {  }})
+                    (onDragLeave ${() => {  }})
                     (onDrop ${async (ev) => {await this.handleOnDrop(ev)}}) )
                 (i (@ (className "material-icons large")) "insert_drive_file")(br)
                 "Drop file here." (br)(br)(br)

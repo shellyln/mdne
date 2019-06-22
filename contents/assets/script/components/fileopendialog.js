@@ -3,10 +3,6 @@
 // https://github.com/shellyln
 
 
-import AppState           from '../libs/appstate.js';
-import { getInputFormat } from '../libs/modes.js';
-
-
 
 export default class FileOpenDialog extends React.Component {
     constructor(props, context) {
@@ -45,12 +41,14 @@ export default class FileOpenDialog extends React.Component {
             this.setState({currentDir: info.directory});
             this.setState({currentDirFiles: info.files});
         })
+        // eslint-disable-next-line no-unused-vars
         .catch(e => {
             listDesktopDirectory()
             .then(info => {
                 this.setState({currentDir: info.directory});
                 this.setState({currentDirFiles: info.files});
             })
+            // eslint-disable-next-line no-unused-vars
             .catch(e2 => {
                 listHomeDirectory()
                 .then(info => {
@@ -83,6 +81,7 @@ export default class FileOpenDialog extends React.Component {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     async handleOkClick(ev) {
         try {
             if (this.state.inputFileName.trim() === '') {
@@ -121,6 +120,7 @@ export default class FileOpenDialog extends React.Component {
         });
     }
 
+    // eslint-disable-next-line no-unused-vars
     handleCancelClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
@@ -165,12 +165,12 @@ export default class FileOpenDialog extends React.Component {
                                   (type "text")
                                   (spellcheck "false")
                                   (readonly "readonly")
-                                  (onChange ${(ev) => this.setState({inputFileName: this.refs.fileName.value})})
+                                  (onChange ${() => this.setState({inputFileName: this.refs.fileName.value})})
                                   (value ${this.state.inputFileName}) )))
                     (div (@ (className "input-field col s2"))
                         (select (@ (ref "fileType")
                                    (className "browser-default")
-                                   (onChange ${(ev) => this.setState({selectedFileType: this.refs.fileType.value})}) )
+                                   (onChange ${() => this.setState({selectedFileType: this.refs.fileType.value})}) )
                             ($=for ${this.state.fileTypes}
                                 (option (@ (key   ::$data:value)
                                            (value ::$data:value)
