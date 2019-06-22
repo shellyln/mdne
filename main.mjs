@@ -67,6 +67,7 @@ async function main() {
     try {
         let startupFile = process.argv[2];
 
+        HtmlRenderer.rendererPackageName = 'puppeteer-core';
         HtmlRenderer.launchOptions = {
             executablePath: (await findChrome({})).executablePath,
         };
