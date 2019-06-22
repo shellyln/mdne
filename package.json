@@ -1,6 +1,6 @@
 {
   "name": "mdne",
-  "version": "0.1.34",
+  "version": "0.1.35",
   "private": false,
   "description": "MDNE - Markdown Neo Edit. A simple markdown and code editor powered by Markdown-it, Ace and Carlo.",
   "keywords": [
@@ -30,7 +30,7 @@
     "mdnew12": "index12-win.mjs"
   },
   "dependencies": {
-    "carlo": "^0.9.46",
+    "carlo": "0.9.45",
     "liyad": "^0.1.0",
     "menneu": "^0.1.0",
     "red-agate-util": "^0.2.19"
