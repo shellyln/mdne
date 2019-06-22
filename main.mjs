@@ -44,13 +44,14 @@ if (isWebpack) {
 
 
 const curDir = process.cwd();
-const startUpCurDir = curDir;
 let lastSrcDir = path.join(curDir, 'contents');
 
 
 if (process.argv[2] === '--app-version') {
     const c = fs.readFileSync(path.join(thisDirName, 'package.json'));
     const o = JSON.parse(c);
+
+    // eslint-disable-next-line no-console
     console.log(`${o.name} ${o.version}`);
     process.exit(0);
 }
@@ -253,6 +254,7 @@ async function main() {
                         const s = await statAsync(path.join(dir, f));
                         isDir = s.isDirectory();
                         succeeded = true;
+                    // eslint-disable-next-line no-empty
                     } catch (e) {}
                     if (succeeded) {
                         fileInfos.push({
@@ -362,6 +364,8 @@ async function main() {
 
         app.setIcon(path.join(thisDirName, 'contents', 'favicon.png'));
     } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(e);
         process.exit();
     }
 }
