@@ -53,7 +53,7 @@
 
 ### Install from NPM
 
-* Linux
+* Linux, Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
     ```
@@ -62,11 +62,6 @@
     ```cmd
     set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE
     npm install -g mdne
-    ```
-
-* Chrome OS (Chromebook / Chromebox)
-    ```sh
-    env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
     ```
 
 
@@ -85,33 +80,43 @@
     mdne
 
     ## To run on node>=12, use `mdne12` instead.
-    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
     ```
 
-* Chrome OS (Chromebook / Chromebox)
+* Windows
+    ```sh
+    mdnew
+
+    ## To run on node>=12, use `mdnew12` instead.
+    ```
+
+* Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne
 
     ## To run on node>=12, use `mdne12` instead.
-    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
     ```
 
 ### Open file:
 
-* Linux, Windows
+* Linux
     ```sh
     mdne README.md
 
     ## To run on node>=12, use `mdne12` instead.
-    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
     ```
 
-* Chrome OS (Chromebook / Chromebox)
+* Windows
+    ```sh
+    mdnew README.md
+
+    ## To run on node>=12, use `mdnew12` instead.
+    ```
+
+* Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne README.md
 
     ## To run on node>=12, use `mdne12` instead.
-    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
     ```
 
 
