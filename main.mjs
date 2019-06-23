@@ -67,18 +67,27 @@ async function main() {
     try {
         let startupFile = process.argv[2];
 
+        const carloOptions = {};
+        if (process.env.MDNE_CHROME_CHANNEL_CHROMIUM &&
+            String(process.env.MDNE_CHROME_CHANNEL_CHROMIUM).toLowerCase() === 'true') {
+
+            carloOptions.channel = 'chromium';
+            carloOptions.localDataDir = path.join(thisDirName, '../node_modules/puppeteer-core/.local-data');
+            fs.mkdirSync(carloOptions.localDataDir, {recursive: true});
+        }
+
         HtmlRenderer.rendererPackageName = 'puppeteer-core';
         HtmlRenderer.launchOptions = {
-            executablePath: (await findChrome({})).executablePath,
+            executablePath: (await findChrome(carloOptions)).executablePath,
         };
 
-        const app = await carlo.launch({
+        const app = await carlo.launch(Object.assign({}, carloOptions, {
             // args: ['--auto-open-devtools-for-tabs']
             paramsForReuse: {
                 pid: process.pid,
                 startupFile: startupFile ? Base64.encode(TextEncoding.encodeToUtf8(startupFile)) : startupFile,
             },
-        });
+        }));
 
         // Terminate Node.js process on app window closing.
         app.on('exit', () => process.exit());

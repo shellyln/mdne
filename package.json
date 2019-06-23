@@ -47,6 +47,7 @@
     "start": "node --experimental-modules --no-warnings index.mjs",
     "start10": "node --experimental-modules --no-warnings index.mjs",
     "start12": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs",
+    "start12c": "env MDNE_CHROME_CHANNEL_CHROMIUM=true node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs",
     "version": "node --experimental-modules --no-warnings index.mjs --app-version",
     "version10": "node --experimental-modules --no-warnings index.mjs --app-version",
     "version12": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs --app-version"

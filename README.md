@@ -53,17 +53,21 @@
 
 ### Install from NPM
 
-#### Linux
-```sh
-env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
-```
+* Linux
+    ```sh
+    env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
+    ```
 
-#### Windows
-```cmd
-set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE
-npm install -g mdne
-```
+* Windows
+    ```cmd
+    set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE
+    npm install -g mdne
+    ```
 
+* Chrome OS (Chromebook / Chromebox)
+    ```sh
+    env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
+    ```
 
 
 ### Create desktop and 'send to' menu shoorcuts (Windows)
@@ -74,21 +78,41 @@ npm install -g mdne
 
 ## Run
 
-Open blank editor:
-```sh
-mdne
+### Open blank editor:
 
-## To run on node>=12, use `mdne12` instead.
-## TO run on Windows, use `mdnew` or `mdnew12` instead.
-```
+* Linux, Windows
+    ```sh
+    mdne
 
-Open file:
-```sh
-mdne README.md
+    ## To run on node>=12, use `mdne12` instead.
+    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
+    ```
 
-## To run on node>=12, use `mdne12` instead.
-## TO run on Windows, use `mdnew` or `mdnew12` instead.
-```
+* Chrome OS (Chromebook / Chromebox)
+    ```sh
+    env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne
+
+    ## To run on node>=12, use `mdne12` instead.
+    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
+    ```
+
+### Open file:
+
+* Linux, Windows
+    ```sh
+    mdne README.md
+
+    ## To run on node>=12, use `mdne12` instead.
+    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
+    ```
+
+* Chrome OS (Chromebook / Chromebox)
+    ```sh
+    env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne README.md
+
+    ## To run on node>=12, use `mdne12` instead.
+    ## TO run on Windows, use `mdnew` or `mdnew12` instead.
+    ```
 
 
 ## Integrations
