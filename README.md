@@ -53,7 +53,7 @@
 
 ### Install from NPM
 
-* Linux, Chrome OS (Chromebook / Chromebox) Crostini
+* Linux
     ```sh
     env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
     ```
@@ -64,6 +64,12 @@
     npm install -g mdne
     ```
 
+* Chrome OS (Chromebook / Chromebox) Crostini
+    ```sh
+    env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE npm install -g mdne
+    cd
+    mkdir Desktop
+    ```
 
 ### Create desktop and 'send to' menu shoorcuts (Windows)
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
@@ -95,6 +101,8 @@
 
     ## To run on node>=12, use `mdne12` instead.
     ```
+    * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
+    * Chromium is downloaded locally the first time it run.
 
 ### Open file:
 
@@ -118,6 +126,8 @@
 
     ## To run on node>=12, use `mdne12` instead.
     ```
+    * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
+    * Chromium is downloaded locally the first time it run.
 
 
 ## Integrations
