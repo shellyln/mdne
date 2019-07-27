@@ -42,8 +42,12 @@ export default class App extends React.Component {
             const editor = AppState.AceEditor[this.state.currentAceId];
             const isClean = editor.session.getUndoManager().isClean();
             if (! isClean) {
-                ev.preventDefault(); 
-                return '';
+                if (window.nativeConfirmSync) {
+                    // NOTE: do not show prompt here on electron environment.
+                } else {
+                    ev.preventDefault(); 
+                    return '';
+                }
             }
             return void 0;
         }
@@ -108,7 +112,7 @@ export default class App extends React.Component {
 
         const setEditorNewFile = () => {
             AppState.inputFormat = 'md';
-            AppState.fileChanged = false;
+            notifyEditorDirty(false);
 
             document.title = `${AppState.AppName} - ${'(New file)'}`;
 
@@ -125,7 +129,7 @@ export default class App extends React.Component {
             if (file) {
                 AppState.filePath = file.path;
                 AppState.inputFormat = getInputFormat(AppState.filePath);
-                AppState.fileChanged = false;
+                notifyEditorDirty(false);
     
                 document.title = `${AppState.AppName} - ${AppState.filePath}`;
     
@@ -298,8 +302,7 @@ export default class App extends React.Component {
         AppState.inputFormat = getInputFormat(AppState.filePath);
 
         editor.session.getUndoManager().markClean();
-        // eslint-disable-next-line require-atomic-updates
-        AppState.fileChanged = false;
+        notifyEditorDirty(false);
         document.title = `${AppState.AppName} - ${AppState.filePath}`;
     }
 
@@ -403,7 +406,7 @@ export default class App extends React.Component {
             if (!(editor.curOp && editor.curOp.command.name)) {
                 return;
             }
-            AppState.fileChanged = true;
+            notifyEditorDirty(true);
             document.title = `${AppState.AppName} - ● ${AppState.filePath || '(New file)'}`;
         }
 

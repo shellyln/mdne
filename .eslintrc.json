@@ -41,7 +41,9 @@
         "nativeAlert": true,
         "nativeConfirm": true,
         "alertWrap": true,
-        "confirmWrap": true
+        "confirmWrap": true,
+        "notifyEditorDirty": true,
+        "nativeNotifyEditorDirty": true
     },
     "rules": {
         "no-console": "warn",

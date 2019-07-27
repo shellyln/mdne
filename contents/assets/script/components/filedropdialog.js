@@ -24,7 +24,7 @@ export default class FileDropDialog extends React.Component {
     openFile(path, text) {
         AppState.filePath = path;
         AppState.inputFormat = getInputFormat(AppState.filePath);
-        AppState.fileChanged = false;
+        notifyEditorDirty(false);
 
         document.title = `${AppState.AppName} - ${AppState.filePath}`;
 
