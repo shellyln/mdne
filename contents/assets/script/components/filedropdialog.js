@@ -66,7 +66,7 @@ export default class FileDropDialog extends React.Component {
 
             this.openFileAndClose(paths[0].path, texts[0]);
         } catch (e) {
-            alert(e);
+            await alertWrap(e);
             AppState.filePath = null;
             document.title = `${AppState.AppName} - ${'(New file)'}`;
         }
@@ -99,7 +99,8 @@ export default class FileDropDialog extends React.Component {
                 this.openFileAndClose(path, text);
             });
         } catch (e) {
-            alert(e);
+            await alertWrap(e);
+            // eslint-disable-next-line require-atomic-updates
             AppState.filePath = null;
             document.title = `${AppState.AppName} - ${'(New file)'}`;
         }

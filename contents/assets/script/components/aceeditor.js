@@ -32,7 +32,7 @@ export default class AceEditor extends React.Component {
                         AppState.fileChanged = false;
                         document.title = `${AppState.AppName} - ${AppState.filePath}`;
                     } catch (e) {
-                        alert(e);
+                        await alertWrap(e);
                     }
                 } else {
                     this.props.onSaveAs({});

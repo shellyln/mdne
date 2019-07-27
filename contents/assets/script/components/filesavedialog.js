@@ -64,7 +64,8 @@ export default class FileSaveDialog extends React.Component {
                     this.setState({currentDirFiles: info.files});
                 })
                 .catch(e3 => {
-                    alert(e3);
+                    // TODO: await it.
+                    alertWrap(e3);
                 });
             });
         });
@@ -76,8 +77,8 @@ export default class FileSaveDialog extends React.Component {
         })
         // eslint-disable-next-line no-unused-vars
         .catch(e => {
-            // ignore error
-            // alert(e);
+            // NOTE: ignore error
+            // alertWrap(e); // TODO: await it.
         });
     }
 
@@ -91,7 +92,8 @@ export default class FileSaveDialog extends React.Component {
                 this.setState({currentDirFiles: info.files});
             })
             .catch(e => {
-                alert(e);
+                // TODO: await it.
+                alertWrap(e);
             });
         } else {
             this.refs.fileName.focus();
@@ -117,7 +119,7 @@ export default class FileSaveDialog extends React.Component {
             }
 
             if (await fileExists(this.state.currentDir, fileName)) {
-                if (! confirm('Are you sure want to overwrite the existing file?')) {
+                if (! await confirmWrap('Are you sure want to overwrite the existing file?')) {
                     return;
                 }
             }
@@ -127,7 +129,7 @@ export default class FileSaveDialog extends React.Component {
             document.activeElement.blur();
             this.refs.dialog.close();
         } catch (e) {
-            alert(e);
+            await alertWrap(e);
         }
     }
 

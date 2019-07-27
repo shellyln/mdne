@@ -56,7 +56,8 @@ export default class FileOpenDialog extends React.Component {
                     this.setState({currentDirFiles: info.files});
                 })
                 .catch(e3 => {
-                    alert(e3);
+                    // TODO: await it.
+                    alertWrap(e3);
                 });
             });
         });
@@ -73,7 +74,8 @@ export default class FileOpenDialog extends React.Component {
                 this.setState({currentDirFiles: info.files});
             })
             .catch(e => {
-                alert(e);
+                // TODO: await it.
+                alertWrap(e);
             });
         } else {
             this.refs.fileName.focus();
@@ -91,7 +93,7 @@ export default class FileOpenDialog extends React.Component {
             let fileName = this.state.inputFileName;
 
             if (! (await fileExists(this.state.currentDir, fileName))) {
-                alert('File does not exist.');
+                await alertWrap('File does not exist.');
                 return;
             }
 
@@ -100,7 +102,7 @@ export default class FileOpenDialog extends React.Component {
             document.activeElement.blur();
             this.refs.dialog.close();
         } catch (e) {
-            alert(e);
+            await alertWrap(e);
         }
     }
 

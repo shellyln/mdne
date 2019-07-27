@@ -167,11 +167,11 @@ export default class App extends React.Component {
     }
 
     // eslint-disable-next-line no-unused-vars
-    handleFileOpenClick(ev) {
+    async handleFileOpenClick(ev) {
         const editor = AppState.AceEditor[this.state.currentAceId];
         const isClean = editor.session.getUndoManager().isClean();
         if (! isClean) {
-            if (! window.confirm('Changes you made may not be saved.\nAre you sure want to discard changes?')) {
+            if (! await confirmWrap('Changes you made may not be saved.\nAre you sure want to discard changes?')) {
                 return;
             }
         }
@@ -327,7 +327,7 @@ export default class App extends React.Component {
             try {
                 await this.fileSaveAs(currentDir, fileName);
             } catch (e) {
-                alert(e);
+                await alertWrap(e);
             }
         });
     }
@@ -364,9 +364,9 @@ export default class App extends React.Component {
     }
 
     // eslint-disable-next-line no-unused-vars
-    handleExportClick(ev) {
+    async handleExportClick(ev) {
         if (! isPreviewable(AppState.inputFormat)) {
-            alert(`Preview of ${AppState.inputFormat} format is not supported.`);
+            await alertWrap(`Preview of ${AppState.inputFormat} format is not supported.`);
         } else {
             this.refs.fileSaveDialog.showModal({
                 title: 'Export',
@@ -390,7 +390,7 @@ export default class App extends React.Component {
                 try {
                     await this.fileExport(currentDir, fileName);
                 } catch (e) {
-                    alert(e);
+                    await alertWrap(e);
                 }
             });
         }

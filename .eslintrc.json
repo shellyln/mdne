@@ -37,7 +37,11 @@
         "openURL": true,
         "openNewWindow": true,
         "alert": true,
-        "confirm": true
+        "confirm": true,
+        "nativeAlert": true,
+        "nativeConfirm": true,
+        "alertWrap": true,
+        "confirmWrap": true
     },
     "rules": {
         "no-console": "warn",
