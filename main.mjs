@@ -58,7 +58,7 @@ if (process.argv[2] === '--app-version') {
 
 
 function getDesktopPath() {
-    return path.join(process.env[process.platform == 'win32' ? 'USERPROFILE' : 'HOME'], 'Desktop');
+    return path.join(process.env[process.platform === 'win32' ? 'USERPROFILE' : 'HOME'], 'Desktop');
 }
 
 
@@ -306,7 +306,7 @@ async function main() {
 
         await app.exposeFunction('listHomeDirectory', async () => {
             return await listDirectory(
-                process.env[process.platform == 'win32' ? 'USERPROFILE' : 'HOME']);
+                process.env[process.platform === 'win32' ? 'USERPROFILE' : 'HOME']);
         });
 
         await app.exposeFunction('fileExists', (...filePath) => {
@@ -353,7 +353,7 @@ async function main() {
 
         await app.exposeFunction('openURL', async (url) => {
             if (url.match(/^https?:\/\//)) {
-                const start = (process.platform == 'darwin' ? 'open' : process.platform == 'win32' ? 'start' : 'xdg-open');
+                const start = (process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'start' : 'xdg-open');
                 const child = child_process.exec(start + ' ' + url);
                 child.unref();
             }
