@@ -31,13 +31,13 @@
   },
   "dependencies": {
     "carlo": "^0.9.46",
-    "liyad": "^0.1.0",
-    "menneu": "^0.1.0",
+    "liyad": "^0.1.2",
+    "menneu": "^0.1.2",
     "red-agate-util": "^0.2.19"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
-    "eslint": "^6.0.0"
+    "eslint": "^6.1.0"
   },
   "scripts": {
     "build": "echo \"no build specified\"",
