@@ -40,7 +40,7 @@ export default class FileOpenDialog extends React.Component {
                     options.currentFilePath,
                     options.fileTypes.map(x => ({
                         name: x.text,
-                        extensions: x.exts.map(t => t.slice(1)),
+                        extensions: x.exts && x.exts.length > 0 ? x.exts.map(t => t.slice(1)) : ['*'],
                     })));
                 if (filePaths) {
                     this.handler(await getDirName(filePaths[0]), await getBaseName(filePaths[0]));
