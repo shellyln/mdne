@@ -38,48 +38,63 @@ export default class FileSaveDialog extends React.Component {
         this.setState({currentDir: ''});
         this.setState({currentDirFiles: []});
         this.setState({inputFileName: ''});
-
-        this.refs.dialog.showModal();
-        document.activeElement.blur();
         this.options = options;
         this.handler = handler;
 
-        listDirectory(options.currentFilePath)
-        .then(info => {
-            this.setState({currentDir: info.directory});
-            this.setState({currentDirFiles: info.files});
-        })
-        // eslint-disable-next-line no-unused-vars
-        .catch(e => {
-            listDesktopDirectory()
+        if (window.nativeFileSaveDialog) {
+            (async () => {
+                const fileName = await nativeFileSaveDialog(
+                    options.title,
+                    options.currentFilePath,
+                    options.fileTypes.map(x => ({
+                        name: x.text,
+                        extensions: x.exts.map(t => t.slice(1)),
+                    })));
+                if (fileName) {
+                    this.handler(await getDirName(fileName), await getBaseName(fileName));
+                }
+            })();
+        } else {
+            this.refs.dialog.showModal();
+            document.activeElement.blur();
+
+            listDirectory(options.currentFilePath)
             .then(info => {
                 this.setState({currentDir: info.directory});
                 this.setState({currentDirFiles: info.files});
             })
             // eslint-disable-next-line no-unused-vars
-            .catch(e2 => {
-                listHomeDirectory()
+            .catch(e => {
+                listDesktopDirectory()
                 .then(info => {
                     this.setState({currentDir: info.directory});
                     this.setState({currentDirFiles: info.files});
                 })
-                .catch(e3 => {
-                    // TODO: await it.
-                    alertWrap(e3);
+                // eslint-disable-next-line no-unused-vars
+                .catch(e2 => {
+                    listHomeDirectory()
+                    .then(info => {
+                        this.setState({currentDir: info.directory});
+                        this.setState({currentDirFiles: info.files});
+                    })
+                    .catch(e3 => {
+                        // TODO: await it.
+                        alertWrap(e3);
+                    });
                 });
             });
-        });
 
-        getBaseName(options.currentFilePath)
-        .then(name => {
-            this.refs.fileName.focus();
-            this.setState({inputFileName: name});
-        })
-        // eslint-disable-next-line no-unused-vars
-        .catch(e => {
-            // NOTE: ignore error
-            // alertWrap(e); // TODO: await it.
-        });
+            getBaseName(options.currentFilePath)
+            .then(name => {
+                this.refs.fileName.focus();
+                this.setState({inputFileName: name});
+            })
+            // eslint-disable-next-line no-unused-vars
+            .catch(e => {
+                // NOTE: ignore error
+                // alertWrap(e); // TODO: await it.
+            });
+        }
     }
 
     handleFileListItemClick(ev, name, isDir) {
