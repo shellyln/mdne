@@ -43,7 +43,9 @@
         "alertWrap": true,
         "confirmWrap": true,
         "notifyEditorDirty": true,
-        "nativeNotifyEditorDirty": true
+        "nativeNotifyEditorDirty": true,
+        "nativeFileOpenDialog": true,
+        "nativeFileSaveDialog": true
     },
     "rules": {
         "no-console": "warn",
