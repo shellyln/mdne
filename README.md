@@ -42,6 +42,7 @@
   * Many markdown-it plugins are enabled. See [here](https://github.com/shellyln/menneu#features).
 * Scripting and value expansion
   * See [here](https://github.com/shellyln/menneu#lisp-block-expansion).
+* Full screen mode (F11)
 
 
 
