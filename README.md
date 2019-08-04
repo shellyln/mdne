@@ -45,6 +45,16 @@
 * Full screen mode (F11)
 
 
+## Distributions and Integrations
+
+* [mdne](https://github.com/shellyln/mdne)
+  * Offline desktop app for Google Chrome browser.
+    * *This repository*
+* [mdne-electron](https://github.com/shellyln/mdne-electron)
+  * Standalone desktop app for Windows/Mac/Linux.
+* [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
+  * Edit kintone record's field. (browser app)
+
 
 ## Install
 
@@ -130,11 +140,6 @@
     * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
     * Chromium is downloaded locally the first time it run.
 
-
-## Integrations
-
-* [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
-  * Edit kintone record's field. (browser app)
 
 
 ## CLI
