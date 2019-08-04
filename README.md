@@ -48,10 +48,12 @@
 ## Distributions and Integrations
 
 * [mdne](https://github.com/shellyln/mdne)
-  * Offline desktop app for Google Chrome browser.
+  * Offline desktop app for Google Chrome browser + Node.js.
     * *This repository*
+    * [Carlo](https://github.com/GoogleChromeLabs/carlo) app
 * [mdne-electron](https://github.com/shellyln/mdne-electron)
-  * Standalone desktop app for Windows/Mac/Linux.
+  * Standalone offline desktop app for Windows/Mac/Linux.
+    * [Electron](https://electronjs.org/) app
 * [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
   * Edit kintone record's field. (browser app)
 
@@ -59,7 +61,7 @@
 ## Install
 
 ### Prerequirements
-* Google Chrome
+* Google Chrome (latest)
 * Node>=10
 
 ### Install from NPM
