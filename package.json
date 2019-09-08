@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "carlo": "^0.9.46",
-    "liyad": "^0.2.2",
-    "menneu": "^0.1.4",
+    "liyad": "^0.2.4",
+    "menneu": "^0.1.6",
     "red-agate-util": "^0.2.19"
   },
   "devDependencies": {
