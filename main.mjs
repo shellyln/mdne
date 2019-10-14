@@ -99,7 +99,7 @@ async function main() {
                     // eslint-disable-next-line no-control-regex
                     TextEncoding.decodeUtf8(Base64.decode(x.startupFile)) :
                     x.startupFile;
-                win.load('index.html', rpc.handle(new Backend));
+                win.load('desktop-carlo.html', rpc.handle(new Backend));
             }
         });
 
@@ -361,14 +361,14 @@ async function main() {
         });
 
         // Navigate to the main page of your app.
-        await app.load('index.html', rpc.handle(new Backend));
+        await app.load('desktop-carlo.html', rpc.handle(new Backend));
         const bounds = await (await app.mainWindow()).bounds();
 
         await app.exposeFunction('openNewWindow', async () => {
             const win = await app.createWindow({
                 width: bounds.width, height: bounds.height,
             });
-            win.load('index.html', rpc.handle(new Backend));
+            win.load('desktop-carlo.html', rpc.handle(new Backend));
             return true;
         });
 
