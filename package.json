@@ -41,6 +41,7 @@
   },
   "scripts": {
     "build": "echo \"no build specified\"",
+    "manifest": "node scripts/make-precache-manifest.js",
     "clean": "rm -f ./contents/out/preview.*",
     "test": "echo \"no test specified\"",
     "lint": "eslint index.mjs lib/**/*.js lib/**/*.mjs contents/assets/script/**/*.js",
