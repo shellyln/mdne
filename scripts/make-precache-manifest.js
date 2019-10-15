@@ -26,7 +26,7 @@ function makePrecacheEntries(srcDir, options) {
             if (fs.lstatSync(srcEntryPath).isDirectory()) {
                 makePrecacheEntries(srcEntryPath, options);
             } else {
-                const entryUrl = srcEntryPath.replace(/\\/g, '/').replace(options.baseDir, '.');
+                const entryUrl = srcEntryPath.replace(/\\/g, '/').replace(options.baseDir, '..');
                 for (const pat of blacklist) {
                     if (entryUrl.match(pat)) {
                         continue FILE_ENT;

@@ -7,16 +7,16 @@
  * disable HTTP caching for this file too.
  * See https://goo.gl/nhQhGp
  *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
+ * ~~The rest of the code is auto-generated. Please don't update this file~~
+ * ~~directly; instead, make changes to your Workbox build configuration~~
+ * ~~and re-run your build process.~~
+ * ~~See https://goo.gl/2aRDsh ~~
  */
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  `./precache-manifest.${'f80ab8abdb2bb9196bffc3ce48ec690a'}.js`
+  `./precache-manifest.${'52d783dbbe5866fada16b8fc90240412'}.js`
 );
 
 self.addEventListener('message', (event) => {
@@ -35,7 +35,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("./index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("../index.html"), {
   
   // eslint-disable-next-line no-useless-escape
   blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
