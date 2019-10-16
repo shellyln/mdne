@@ -19,6 +19,7 @@ jobs:
     
     - name: npm install, build and test
       run: |
+        npm install -g npm
         npm run clean
         npm ci
         npm run lint
