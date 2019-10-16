@@ -56,8 +56,8 @@
     * [Electron](https://electronjs.org/) app
 * [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
   * Edit kintone record's field. (browser app)
-* [mdne online](https://shellyln.github.io/mdne/online.html)
-  * Live demo (browser app)
+* [mdne online](https://shellyln.github.io/mdne/)
+  * Live demo (PWA)
 
 ## Install
 
@@ -151,15 +151,15 @@ Please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 
 ## Live demo
 
-[https://shellyln.github.io/mdne/online.html](https://shellyln.github.io/mdne/online.html)
+[https://shellyln.github.io/mdne/](https://shellyln.github.io/mdne/)
 
 #### Open external files from live demo
 * Drop a local file into FileDropOpenDialog.
 * Set the target URL to a location hash.
-  * example: [react-dom.development.js](https://shellyln.github.io/mdne/online.html#open.url=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Freact-dom%2F16.7.0%2Fumd%2Freact-dom.development.js)
+  * example: [react-dom.development.js](https://shellyln.github.io/mdne/#open.url=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Freact-dom%2F16.7.0%2Fumd%2Freact-dom.development.js)
     * Fetching files is restricted by the Same-Origin Policy.
 * Set zipped data to a location hash.
-  * example: [hello.md](https://shellyln.github.io/mdne/online.html#filename=hello.md&open.d=eJwtyjEOgCAMBdCdU3zjit6BuLh4CKQdiIWSSkK8vYnxzW_GziLqUajy5FzAnUsTRol2kY6KWAlJicGUuxqaDjYmnA-O_yy5e4TE392iia7uBTWXHe8)
+  * example: [hello.md](https://shellyln.github.io/mdne/#filename=hello.md&open.d=eJwtyjEOgCAMBdCdU3zjit6BuLh4CKQdiIWSSkK8vYnxzW_GziLqUajy5FzAnUsTRol2kY6KWAlJicGUuxqaDjYmnA-O_yy5e4TE392iia7uBTWXHe8)
     * location hash is generated when `Save` or `SaveAs` commands are done.
 
 #### Live demo browser requirements
