@@ -6,12 +6,14 @@ const crypto = require('crypto');
 
 
 const blacklist = [
-    /^\.\.\/sw\//,
-    /^\.\.\/icons\//,
-    /^\.\.\/out\//,
-    /^\.\.\/desktop-carlo\.html/,
-    /^\.\.\/manifest\.json/,
-    /^\.\.\/favicon\./,
+    /^\.\/icons\//,
+    /^\.\/out\//,
+    /^\.\/desktop-carlo\.html/,
+    /^\.\/manifest\.json/,
+    /^\.\/favicon\./,
+    /^\.\/precache-manifest\./,
+    /^\.\/service-worker\.js/,
+    /^\.\/serviceWorker\.js/,
 ];
 
 
@@ -26,7 +28,7 @@ function makePrecacheEntries(srcDir, options) {
             if (fs.lstatSync(srcEntryPath).isDirectory()) {
                 makePrecacheEntries(srcEntryPath, options);
             } else {
-                const entryUrl = srcEntryPath.replace(/\\/g, '/').replace(options.baseDir, '..');
+                const entryUrl = srcEntryPath.replace(/\\/g, '/').replace(options.baseDir, '.');
                 for (const pat of blacklist) {
                     if (entryUrl.match(pat)) {
                         continue FILE_ENT;
@@ -67,5 +69,5 @@ const precacheManifestHash = (() => {
 console.log(precacheManifest);
 
 fs.writeFileSync(
-    `./contents/sw/precache-manifest.${precacheManifestHash}.js`,
+    `./contents/precache-manifest.${precacheManifestHash}.js`,
     precacheManifest, {encoding: 'utf8'});

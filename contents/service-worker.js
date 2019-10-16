@@ -16,7 +16,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  `./precache-manifest.${'5e1d2ba4f1f2ae44d43ac3c02c6566e7'}.js`
+  `./precache-manifest.${'47d8b87c6a38e032f9b7484603f1f676'}.js`
 );
 
 self.addEventListener('message', (event) => {
@@ -35,7 +35,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("../index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("./index.html"), {
   blacklist: [
     /^\/_/,
     // eslint-disable-next-line no-useless-escape
