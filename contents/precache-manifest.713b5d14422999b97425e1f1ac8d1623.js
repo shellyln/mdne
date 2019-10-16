@@ -414,6 +414,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./logo.svg"
   },
   {
+    "revision": "b78c8aede94d64852726738d879b35b1f363488ffb44fcb4974aab89969b7634",
+    "url": "./online.html"
+  },
+  {
     "revision": "7e2218b43bc15dcfebd2a12f586d7caf2af2bff612b78983c982f03272813c2d",
     "url": "./serviceWorker.js"
   }
