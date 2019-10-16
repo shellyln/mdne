@@ -13,7 +13,6 @@ const blacklist = [
     /^\.\/favicon\./,
     /^\.\/precache-manifest\./,
     /^\.\/service-worker\.js/,
-    /^\.\/serviceWorker\.js/,
 ];
 
 
