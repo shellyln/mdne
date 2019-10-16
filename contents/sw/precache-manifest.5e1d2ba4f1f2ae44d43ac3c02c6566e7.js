@@ -394,10 +394,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "../assets/vendor/react-16.8.6/react.production.min.js"
   },
   {
-    "revision": "99102f1faf4db18a65426755c3def626ef5a742fc26a02ebcf7f532790c76dc9",
-    "url": "../desktop-carlo.html"
-  },
-  {
     "revision": "0fb7b9f01ac35f9fe39cac9b93f1bffd1a8416f22740953edd7407ce3e55886a",
     "url": "../embed.html"
   },
@@ -410,79 +406,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "../error.html"
   },
   {
-    "revision": "f483b51833404b81f2554e5d35eda985357b5d23d5179ecd2794aa2d5c361545",
-    "url": "../favicon.ico"
-  },
-  {
-    "revision": "7bc313f591bec3a7d0e1796ffc09521e1c4f46f2849c2463cf74a49853f5c6ad",
-    "url": "../favicon.png"
-  },
-  {
-    "revision": "a2a7f125430b752fe146c289cd5b4efc9cb428f2e4c4e422aa3ae3066b9c5f0e",
-    "url": "../favicon.svg"
-  },
-  {
-    "revision": "7de7b6b8f8c82f2354cbda017df69955d665e8673edb96abeb43f8fff9a8e267",
-    "url": "../icons/icon-128x128.png"
-  },
-  {
-    "revision": "70b1acd5f7a76f4bafe7bfb61c4199d7c36069f0417e159c8fb77b30744d2cc6",
-    "url": "../icons/icon-16x16.png"
-  },
-  {
-    "revision": "7bc313f591bec3a7d0e1796ffc09521e1c4f46f2849c2463cf74a49853f5c6ad",
-    "url": "../icons/icon-256x256.png"
-  },
-  {
-    "revision": "55d21f961ff2e48a70984fc729ae0bae0b66d2aa102932809438a3ad9c477e45",
-    "url": "../icons/icon-32x32.png"
-  },
-  {
-    "revision": "0262227556bc02ed444f4280d3714ee11d637d8eca2cc6f9d7c383c76a8a7eb5",
-    "url": "../icons/icon-48x48.png"
-  },
-  {
-    "revision": "c4629aeb4e794639a8547f9f200e143bad532ea34ff6c66fd1521a7f15fe2d9d",
-    "url": "../icons/icon-512x512.png"
-  },
-  {
-    "revision": "27d28ca98300bf29fe0e940322fb3c071d3e315401436f535692b0015be7da84",
-    "url": "../icons/icon-64x64.png"
-  },
-  {
-    "revision": "b9ba9ae230daff44e5e28f5a76d842d587e45b9762ec886fe432223b88368ee4",
-    "url": "../icons/icon-96x96.png"
-  },
-  {
     "revision": "71f4fada151defe4a55efcac82feadeeb0f45c3b6298d0cae75dddc1c26a68b9",
     "url": "../index.html"
   },
   {
     "revision": "27160a258cf74ea71e526a04a12e20288286a932f34d7e330c12688d353754a7",
     "url": "../logo.svg"
-  },
-  {
-    "revision": "1d34440f6a2a061a2468d36834daa66a69e7880abc4d4670e11fa3a0bc9a7260",
-    "url": "../manifest.json"
-  },
-  {
-    "revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "url": "../out/.gitkeep"
-  },
-  {
-    "revision": "74af817501f16212ee3d5374333fb8e8ddc8a6b9679074b5dcbf1a9edccf283f",
-    "url": "../sw/precache-manifest.1b635ee354571f97b84878c224af9b6a.js"
-  },
-  {
-    "revision": "4ca5a2069a147ff21b4027bd825088cfcd26e539251f4bfdefa844d2a85a7f42",
-    "url": "../sw/precache-manifest.52d783dbbe5866fada16b8fc90240412.js"
-  },
-  {
-    "revision": "b5d6562d0c259b4dd1a263246e99a05ff434cd57c4826ebebae7e866739b36ce",
-    "url": "../sw/service-worker.js"
-  },
-  {
-    "revision": "710a006a20a9c70dd5e7fdf28698d3c96d1397467c65051eaff18863e6e38153",
-    "url": "../sw/serviceWorker.js"
   }
 ]);

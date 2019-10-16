@@ -6,12 +6,12 @@ const crypto = require('crypto');
 
 
 const blacklist = [
-    /^\.\/sw\//,
-    /^\.\/icons\//,
-    /^\.\/out\//,
-    /^\.\/desktop-carlo\.html/,
-    /^\.\/manifest\.json/,
-    /^\.\/favicon\./,
+    /^\.\.\/sw\//,
+    /^\.\.\/icons\//,
+    /^\.\.\/out\//,
+    /^\.\.\/desktop-carlo\.html/,
+    /^\.\.\/manifest\.json/,
+    /^\.\.\/favicon\./,
 ];
 
 
