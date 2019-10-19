@@ -6,27 +6,27 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/data/welcome.md"
   },
   {
-    "revision": "3d25c998415f33079b9a02d1a8de4d96371ed58ba9b6ee3e60c36b4f333b5784",
+    "revision": "f1ac181d0c33c606fd7d93bc4649705d9906ea432c57a02540f2fe0cf3d6130d",
     "url": "./assets/script/backend-emu.js"
   },
   {
-    "revision": "d401317f8c728589e60d8f5978264461108894586d95fa2d519604f50d68cb26",
+    "revision": "c247032245fc6c4bd89f08bd2f0832ed697420e06fdf5accc298a6b57d66bed7",
     "url": "./assets/script/components/aceeditor.js"
   },
   {
-    "revision": "207a4b2eb5619a881559681428013cc3a83d65557f7ad94bb0d74cb17d08fb70",
+    "revision": "64904f7228be2b1a3ec9f6fe497af4073c9b43672bb4aff8d6d01476cfc9d129",
     "url": "./assets/script/components/app.js"
   },
   {
-    "revision": "16678e029af84dafd14ebdea27fcd98fae1141e7a7c89e9c1de9731a1052dc72",
+    "revision": "7d6c98da2b8c2d263ede95c6591f100ad5cee17d26f7a9fef335a1878357bc7f",
     "url": "./assets/script/components/filedropdialog.js"
   },
   {
-    "revision": "a403cbd2cb609df1c3c4e99e0bd9201befea38a09eb305f4b96a806fd8443db8",
+    "revision": "5c04713926aedc43256799bf94e47fd130e465f67283935a7fed9518e92ee2e0",
     "url": "./assets/script/components/fileopendialog.js"
   },
   {
-    "revision": "eeb4536cb96ba65fd172b9a1b5bacd4f9ff4bb49f350729fc0b516bd5788039a",
+    "revision": "4274f345dbe56df1b7d29a345779273d9234f3216a30f665966fd866fae6f36c",
     "url": "./assets/script/components/filesavedialog.js"
   },
   {
@@ -34,7 +34,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/components/settingsdialog.js"
   },
   {
-    "revision": "6e09f6348dfe19f6238702c78ba3aacc6ec4df85d68151e9527a7b6813cc89a6",
+    "revision": "4a3c5da3137f9a144778dc67ae0e5ad4ac95c7f26c0105ac8cc5c7d72f531bcd",
     "url": "./assets/script/components/ui.js"
   },
   {
@@ -82,7 +82,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/start.js"
   },
   {
-    "revision": "030659a157e62c52f6583144fb5bee3297eb1b548acc75eacad689961762ba8f",
+    "revision": "b708ed72dd175550bad13e4c8419ba30a6c57687cfcdea1ea88f1a13bc88ffb5",
     "url": "./assets/style/index.css"
   },
   {
@@ -406,7 +406,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./error.html"
   },
   {
-    "revision": "e9a2f7023d9917892667e3a139107a036d9bec87eeda4278783bf6b06cbcd197",
+    "revision": "f343836ece4b7abdb10e849f30c4844d1d60c4a8012f2ce34a3064af4da89812",
     "url": "./index.html"
   },
   {
@@ -418,7 +418,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./online.html"
   },
   {
-    "revision": "7e2218b43bc15dcfebd2a12f586d7caf2af2bff612b78983c982f03272813c2d",
+    "revision": "d2d92cd6d8b04bc34a5fd1b2047f8efb8bbea5d3f4ce8dc0688cccf8d53bd244",
     "url": "./serviceWorker.js"
   }
 ]);

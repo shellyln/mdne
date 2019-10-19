@@ -27,6 +27,7 @@ export default class FileDropDialog extends React.Component {
         notifyEditorDirty(false);
 
         document.title = `${AppState.AppName} - ${AppState.filePath}`;
+        document.getElementById('appIndicatorBar').innerText = AppState.filePath;
 
         const editor = AppState.AceEditor[this.options.aceId];
 
@@ -69,6 +70,7 @@ export default class FileDropDialog extends React.Component {
             await alertWrap(e);
             AppState.filePath = null;
             document.title = `${AppState.AppName} - ${'(New file)'}`;
+            document.getElementById('appIndicatorBar').innerText = '(New file)';
         }
     }
 
@@ -103,6 +105,7 @@ export default class FileDropDialog extends React.Component {
             // eslint-disable-next-line require-atomic-updates
             AppState.filePath = null;
             document.title = `${AppState.AppName} - ${'(New file)'}`;
+            document.getElementById('appIndicatorBar').innerText = '(New file)';
         }
     }
 
@@ -128,8 +131,8 @@ export default class FileDropDialog extends React.Component {
                     (onDrop ${async (ev) => {await this.handleOnDrop(ev)}}) )
                 (i (@ (className "material-icons large")) "insert_drive_file")(br)
                 "Drop file here." (br)(br)(br)
-                (a (@ (href "javascript:void 0")
-                      (style (color "white")
+                (a (@ (style (cursor "pointer")
+                             (color "white")
                              (border-bottom "1px solid white") )
                       (onClick ${(ev) => {this.handleOnOpenDialogClick(ev)}}) )
                       "Or click here to open the file dialog." ))

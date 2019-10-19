@@ -30,6 +30,7 @@ export default class AceEditor extends React.Component {
                         editor.session.getUndoManager().markClean();
                         notifyEditorDirty(false);
                         document.title = `${AppState.AppName} - ${AppState.filePath}`;
+                        document.getElementById('appIndicatorBar').innerText = AppState.filePath;
                     } catch (e) {
                         await alertWrap(e);
                     }

@@ -38,7 +38,7 @@
         const resultUrl = URL.createObjectURL(new Blob([buf.toString()], { type: 'text/html' }));
 
         if (exportPath.length > 0) {
-            saveFile(buf.toString(), ...exportPath);
+            internalSaveFileEx(true, buf.toString(), ...exportPath);
         }
 
         // schedule revoking the Blob URL.
@@ -53,25 +53,31 @@
         return await response.text();
     });
 
-    window.saveFile = window.saveFile || (async (text, ...filePath) => {
+    async function internalSaveFileEx(forExport, text, ...filePath) {
         const p = await window.pathJoin(...filePath);
         const b = await window.getBaseName(p);
         // eslint-disable-next-line no-undef
         const util = menneu.getAppEnv().RedAgateUtil;
         await util.FileSaver.saveTextAs(b, text);
 
-        try {
-            // eslint-disable-next-line require-atomic-updates, no-undef
-            window.location.hash = `filename=${encodeURIComponent(b)}&open.d=${util.Base64.encode(pako.deflate(
-                util.TextEncoding.encodeToUtf8(text)))
-                .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')}`;
-        // eslint-disable-next-line no-empty
-        } catch (e) {}
+        if (!forExport) {
+            try {
+                // eslint-disable-next-line require-atomic-updates, no-undef
+                window.location.hash = `filename=${encodeURIComponent(b)}&open.d=${util.Base64.encode(pako.deflate(
+                    util.TextEncoding.encodeToUtf8(text)))
+                    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')}`;
+            // eslint-disable-next-line no-empty
+            } catch (e) {}
+        }
 
         return {
             path: p,
             name: b,
         };
+    }
+
+    window.saveFile = window.saveFile || (async (text, ...filePath) => {
+        return await internalSaveFileEx(false, text, ...filePath);
     });
 
     // eslint-disable-next-line no-unused-vars
@@ -203,7 +209,7 @@
     });
 
     window.openNewWindow = window.openNewWindow || (async () => {
-        window.open(window.location.pathname, '_blank');
+        window.open(window.location.pathname + '#filename=untitled.md&open.d=eJwDAAAAAAE', '_blank');
         return true;
     });
 
