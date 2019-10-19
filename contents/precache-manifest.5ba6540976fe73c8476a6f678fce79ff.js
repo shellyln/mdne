@@ -6,7 +6,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/data/welcome.md"
   },
   {
-    "revision": "1b6dd7a8bdd06a8de51720afa8ecfba9da2c8d815b2765194674f87bbe79155c",
+    "revision": "f1ac181d0c33c606fd7d93bc4649705d9906ea432c57a02540f2fe0cf3d6130d",
     "url": "./assets/script/backend-emu.js"
   },
   {
@@ -82,7 +82,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/start.js"
   },
   {
-    "revision": "7cce491bd1024a7d5685649c6537a98c8f1e4cc214ae380a01785b6331b0963c",
+    "revision": "b708ed72dd175550bad13e4c8419ba30a6c57687cfcdea1ea88f1a13bc88ffb5",
     "url": "./assets/style/index.css"
   },
   {
