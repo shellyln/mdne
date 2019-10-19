@@ -115,6 +115,7 @@ export default class App extends React.Component {
             notifyEditorDirty(false);
 
             document.title = `${AppState.AppName} - ${'(New file)'}`;
+            this.refs.appIndicatorBar.innerText = '(New file)';
 
             const editor = AppState.AceEditor[this.state.currentAceId];
             editor.clearSelection();
@@ -132,6 +133,7 @@ export default class App extends React.Component {
                 notifyEditorDirty(false);
     
                 document.title = `${AppState.AppName} - ${AppState.filePath}`;
+                this.refs.appIndicatorBar.innerText = AppState.filePath;
     
                 const editor = AppState.AceEditor[this.state.currentAceId];
                 editor.clearSelection();
@@ -304,6 +306,7 @@ export default class App extends React.Component {
         editor.session.getUndoManager().markClean();
         notifyEditorDirty(false);
         document.title = `${AppState.AppName} - ${AppState.filePath}`;
+        this.refs.appIndicatorBar.innerText = AppState.filePath;
     }
 
     // eslint-disable-next-line no-unused-vars
@@ -408,6 +411,7 @@ export default class App extends React.Component {
             }
             notifyEditorDirty(true);
             document.title = `${AppState.AppName} - ● ${AppState.filePath || '(New file)'}`;
+            this.refs.appIndicatorBar.innerText = `● ${AppState.filePath || '(New file)'}`;
         }
 
         if (!this.state.stretched && this.state.syncPreview && !this.state.isPdf) {
@@ -643,7 +647,10 @@ export default class App extends React.Component {
                            (src "empty.html")
                            ; (sandbox "")
                            (className ($concat "OutputIframe"
-                                      ${this.state.stretched || this.state.splitterMoving ? " collapsed" : ""}) ))))
+                                      ${this.state.stretched || this.state.splitterMoving ? " collapsed" : ""}) ) ))
+                (div (@ (ref "appIndicatorBar")
+                        (id "appIndicatorBar")
+                        (className "AppIndicatorBar")) "") )
             (FileDropDialog (@ (ref "fileDropDialog")))
             (FileOpenDialog (@ (ref "fileOpenDialog")))
             (FileSaveDialog (@ (ref "fileSaveDialog")))
