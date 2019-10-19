@@ -203,7 +203,7 @@
     });
 
     window.openNewWindow = window.openNewWindow || (async () => {
-        window.open(window.location.pathname, '_blank');
+        window.open(window.location.pathname + '#filename=untitled.md&open.d=eJwDAAAAAAE', '_blank');
         return true;
     });
 
