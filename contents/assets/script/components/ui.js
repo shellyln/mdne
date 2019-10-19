@@ -6,8 +6,7 @@
 
 export const MenuItem = ({icon, caption, onClick}) => {
     return (lsx`
-        (li (a (@ (href "javascript:void 0")
-            (onClick ${onClick}) )
+        (li (a (@ (onClick ${onClick}))
             (i (@ (className "material-icons")) ${icon})
             ${caption} ))`
     );
@@ -26,8 +25,8 @@ export const Switch = ({caption, offText, onText, elClass, checked, onClick}) =>
             (label
                 ${offText}
                 (input (@ (type "checkbox")
-                            (checked ${checked})
-                            (onClick ${onClick}) ))
+                          (checked ${checked})
+                          (onClick ${onClick}) ))
                 (span  (@ (className "lever")))
                 ${onText} ))`
     );
