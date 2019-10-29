@@ -61,6 +61,9 @@
 
 ## Install
 
+> **WARNING**  
+> `node>=13.0.0` is not currently supported. (2019-10-29)
+
 ### Prerequirements
 * Google Chrome (latest)
 * Node>=10
