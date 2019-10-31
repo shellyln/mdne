@@ -53,7 +53,7 @@
     "manifest": "node scripts/make-precache-manifest.js",
     "clean": "rm -rf ./contents/out/preview.* ./bin",
     "test": "echo \"no test specified\"",
-    "lint": "eslint index.mjs lib/**/*.js lib/**/*.mjs contents/assets/script/**/*.js",
+    "lint": "eslint index.js lib/**/*.js lib/**/*.mjs contents/assets/script/**/*.js",
     "start": "node --experimental-modules --no-warnings index.js",
     "start-c": "env MDNE_CHROME_CHANNEL_CHROMIUM=true node index.js",
     "version": "node index.js --app-version"
