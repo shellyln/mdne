@@ -13,11 +13,11 @@ import { render,
          getAppEnv }    from 'menneu/modules';
 import getContentType   from './lib/mime';
 import Backend          from './lib/backend';
-import fs    from 'fs';
-import util  from 'util';
-import path  from 'path';
-import url   from 'url';
-import child_process from 'child_process';
+import fs               from 'fs';
+import util             from 'util';
+import path             from 'path';
+import url              from 'url';
+import child_process    from 'child_process';
 
 const findChrome = requireDynamic('carlo/lib/find_chrome');
 const carlo      = requireDynamic('carlo');
@@ -32,13 +32,13 @@ const statAsync      = util.promisify(fs.stat);
 
 const isWebpack = typeof __webpack_require__ === 'function';
 let thisFileName = '';
-let thisDirName = '';
+let thisDirName  = '';
 if (isWebpack) {
     thisFileName = path.normalize(path.join(__dirname, '../index-wp.js'));
-    thisDirName = path.normalize(path.join(__dirname, '../'));
+    thisDirName  = path.normalize(path.join(__dirname, '../'));
 } else {
     thisFileName = url.fileURLToPath(import.meta.url);
-    thisDirName = path.dirname(thisFileName);
+    thisDirName  = path.dirname(thisFileName);
 }
 
 
