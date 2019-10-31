@@ -6,7 +6,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: [10, 12]
+        node_version: [10, 12, 13]
         os: [ubuntu-latest, macos-latest]
 
     steps:
@@ -25,4 +25,4 @@ jobs:
         npm run lint
         npm run build
         npm test
-        if [[ $(node -e "console.log(process.version.match(/^v(\\d+)\\.\\d+\\.\\d+/)[1])") -ge 12 ]]; then npm run version12; else npm run version; fi
+        npm run version

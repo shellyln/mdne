@@ -8,12 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\index.mjs",
-            "runtimeArgs": [
-                "--experimental-modules",
-                "--es-module-specifier-resolution=node",
-                "--no-warnings"
-            ]
+            "program": "${workspaceFolder}\\index.js",
+            "runtimeArgs": []
         }
     ]
 }

@@ -9,7 +9,7 @@ module.exports = function (env) {
         target: "node",
         entry: {
             mdne: [
-                path.resolve(__dirname, 'main.mjs')
+                path.resolve(__dirname, 'lib/main.mjs')
             ]
         },
         output: {

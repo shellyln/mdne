@@ -22,12 +22,7 @@
     "node": ">=10.0"
   },
   "bin": {
-    "mdne": "index.mjs",
-    "mdnew": "index-win.mjs",
-    "mdne10": "index.mjs",
-    "mdnew10": "index-win.mjs",
-    "mdne12": "index12.mjs",
-    "mdnew12": "index12-win.mjs"
+    "mdne": "index.js"
   },
   "dependencies": {
     "carlo": "^0.9.46",
@@ -52,21 +47,16 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "build": "echo \"no build specified\"",
-    "build:cli": "npm run build:cli:prod",
-    "build:cli:prod": "cross-env NODE_ENV=production webpack-cli --mode=production --config webpack.config.js",
-    "build:cli:dev": "webpack-cli --mode=development --config webpack.config.js",
+    "build": "npm run build:prod",
+    "build:prod": "cross-env NODE_ENV=production webpack-cli --mode=production --config webpack.config.js",
+    "build:dev": "webpack-cli --mode=development --config webpack.config.js",
     "manifest": "node scripts/make-precache-manifest.js",
-    "clean": "rm -f ./contents/out/preview.*",
+    "clean": "rm -rf ./contents/out/preview.* ./bin",
     "test": "echo \"no test specified\"",
     "lint": "eslint index.mjs lib/**/*.js lib/**/*.mjs contents/assets/script/**/*.js",
-    "start": "node --experimental-modules --no-warnings index.mjs",
-    "start10": "node --experimental-modules --no-warnings index.mjs",
-    "start12": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs",
-    "start12c": "env MDNE_CHROME_CHANNEL_CHROMIUM=true node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs",
-    "version": "node --experimental-modules --no-warnings index.mjs --app-version",
-    "version10": "node --experimental-modules --no-warnings index.mjs --app-version",
-    "version12": "node --experimental-modules --es-module-specifier-resolution=node --no-warnings index.mjs --app-version"
+    "start": "node --experimental-modules --no-warnings index.js",
+    "start-c": "env MDNE_CHROME_CHANNEL_CHROMIUM=true node index.js",
+    "version": "node index.js --app-version"
   },
   "repository": {
     "type": "git",

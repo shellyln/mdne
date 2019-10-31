@@ -1,10 +1,11 @@
-#!/usr/bin/env node --experimental-modules --no-warnings
+#!/usr/bin/env node
 
 // Copyright (c) 2019 Shellyl_N and Authors
 // license: ISC
 // https://github.com/shellyln
 
 
-import main from './main';
+const main_ = require('./bin/mdne');
+const main = (main_.default) || main;
 
 main();

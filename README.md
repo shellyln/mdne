@@ -14,6 +14,10 @@
 <img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png" title="screenshot" style="width: 400px">
 
 
+> **Migrate from `v0.1.x`**  
+> Please re-run `./make-shortcut.cmd`.
+
+
 ## Features
 * Live preview of Markdown, HTML, [LSX](https://github.com/shellyln/liyad#what-is-lsx) formats.
 * Export Markdown, HTML, LSX into PDF or HTML.
@@ -61,9 +65,6 @@
 
 ## Install
 
-> **WARNING**  
-> `node>=13.0.0` is not currently supported. (2019-10-29)
-
 ### Prerequirements
 * Google Chrome (latest)
 * Node>=10
@@ -101,47 +102,26 @@
 * Linux, Windows
     ```sh
     mdne
-
-    ## To run on node>=12, use `mdne12` instead.
     ```
 
-* Windows
-    ```sh
-    mdnew
-
-    ## To run on node>=12, use `mdnew12` instead.
-    ```
 
 * Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne
-
-    ## To run on node>=12, use `mdne12` instead.
     ```
     * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
     * Chromium is downloaded locally the first time it run.
 
 ### Open file:
 
-* Linux
+* Linux, Windows
     ```sh
     mdne README.md
-
-    ## To run on node>=12, use `mdne12` instead.
-    ```
-
-* Windows
-    ```sh
-    mdnew README.md
-
-    ## To run on node>=12, use `mdnew12` instead.
     ```
 
 * Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne README.md
-
-    ## To run on node>=12, use `mdne12` instead.
     ```
     * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
     * Chromium is downloaded locally the first time it run.
