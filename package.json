@@ -33,14 +33,29 @@
     "carlo": "^0.9.46",
     "liyad": "^0.2.4",
     "menneu": "^0.1.6",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "red-agate-util": "^0.2.19"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@open-wc/webpack-import-meta-loader": "^0.3.4",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.3.0"
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.3.0",
+    "raw-loader": "^3.1.0",
+    "source-map-loader": "^0.2.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
   },
   "scripts": {
     "build": "echo \"no build specified\"",
+    "build:cli": "npm run build:cli:prod",
+    "build:cli:prod": "cross-env NODE_ENV=production webpack-cli --mode=production --config webpack.config.js",
+    "build:cli:dev": "webpack-cli --mode=development --config webpack.config.js",
     "manifest": "node scripts/make-precache-manifest.js",
     "clean": "rm -f ./contents/out/preview.*",
     "test": "echo \"no test specified\"",
