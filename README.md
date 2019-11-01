@@ -14,7 +14,7 @@
 <img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png" title="screenshot" style="width: 400px">
 
 
-> **Migrate from `v0.1.x`**  
+> **Migrate from `v0.1.x`** (for Windows)  
 > Please re-run `./make-shortcut.cmd`.
 
 
@@ -92,7 +92,6 @@
 ### Create desktop and 'send to' menu shoorcuts (Windows)
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
 * Extract zip archive and run `make-shortcut.cmd`.
-  > NOTE: To run on `node>=12`, run `make-shortcut-node12.cmd` instead.
 
 
 ## Run
