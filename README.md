@@ -153,6 +153,14 @@ Please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 * Save and SaveAs commands download the file being edited.
 
 
+## Deploying Live demo
+
+1. Run `npm run manifest` after edit the `contents/*`.
+    * New `contents/precache-manifest.yyyyy.js` will generate.
+1. Remove the old `contents/precache-manifest.xxxxx.js`.
+1. Edit `contents/service-worker.js` to change the reference of `contents/precache-manifest.yyyyy.js` file name.
+1. Deploy the `contents/*`.
+
 
 ## Security warning
 
