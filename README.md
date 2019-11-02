@@ -14,6 +14,10 @@
 <img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/scr-01.png" title="screenshot" style="width: 400px">
 
 
+> **Migrate from `v0.1.x`** (for Windows)  
+> Please re-run `./make-shortcut.cmd`.
+
+
 ## Features
 * Live preview of Markdown, HTML, [LSX](https://github.com/shellyln/liyad#what-is-lsx) formats.
 * Export Markdown, HTML, LSX into PDF or HTML.
@@ -61,9 +65,6 @@
 
 ## Install
 
-> **WARNING**  
-> `node>=13.0.0` is not currently supported. (2019-10-29)
-
 ### Prerequirements
 * Google Chrome (latest)
 * Node>=10
@@ -91,7 +92,6 @@
 ### Create desktop and 'send to' menu shoorcuts (Windows)
 * Download source zip archive from [here](https://github.com/shellyln/mdne/archive/master.zip).
 * Extract zip archive and run `make-shortcut.cmd`.
-  > NOTE: To run on `node>=12`, run `make-shortcut-node12.cmd` instead.
 
 
 ## Run
@@ -101,47 +101,26 @@
 * Linux, Windows
     ```sh
     mdne
-
-    ## To run on node>=12, use `mdne12` instead.
     ```
 
-* Windows
-    ```sh
-    mdnew
-
-    ## To run on node>=12, use `mdnew12` instead.
-    ```
 
 * Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne
-
-    ## To run on node>=12, use `mdne12` instead.
     ```
     * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
     * Chromium is downloaded locally the first time it run.
 
 ### Open file:
 
-* Linux
+* Linux, Windows
     ```sh
     mdne README.md
-
-    ## To run on node>=12, use `mdne12` instead.
-    ```
-
-* Windows
-    ```sh
-    mdnew README.md
-
-    ## To run on node>=12, use `mdnew12` instead.
     ```
 
 * Chrome OS (Chromebook / Chromebox) Crostini
     ```sh
     env MDNE_CHROME_CHANNEL_CHROMIUM=true mdne README.md
-
-    ## To run on node>=12, use `mdne12` instead.
     ```
     * `MDNE_CHROME_CHANNEL_CHROMIUM=TRUE` can alternatively be written to `.bashrc`.
     * Chromium is downloaded locally the first time it run.
@@ -173,6 +152,14 @@ Please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 * Rendering / exporting to PDF is not available.
 * Save and SaveAs commands download the file being edited.
 
+
+## Deploying Live demo
+
+1. Run `npm run manifest` after edit the `contents/*`.
+    * New `contents/precache-manifest.yyyyy.js` will generate.
+1. Remove the old `contents/precache-manifest.xxxxx.js`.
+1. Edit `contents/service-worker.js` to change the reference of `contents/precache-manifest.yyyyy.js` file name.
+1. Deploy the `contents/*`.
 
 
 ## Security warning
