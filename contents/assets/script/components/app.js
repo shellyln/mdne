@@ -103,6 +103,12 @@ export default class App extends React.Component {
             }
         }
 
+        {
+            const appSettingsStr = window.localStorage.getItem('_mdne_app_settings__Xlnuf3Ao') || '{}';
+            const editor = AppState.AceEditor[this.state.currentAceId];
+            editor.setOptions(JSON.parse(appSettingsStr));
+        }
+
         document.onkeyup = (ev) => {
             if (ev.ctrlKey && ev.shiftKey && ev.keyCode === 79) {
                 // Ctrl+Shift+O
@@ -403,6 +409,15 @@ export default class App extends React.Component {
     }
 
     // eslint-disable-next-line no-unused-vars
+    handleSettingsClick(ev) {
+        const editor = AppState.AceEditor[this.state.currentAceId];
+        this.refs.settingsDialog.showModal(editor.getOptions(), (settings) => {
+            editor.setOptions(settings);
+            window.localStorage.setItem('_mdne_app_settings__Xlnuf3Ao', JSON.stringify(settings));
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
     handleAceEditorOnChange(o) {
         if (! AppState.fileChanged) {
             const editor = AppState.AceEditor[this.state.currentAceId];
@@ -580,7 +595,7 @@ export default class App extends React.Component {
                     (MenuDivider)
                     (MenuItem (@ (icon "settings")
                                  (caption "Settings...")
-                                 (onClick ${() => this.refs.settingsDialog.showModal({}, () => {})}) ))
+                                 (onClick ${(ev) => this.handleSettingsClick(ev)}) ))
                     (MenuItem (@ (icon "help_outline")
                                  (caption "Help")
                                  (onClick ${() => openURL('https://github.com/shellyln/mdne')}) )) )
