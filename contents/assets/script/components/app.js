@@ -403,6 +403,14 @@ export default class App extends React.Component {
     }
 
     // eslint-disable-next-line no-unused-vars
+    handleSettingsClick(ev) {
+        const editor = AppState.AceEditor[this.state.currentAceId];
+        this.refs.settingsDialog.showModal(editor.getOptions(), (settings) => {
+            editor.setOptions(settings);
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
     handleAceEditorOnChange(o) {
         if (! AppState.fileChanged) {
             const editor = AppState.AceEditor[this.state.currentAceId];
@@ -580,7 +588,7 @@ export default class App extends React.Component {
                     (MenuDivider)
                     (MenuItem (@ (icon "settings")
                                  (caption "Settings...")
-                                 (onClick ${() => this.refs.settingsDialog.showModal({}, () => {})}) ))
+                                 (onClick ${(ev) => this.handleSettingsClick(ev)}) ))
                     (MenuItem (@ (icon "help_outline")
                                  (caption "Help")
                                  (onClick ${() => openURL('https://github.com/shellyln/mdne')}) )) )

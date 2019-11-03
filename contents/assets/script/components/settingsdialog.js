@@ -7,6 +7,12 @@
 export default class SettingsDialog extends React.Component {
     constructor(props, context) {
         super(props, context);
+
+        this.state = {};
+        this.state.fontFamily = void 0;
+        this.state.fontSize = 14;
+        this.state.tabSize = 4;
+        this.state.wrap = false;
     }
 
     showModal(options, handler) {
@@ -14,13 +20,52 @@ export default class SettingsDialog extends React.Component {
         document.activeElement.blur();
         this.options = options;
         this.handler = handler;
+        this.setState({
+            fontFamily: options.fontFamily,
+            fontSize: options.fontSize,
+            tabSize: options.tabSize,
+            wrap: options.wrap,
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    handleFontFamilyChange(ev) {
+        this.setState({
+            fontFamily: (ev.target.value || '').trim() === '' ? void 0 : ev.target.value,
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    handleFontSizeChange(ev) {
+        this.setState({
+            fontSize: Number(ev.target.value),
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    handleTabSizeChange(ev) {
+        this.setState({
+            tabSize: Number(ev.target.value),
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    handleWrapChange(ev) {
+        this.setState({
+            wrap: ev.target.checked,
+        });
     }
 
     // eslint-disable-next-line no-unused-vars
     handleOkClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
-        this.handler();
+        this.handler({
+            fontFamily: this.state.fontFamily,
+            fontSize: this.state.fontSize,
+            tabSize: this.state.tabSize,
+            wrap: this.state.wrap,
+        });
     }
 
     // eslint-disable-next-line no-unused-vars
@@ -44,35 +89,44 @@ export default class SettingsDialog extends React.Component {
                     (div (@ (className "row")
                             (style (margin "0")) )
                         (div (@ (className "input-field col s12"))
-                            (input (@ (placeholder "")
-                                      (id "appSettingsDialog-fontFamily")
+                            (input (@ (id "appSettingsDialog-fontFamily")
                                       (type "text")
                                       (className "validate")
                                       (style (color "white"))
-                                      (value ${""})
-                                      (onChange ${() => {}}) ))
+                                      (value ${this.state.fontFamily})
+                                      (onChange ${(ev) => this.handleFontFamilyChange(ev)}) ))
                             (label (@ (for "appSettingsDialog-fontFamily"))
                                 "Font family") ))
                     (div (@ (className "row")
                             (style (margin "0")) )
                         (div (@ (className "input-field col s1"))
-                            (input (@ (placeholder "")
-                                      (id "appSettingsDialog-fontSize")
+                            (input (@ (id "appSettingsDialog-fontSize")
                                       (type "text")
                                       (className "validate")
                                       (style (color "white"))
-                                      (value ${""})
-                                      (onChange ${() => {}}) ))
+                                      (value ${this.state.fontSize})
+                                      (onChange ${(ev) => this.handleFontSizeChange(ev)}) ))
                             (label (@ (for "appSettingsDialog-fontSize"))
                                 "Font size") ))
+                    (div (@ (className "row")
+                            (style (margin "0")) )
+                        (div (@ (className "input-field col s1"))
+                            (input (@ (id "appSettingsDialog-tabSize")
+                                      (type "text")
+                                      (className "validate")
+                                      (style (color "white"))
+                                      (value ${this.state.tabSize})
+                                      (onChange ${(ev) => this.handleTabSizeChange(ev)}) ))
+                            (label (@ (for "appSettingsDialog-tabSize"))
+                                "Tab size") ))
                     (div (@ (className "row")
                             (style (margin "0")) )
                         (div (@ (className "input-field col s1"))
                             (label
                                 (input (@ (type "checkbox")
                                           (className "filled-in")
-                                          (checked ${"checked"})
-                                          (onChange ${() => {}}) ))
+                                          (checked ${this.state.wrap ? "checked" : ""})
+                                          (onChange ${(ev) => this.handleWrapChange(ev)}) ))
                                 (span "Wrap") )) )))
             (div (@ (style (display "flex")
                            (justifyContent "center") ))
