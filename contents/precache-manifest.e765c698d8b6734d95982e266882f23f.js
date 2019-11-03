@@ -14,7 +14,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/components/aceeditor.js"
   },
   {
-    "revision": "64904f7228be2b1a3ec9f6fe497af4073c9b43672bb4aff8d6d01476cfc9d129",
+    "revision": "c736bd00188766a2730711399720fa16d51a3df8131008f00939f41fdc915bdb",
     "url": "./assets/script/components/app.js"
   },
   {
@@ -30,7 +30,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/components/filesavedialog.js"
   },
   {
-    "revision": "ef858b64a9331fc8b0ef081f47de60ef0d38a3842242366e45819fcbad85670c",
+    "revision": "efb0b9803529733cc7c3ff505b63382c130dfff354baf030d9f8f8f150b5c2a5",
     "url": "./assets/script/components/settingsdialog.js"
   },
   {
