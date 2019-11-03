@@ -10,6 +10,8 @@
     window.rpc.handle = window.rpc.handle || (x => x);
     window.carlo = window.carlo || {};
 
+    window._MDNE_BACKEND_TYPE = 'BROWSER_EMULATION';
+
     // eslint-disable-next-line no-unused-vars
     window.renderByMenneu = window.renderByMenneu || (async (source, data, options, srcPath, ...exportPath) => {
         const opts = Object.assign({}, options, {

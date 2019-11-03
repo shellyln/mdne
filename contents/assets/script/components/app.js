@@ -94,7 +94,7 @@ export default class App extends React.Component {
         }
         // eslint-disable-next-line no-undef
         if (window.dialogPolyfill) {
-            // emulation
+            // initialize polyfill emulated elements
             const dialogs = document.querySelectorAll('dialog');
             for (let i = 0; i < dialogs.length; i++) {
                 const dialog = dialogs[i];
@@ -207,7 +207,7 @@ export default class App extends React.Component {
                 this.savedEditorStyleWidth = this.refs.editor.refs.outerWrap.style.width;
                 this.savedPreviewScrollY = this.refs.root.contentWindow.scrollY;
             } catch (e) {
-                // emulation
+                // NOTE: ignore errors
             }
             this.refs.editor.refs.outerWrap.style.width = null;
             this.refs.editorPlaceholder.style.width = null;
@@ -562,6 +562,19 @@ export default class App extends React.Component {
     }
 
     render() {
+        const isEmulation = window._MDNE_BACKEND_TYPE === 'BROWSER_EMULATION';
+        const ua = window.navigator.userAgent;
+        // NOTE: Chromium Edge treats as Chrome.
+        const isChrome =
+            ua.match(' Chrome/') &&
+            !ua.match(' CriOS/') &&
+            !ua.match(' OPR/') &&
+            !ua.match(' Presto/') &&
+            !ua.match(' Vivaldi/') &&
+            !ua.match(' Iron Safari/') &&
+            !ua.match(' Sleipnir/') &&
+            !ua.match(' Mobile Safari/');
+
         return (lsx`
         (Template
             (div (@ (className "AppMainMenuWrap"))
@@ -623,7 +636,10 @@ export default class App extends React.Component {
                         (input (@ (ref "commandBox")
                                   (className "CommandBoxInput command-box-input autocomplete")
                                   (type "text")
-                                  (placeholder "Command palette    (Ctrl+Shift+O)")
+                                  (placeholder ($concat
+                                      "Command palette    (" ${
+                                      isEmulation && isChrome ? 'Alt+Ctrl+Shift+O' :'Ctrl+Shift+O'
+                                      } ")" ))
                                   (spellcheck "false")
                                   (onBlur ${(ev) => this.handleCommandBoxOnBlur(ev)})
                                   (onKeyDown ${(ev) => this.handleCommandBoxOnKeyDown(ev)}) ))))
