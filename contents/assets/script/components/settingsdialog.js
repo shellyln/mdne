@@ -25,7 +25,7 @@ export default class SettingsDialog extends React.Component {
         this.setState({
             showFields: false,
             fontFamily: options.fontFamily,
-            fontSize: options.fontSize,
+            fontSize: options.fontSize > 0 ? options.fontSize : 14,
             tabSize: options.tabSize,
             wrap: options.wrap === 'off' ? false : (options.wrap === 'free'),
             theme: (options.theme || '').replace('ace/theme/', ''),
@@ -42,14 +42,14 @@ export default class SettingsDialog extends React.Component {
     // eslint-disable-next-line no-unused-vars
     handleFontFamilyChange(ev) {
         this.setState({
-            fontFamily: (ev.target.value || '').trim() === '' ? void 0 : ev.target.value,
+            fontFamily: (ev.target.value || '').trim() === '' ? null : ev.target.value,
         });
     }
 
     // eslint-disable-next-line no-unused-vars
     handleFontSizeChange(ev) {
         this.setState({
-            fontSize: Number(ev.target.value),
+            fontSize: ev.target.value,
         });
     }
 
@@ -78,9 +78,11 @@ export default class SettingsDialog extends React.Component {
     handleOkClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
+
+        const fontSize = Number(this.state.fontSize);
         this.handler({
             fontFamily: this.state.fontFamily,
-            fontSize: this.state.fontSize,
+            fontSize: fontSize > 0 ? fontSize : 14,
             tabSize: this.state.tabSize,
             wrap: this.state.wrap,
             theme: `ace/theme/${this.state.theme}`,
@@ -165,8 +167,7 @@ export default class SettingsDialog extends React.Component {
                                 (option (@ (value "monokai")
                                            (selected ${this.state.theme === 'monokai' ? 'selected' : ''})) "monokai")
                                 (option (@ (value "textmate")
-                                           (selected ${this.state.theme === 'textmate' ? 'selected' : ''})) "textmate")
-                            )
+                                           (selected ${this.state.theme === 'textmate' ? 'selected' : ''})) "textmate") )
                             (label (@ (for "appSettingsDialog-theme"))
                                 "Theme") )) )))
             (div (@ (style (display "flex")
