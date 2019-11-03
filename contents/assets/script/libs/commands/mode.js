@@ -3,8 +3,9 @@
 // https://github.com/shellyln
 
 
-import AppState             from '../appstate.js';
-import { getAceEditorMode } from '../modes.js';
+import AppState,
+       { updateAppIndicatorBar } from '../appstate.js';
+import { getAceEditorMode }      from '../modes.js';
 
 
 
@@ -48,6 +49,9 @@ export function getOperators({getCurrentAceId}) {
                 if (aceMode) {
                     const editor = AppState.AceEditor[getCurrentAceId()];
                     editor.session.setMode(aceMode);
+
+                    updateAppIndicatorBar();
+
                     return '';
                 } else {
                     throw new Error('Invalid editor mode name: ' + modeName);

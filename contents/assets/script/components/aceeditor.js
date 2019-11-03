@@ -3,7 +3,8 @@
 // https://github.com/shellyln
 
 
-import AppState from '../libs/appstate.js';
+import AppState,
+       { updateAppIndicatorBar } from '../libs/appstate.js';
 
 
 
@@ -29,8 +30,7 @@ export default class AceEditor extends React.Component {
                         await saveFile(editor.getValue(), AppState.filePath);
                         editor.session.getUndoManager().markClean();
                         notifyEditorDirty(false);
-                        document.title = `${AppState.AppName} - ${AppState.filePath}`;
-                        document.getElementById('appIndicatorBar').innerText = AppState.filePath;
+                        updateAppIndicatorBar();
                     } catch (e) {
                         await alertWrap(e);
                     }

@@ -3,9 +3,10 @@
 // https://github.com/shellyln
 
 
-import AppState             from '../libs/appstate.js';
+import AppState,
+       { updateAppIndicatorBar } from '../libs/appstate.js';
 import { getInputFormat,
-         getAceEditorMode } from '../libs/modes.js';
+         getAceEditorMode }      from '../libs/modes.js';
 
 
 
@@ -25,9 +26,7 @@ export default class FileDropDialog extends React.Component {
         AppState.filePath = path;
         AppState.inputFormat = getInputFormat(AppState.filePath);
         notifyEditorDirty(false);
-
-        document.title = `${AppState.AppName} - ${AppState.filePath}`;
-        document.getElementById('appIndicatorBar').innerText = AppState.filePath;
+        updateAppIndicatorBar();
 
         const editor = AppState.AceEditor[this.options.aceId];
 
@@ -69,8 +68,8 @@ export default class FileDropDialog extends React.Component {
         } catch (e) {
             await alertWrap(e);
             AppState.filePath = null;
-            document.title = `${AppState.AppName} - ${'(New file)'}`;
-            document.getElementById('appIndicatorBar').innerText = '(New file)';
+            notifyEditorDirty(false);
+            updateAppIndicatorBar();
         }
     }
 
@@ -104,8 +103,8 @@ export default class FileDropDialog extends React.Component {
             await alertWrap(e);
             // eslint-disable-next-line require-atomic-updates
             AppState.filePath = null;
-            document.title = `${AppState.AppName} - ${'(New file)'}`;
-            document.getElementById('appIndicatorBar').innerText = '(New file)';
+            notifyEditorDirty(false);
+            updateAppIndicatorBar();
         }
     }
 

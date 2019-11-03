@@ -12,4 +12,15 @@ const AppState = {
     fileChanged: false,
 };
 
+
+export function updateAppIndicatorBar() {
+    document.title = `${AppState.AppName} - ${
+        AppState.fileChanged ? '● ' : ''}${
+        AppState.filePath || '(New file)'}`;
+    document.getElementById('appIndicatorBar').innerText = `${
+        AppState.fileChanged ? '● ' : ''}${
+        AppState.filePath || '(New file)'} | mode: ${
+        AppState.inputFormat}`;
+}
+
 export default AppState;

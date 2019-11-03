@@ -3,13 +3,14 @@
 // https://github.com/shellyln
 
 
-import AppState             from '../libs/appstate.js';
-import start                from '../libs/start.js';
+import AppState,
+       { updateAppIndicatorBar } from '../libs/appstate.js';
+import start                     from '../libs/start.js';
 import { getInputFormat,
          isPreviewable,
-         getAceEditorMode } from '../libs/modes.js';
-import { escapeHtml }       from '../libs/escape.js';
-import commandRunner        from '../libs/cmdrunner.js';
+         getAceEditorMode }      from '../libs/modes.js';
+import { escapeHtml }            from '../libs/escape.js';
+import commandRunner             from '../libs/cmdrunner.js';
 
 import { getSuggests as getAppSuggests,
          getOperators as getAppOperators }  from '../libs/commands/app.js';
@@ -120,8 +121,7 @@ export default class App extends React.Component {
             AppState.inputFormat = 'md';
             notifyEditorDirty(false);
 
-            document.title = `${AppState.AppName} - ${'(New file)'}`;
-            this.refs.appIndicatorBar.innerText = '(New file)';
+            updateAppIndicatorBar();
 
             const editor = AppState.AceEditor[this.state.currentAceId];
             editor.clearSelection();
@@ -138,8 +138,7 @@ export default class App extends React.Component {
                 AppState.inputFormat = getInputFormat(AppState.filePath);
                 notifyEditorDirty(false);
     
-                document.title = `${AppState.AppName} - ${AppState.filePath}`;
-                this.refs.appIndicatorBar.innerText = AppState.filePath;
+                updateAppIndicatorBar();
     
                 const editor = AppState.AceEditor[this.state.currentAceId];
                 editor.clearSelection();
@@ -311,8 +310,7 @@ export default class App extends React.Component {
 
         editor.session.getUndoManager().markClean();
         notifyEditorDirty(false);
-        document.title = `${AppState.AppName} - ${AppState.filePath}`;
-        this.refs.appIndicatorBar.innerText = AppState.filePath;
+        updateAppIndicatorBar();
     }
 
     // eslint-disable-next-line no-unused-vars
@@ -425,8 +423,7 @@ export default class App extends React.Component {
                 return;
             }
             notifyEditorDirty(true);
-            document.title = `${AppState.AppName} - ● ${AppState.filePath || '(New file)'}`;
-            this.refs.appIndicatorBar.innerText = `● ${AppState.filePath || '(New file)'}`;
+            updateAppIndicatorBar();
         }
 
         if (!this.state.stretched && this.state.syncPreview && !this.state.isPdf) {
