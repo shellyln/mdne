@@ -103,6 +103,12 @@ export default class App extends React.Component {
             }
         }
 
+        {
+            const appSettingsStr = window.localStorage.getItem('_mdne_app_settings__Xlnuf3Ao') || '{}';
+            const editor = AppState.AceEditor[this.state.currentAceId];
+            editor.setOptions(JSON.parse(appSettingsStr));
+        }
+
         document.onkeyup = (ev) => {
             if (ev.ctrlKey && ev.shiftKey && ev.keyCode === 79) {
                 // Ctrl+Shift+O
@@ -407,6 +413,7 @@ export default class App extends React.Component {
         const editor = AppState.AceEditor[this.state.currentAceId];
         this.refs.settingsDialog.showModal(editor.getOptions(), (settings) => {
             editor.setOptions(settings);
+            window.localStorage.setItem('_mdne_app_settings__Xlnuf3Ao', JSON.stringify(settings));
         });
     }
 

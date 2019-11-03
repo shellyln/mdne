@@ -9,10 +9,12 @@ export default class SettingsDialog extends React.Component {
         super(props, context);
 
         this.state = {};
+        this.state.showFields = false;
         this.state.fontFamily = void 0;
         this.state.fontSize = 14;
         this.state.tabSize = 4;
         this.state.wrap = false;
+        this.state.theme = 'monokai';
     }
 
     showModal(options, handler) {
@@ -21,11 +23,20 @@ export default class SettingsDialog extends React.Component {
         this.options = options;
         this.handler = handler;
         this.setState({
+            showFields: false,
             fontFamily: options.fontFamily,
             fontSize: options.fontSize,
             tabSize: options.tabSize,
-            wrap: options.wrap,
+            wrap: options.wrap === 'off' ? false : (options.wrap === 'free'),
+            theme: (options.theme || '').replace('ace/theme/', ''),
         });
+        setTimeout(() => this.setState({showFields: true}), 30);
+    }
+
+    componentDidUpdate() {
+        M.updateTextFields();
+        const elems = document.querySelectorAll('select');
+        /* const instances = */ M.FormSelect.init(elems, {});
     }
 
     // eslint-disable-next-line no-unused-vars
@@ -57,6 +68,13 @@ export default class SettingsDialog extends React.Component {
     }
 
     // eslint-disable-next-line no-unused-vars
+    handleThemeChange(ev) {
+        this.setState({
+            theme: ev.target.value,
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
     handleOkClick(ev) {
         document.activeElement.blur();
         this.refs.dialog.close();
@@ -65,6 +83,7 @@ export default class SettingsDialog extends React.Component {
             fontSize: this.state.fontSize,
             tabSize: this.state.tabSize,
             wrap: this.state.wrap,
+            theme: `ace/theme/${this.state.theme}`,
         });
     }
 
@@ -77,15 +96,24 @@ export default class SettingsDialog extends React.Component {
     render() {
         return (lsx`
         (dialog (@ (ref "dialog")
+                   (className "appSettingsDialog-root")
                    (style (backgroundColor "#333")
                           (color "white") ))
+            (style (@ (dangerouslySetInnerHTML """$concat
+                .appSettingsDialog-root .select-wrapper input {
+                    color: white;
+                }
+                .appSettingsDialog-root .select-wrapper svg.caret {
+                    fill: white;
+                }
+                """) ))
             (h5 "Settings")
             (div (@ (style (width "80vw")
                            (height "70vh")
                            (display "table-cell")
                            (textAlign "center")
                            (paddingTop "20px") ))
-                (form
+                ($if ${this.state.showFields} (form
                     (div (@ (className "row")
                             (style (margin "0")) )
                         (div (@ (className "input-field col s12"))
@@ -125,9 +153,22 @@ export default class SettingsDialog extends React.Component {
                             (label
                                 (input (@ (type "checkbox")
                                           (className "filled-in")
-                                          (checked ${this.state.wrap ? "checked" : ""})
+                                          (checked ${this.state.wrap ? 'checked' : ''})
                                           (onChange ${(ev) => this.handleWrapChange(ev)}) ))
-                                (span "Wrap") )) )))
+                                (span "Wrap") )))
+                    (div (@ (className "row")
+                            (style (margin "40px 0 0 0")
+                                   (color "white") ))
+                        (div (@ (className "input-field col s12"))
+                            (select (@ (id "appSettingsDialog-theme")
+                                       (onChange ${(ev) => this.handleThemeChange(ev)}) )
+                                (option (@ (value "monokai")
+                                           (selected ${this.state.theme === 'monokai' ? 'selected' : ''})) "monokai")
+                                (option (@ (value "textmate")
+                                           (selected ${this.state.theme === 'textmate' ? 'selected' : ''})) "textmate")
+                            )
+                            (label (@ (for "appSettingsDialog-theme"))
+                                "Theme") )) )))
             (div (@ (style (display "flex")
                            (justifyContent "center") ))
                 (button (@ (style (textTransform "none")
