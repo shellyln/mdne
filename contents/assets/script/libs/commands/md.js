@@ -64,6 +64,7 @@ export function getSuggests() {
         'md gtin13': null,
         'md gtin8': null,
         'md print-preview': null,
+        'md html5': null,
     };
 }
 
@@ -491,6 +492,31 @@ export function getOperators({getCurrentAceId}) {
                         const editor = AppState.AceEditor[getCurrentAceId()];
                         editor.session.insert(editor.getCursorPosition(),
                             '<script>window.print()</script>');
+                    }
+                    return '';
+                case 'html5':
+                    {
+                        const editor = AppState.AceEditor[getCurrentAceId()];
+                        editor.session.insert(editor.getCursorPosition(),
+                            '(Html5\n' +
+                            '(head (title "Untitled")\n' +
+                            '      (meta (@ (charset "UTF-8")))\n' +
+                            '      (NormalizeCss)\n' +
+                            '      (PaperCss)\n' +
+                            '\n' +
+                            '    (style (@ (dangerouslySetInnerHTML """$concat\n' +
+                            '        /* You can write additional styles here. */\n' +
+                            '        /*\n' +
+                            '        body {\n' +
+                            '            background-color: blue;\n' +
+                            '        }\n' +
+                            '        */\n' +
+                            '    """) )))\n' +
+                            '\n' +
+                            '(body (@ (class "A4"))\n' +
+                            '    (section (@ (class "sheet padding-10mm"))\n' +
+                            '        Hello!\n' +
+                            '        )))\n');
                     }
                     return '';
                 default:
