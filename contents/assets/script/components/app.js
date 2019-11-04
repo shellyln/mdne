@@ -238,7 +238,14 @@ export default class App extends React.Component {
             this.refs.editor.refs.outerWrap.style.width = this.savedEditorStyleWidth;
             this.refs.editorPlaceholder.style.width = this.savedEditorStyleWidth;
         }
-        this.setState({stretched: false});
+
+        if (this.state.isPdf &&
+            (window._MDNE_BACKEND_CAPS_NO_PDF_RENDERER ||
+             window._MDNE_BACKEND_CAPS_NO_PDF_PREVIEW_PLUGIN)) {
+            // do nothing
+        } else {
+            this.setState({stretched: false});
+        }
         const editor = AppState.AceEditor[this.state.currentAceId];
 
         if (! isPreviewable(AppState.inputFormat)) {
@@ -383,19 +390,22 @@ export default class App extends React.Component {
                 currentAceId: this.state.currentAceId,
                 currentFilePath: AppState.filePath,
                 forExport: true,
-                fileTypes: [{
-                    value: 'pdf',
-                    text: 'PDF (*.pdf)',
-                    exts: ['.pdf'],
-                },{
-                    value: 'html',
-                    text: 'HTML (*.html, *.htm)',
-                    exts: ['.html', '.htm'],
-                },{
-                    value: '*',
-                    text: 'All files (*.*)',
-                    exts: [],
-                }],
+                fileTypes: [].concat(
+                    (window._MDNE_BACKEND_CAPS_NO_PDF_RENDERER ? [] : [{
+                        value: 'pdf',
+                        text: 'PDF (*.pdf)',
+                        exts: ['.pdf'],
+                    }]),
+                    [{
+                        value: 'html',
+                        text: 'HTML (*.html, *.htm)',
+                        exts: ['.html', '.htm'],
+                    },{
+                        value: '*',
+                        text: 'All files (*.*)',
+                        exts: [],
+                    }]
+                ),
             }, async (currentDir, fileName) => {
                 try {
                     await this.fileExport(currentDir, fileName);
@@ -615,12 +625,13 @@ export default class App extends React.Component {
                            (elClass "hide-on-smallest")
                            (checked ${this.state.syncPreview})
                            (onClick ${(ev) => this.handleSyncPreviewClick(ev)}) ))
-                (Switch (@ (caption "Preview format")
-                           (offText "HTML")
-                           (onText  "PDF")
-                           (elClass "hide-on-smallest")
-                           (checked ${this.state.isPdf})
-                           (onClick ${(ev) => this.handleIsPdfClick(ev)}) ))
+                ($if ${!window._MDNE_BACKEND_CAPS_NO_PDF_RENDERER}
+                    (Switch (@ (caption "Preview format")
+                            (offText "HTML")
+                            (onText  "PDF")
+                            (elClass "hide-on-smallest")
+                            (checked ${this.state.isPdf})
+                            (onClick ${(ev) => this.handleIsPdfClick(ev)}) )))
                 (Switch (@ (caption "Scripting")
                            (offText "OFF")
                            (onText  "ON")
