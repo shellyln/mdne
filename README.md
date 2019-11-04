@@ -94,6 +94,23 @@
 * Extract zip archive and run `make-shortcut.cmd`.
 
 
+### Create desktop icon (Linux)
+* `mdne.desktop`
+```ini
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=mdne
+Comment=mdne
+Exec=/home/(user name)/.nvm/versions/node/v??.??.??/bin/node /home/(user name)/.nvm/versions/node/v??.??.??/lib/node_modules/mdne/index.js %F
+Icon=/home/(user name)/.nvm/versions/node/v??.??.??/lib/node_modules/mdne/contents/favicon.svg
+Path=/home/(user name)/Desktop
+Terminal=false
+StartupNotify=false
+Name[en_US]=mdne
+```
+> Replace `(user name)` and `??.??.??` .
+
 ## Run
 
 ### Open blank editor:
