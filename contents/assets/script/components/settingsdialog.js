@@ -56,7 +56,7 @@ export default class SettingsDialog extends React.Component {
     // eslint-disable-next-line no-unused-vars
     handleTabSizeChange(ev) {
         this.setState({
-            tabSize: Number(ev.target.value),
+            tabSize: Math.floor(Number(ev.target.value)),
         });
     }
 
@@ -83,7 +83,7 @@ export default class SettingsDialog extends React.Component {
         this.handler({
             fontFamily: this.state.fontFamily,
             fontSize: fontSize > 0 ? fontSize : 14,
-            tabSize: this.state.tabSize,
+            tabSize: this.state.tabSize > 0 ? this.state.tabSize : 4,
             wrap: this.state.wrap,
             theme: `ace/theme/${this.state.theme}`,
         });
@@ -126,23 +126,23 @@ export default class SettingsDialog extends React.Component {
                                       (value ${this.state.fontFamily})
                                       (onChange ${(ev) => this.handleFontFamilyChange(ev)}) ))
                             (label (@ (for "appSettingsDialog-fontFamily"))
-                                "Font family") ))
+                                "Font family (e.g. Consolas, 'Migu 1M', monospace)") ))
                     (div (@ (className "row")
                             (style (margin "0")) )
-                        (div (@ (className "input-field col s1"))
+                        (div (@ (className "input-field col s2"))
                             (input (@ (id "appSettingsDialog-fontSize")
-                                      (type "text")
+                                      (type "number")
                                       (className "validate")
                                       (style (color "white"))
                                       (value ${this.state.fontSize})
                                       (onChange ${(ev) => this.handleFontSizeChange(ev)}) ))
                             (label (@ (for "appSettingsDialog-fontSize"))
-                                "Font size") ))
+                                "Font size (in points)") ))
                     (div (@ (className "row")
                             (style (margin "0")) )
-                        (div (@ (className "input-field col s1"))
+                        (div (@ (className "input-field col s2"))
                             (input (@ (id "appSettingsDialog-tabSize")
-                                      (type "text")
+                                      (type "number")
                                       (className "validate")
                                       (style (color "white"))
                                       (value ${this.state.tabSize})

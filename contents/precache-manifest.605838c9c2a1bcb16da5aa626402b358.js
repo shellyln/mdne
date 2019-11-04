@@ -30,7 +30,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/components/filesavedialog.js"
   },
   {
-    "revision": "efb0b9803529733cc7c3ff505b63382c130dfff354baf030d9f8f8f150b5c2a5",
+    "revision": "10697a7c2922f6768cf7a590f0c142538fd15b03b67aa941ef8fd15b8112badb",
     "url": "./assets/script/components/settingsdialog.js"
   },
   {
