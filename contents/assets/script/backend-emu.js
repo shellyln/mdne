@@ -11,6 +11,9 @@
     window.carlo = window.carlo || {};
 
     window._MDNE_BACKEND_TYPE = 'BROWSER_EMULATION';
+    window._MDNE_BACKEND_CAPS_NO_PDF_RENDERER = true;
+    window._MDNE_BACKEND_CAPS_NO_PDF_PREVIEW_PLUGIN = true;
+
 
     // eslint-disable-next-line no-unused-vars
     window.renderByMenneu = window.renderByMenneu || (async (source, data, options, srcPath, ...exportPath) => {
