@@ -10,15 +10,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/backend-emu.js"
   },
   {
-    "revision": "c247032245fc6c4bd89f08bd2f0832ed697420e06fdf5accc298a6b57d66bed7",
+    "revision": "3d33a5a2099f59860faf4d895e78d15e99af2687d59c829591893dbc0f60aaa1",
     "url": "./assets/script/components/aceeditor.js"
   },
   {
-    "revision": "94ebc975e76803cbec0f3cea884badef89542ebfe79266929d40d3430ef585ab",
+    "revision": "d2f90b77a77a39e5c6008dfaf2e5834a281ddfdbb16fbdc0709c349a5ff90ddf",
     "url": "./assets/script/components/app.js"
   },
   {
-    "revision": "7d6c98da2b8c2d263ede95c6591f100ad5cee17d26f7a9fef335a1878357bc7f",
+    "revision": "f2eb50235134da1b2cf78aea8bbae9d619d913b72dd49abdfa2f34541105871b",
     "url": "./assets/script/components/filedropdialog.js"
   },
   {
@@ -42,7 +42,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/index.js"
   },
   {
-    "revision": "8bd9fb7c0f0d2f92c12089b0a7c993254a997916960b041f0ad4711d0674d868",
+    "revision": "afd429679b4663967816efd05fe9d208dba11d34a54f2bfefb519dd9fccf029c",
     "url": "./assets/script/libs/appstate.js"
   },
   {
@@ -58,7 +58,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/commands/md.js"
   },
   {
-    "revision": "e466653b48c49213d12aba6d2fa99aafe2f6ed21bfad5aff90b635eada7b0c8c",
+    "revision": "57498865422ac9a3c93ca14b8c4d54508fa3bc409ab81b3b670423919f102de9",
     "url": "./assets/script/libs/commands/mode.js"
   },
   {
