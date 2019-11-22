@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cc5fcb1dba829ce2db99607ff9dc07888babbbd372a2ca6d93ac30f9873fd404",
+    "revision": "dbb1b809620c3d533be0cd2d3e7570e7421089e145eb6a5d0723efe09c757700",
     "url": "./assets/data/welcome.md"
   },
   {
@@ -54,7 +54,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/commands/app.js"
   },
   {
-    "revision": "8810d404d553d4111d5cf4813a545d5c65ce92c385aaaba3303bc7dd57903e18",
+    "revision": "32997b41ac924a00bc8e2b820854abf037dd93ce0f294b3f54b84115d493dc28",
     "url": "./assets/script/libs/commands/md.js"
   },
   {
