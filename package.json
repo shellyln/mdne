@@ -26,25 +26,25 @@
   },
   "dependencies": {
     "carlo": "^0.9.46",
-    "liyad": "^0.3.1",
-    "menneu": "^0.1.7",
+    "liyad": "^0.4.0",
+    "menneu": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "red-agate-util": "^0.2.20"
+    "red-agate-util": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.4",
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
-    "@open-wc/webpack-import-meta-loader": "^0.4.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@open-wc/webpack-import-meta-loader": "^0.4.2",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "cross-env": "^6.0.3",
-    "eslint": "^6.7.2",
+    "cross-env": "^7.0.0",
+    "eslint": "^6.8.0",
     "npm-run-all": "^4.1.5",
     "raw-loader": "^4.0.0",
     "source-map-loader": "^0.2.4",
-    "webpack": "^4.41.2",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
