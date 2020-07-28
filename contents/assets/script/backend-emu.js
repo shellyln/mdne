@@ -58,6 +58,7 @@
         return await response.text();
     });
 
+    // eslint-disable-next-line no-inner-declarations
     async function internalSaveFileEx(forExport, text, ...filePath) {
         const p = await window.pathJoin(...filePath);
         const b = await window.getBaseName(p);
