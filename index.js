@@ -5,7 +5,6 @@
 // https://github.com/shellyln
 
 
-const main_ = require('./bin/mdne');
-const main = (main_.default) || main;
+const main = require('./bin/mdne').mdne.default;
 
 main();

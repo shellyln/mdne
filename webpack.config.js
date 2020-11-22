@@ -44,8 +44,16 @@ module.exports = function (env) {
                     'babel-loader',
                     require.resolve('@open-wc/webpack-import-meta-loader'),
                 ],
+                resolve: {
+                    fullySpecified: false,
+                },
                 // eslint-disable-next-line no-useless-escape
                 exclude: /node_modules[\/\\](?!(menneu|liyad|red-agate)).*$/
+            }, {
+                test: /\.m?js/,
+                resolve: {
+                    fullySpecified: false,
+                },
             }, {
                 enforce: 'pre',
                 test: /\.m?js$/,
