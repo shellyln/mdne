@@ -11,7 +11,8 @@ test:lint:
   script:
     - npm run lint
 
-test:node:13:
+# LTS
+test:node:14:
   script:
     - node -v
     - npm -v
@@ -22,16 +23,6 @@ test:node:13:
 
 # LTS
 test:node:12:
-  script:
-    - node -v
-    - npm -v
-    - npm run clean
-    - npm run build
-    - npm test
-    - npm run version
-
-test:node:11:
-  image: node:11
   script:
     - node -v
     - npm -v
