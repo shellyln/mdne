@@ -6,7 +6,7 @@
 
 [![npm](https://img.shields.io/npm/v/mdne.svg)](https://www.npmjs.com/package/mdne)
 [![GitHub release](https://img.shields.io/github/release/shellyln/mdne.svg)](https://github.com/shellyln/mdne/releases)
-[![Travis](https://img.shields.io/travis/shellyln/mdne/master.svg)](https://travis-ci.org/shellyln/mdne)
+[![.github/workflows/test.yml](https://github.com/shellyln/mdne/workflows/.github/workflows/test.yml/badge.svg)](https://github.com/shellyln/mdne/actions)
 [![GitHub forks](https://img.shields.io/github/forks/shellyln/mdne.svg?style=social&label=Fork)](https://github.com/shellyln/mdne/fork)
 [![GitHub stars](https://img.shields.io/github/stars/shellyln/mdne.svg?style=social&label=Star)](https://github.com/shellyln/mdne)
 
