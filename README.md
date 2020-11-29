@@ -24,20 +24,30 @@
 * Code highlighting.
   * C#
   * CSS
+  * Dockerfile
+  * Go
   * GraphQL
   * HTML
   * JavaScript
   * JSON
+  * JSON5
+  * JSX
+  * Latex
   * Less
   * Lisp
+  * Makefile
   * Markdown
   * Protobuf
   * Python
+  * R
+  * Ruby
+  * Rust
   * Sass
   * Scss
-  * shell script
+  * Shell script
   * SQL
   * SVG
+  * Tex
   * TSX
   * TypeScript
   * XML
