@@ -19,7 +19,7 @@ div.AppMainMenuWrap {
     display: flex;
     align-items: center;
     font-size: 14px;
-    /* height: 49.6px; <- BUG: app bottom bar is broken by iframe content */
+    height: 50px;
 }
 
 .AppMainMenu .AppMainMenuIcon {
@@ -209,4 +209,21 @@ div.input-field.command-box-input-inner input.CommandBoxInput.command-box-input:
     div.input-field.command-box-input-inner input.CommandBoxInput.command-box-input:focus {
         width: calc(100vw - 5.5rem);
     }
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+}
+::-webkit-scrollbar-track {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(88, 88, 88);
+    background-color: rgb(56, 56, 56);
+}
+::-webkit-scrollbar-thumb {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(88, 88, 88);
+    background-color: rgb(102, 102, 102);
 }

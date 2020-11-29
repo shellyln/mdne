@@ -9,27 +9,41 @@ import { getAceEditorMode }      from '../modes.js';
 
 
 
+/**
+ * @return {string}
+ */
 export function getSuggests() {
     return {
         'mode md': null,
         'mode html': null,
-        'mode css': null,
-        'mode json': null,
         'mode lisp': null,
+        'mode tex': null,
+        'mode latex': null,
+        'mode css': null,
         'mode less': null,
         'mode sass': null,
         'mode scss': null,
+        'mode json': null,
+        'mode json5': null,
         'mode js': null,
+        'mode jsx': null,
         'mode ts': null,
         'mode tsx': null,
         'mode svg': null,
         'mode xml': null,
         'mode yaml': null,
+        'mode graphql': null,
         'mode protobuf': null,
         'mode sql': null,
-        'mode graphql': null,
         'mode csharp': null,
+        'mode golang': null,
+        'mode ruby': null,
+        'mode rust': null,
         'mode python': null,
+        'mode r': null,
+        'mode sh': null,
+        'mode dockerfile': null,
+        'mode makefile': null,
         'mode text': null,
     };
 }
