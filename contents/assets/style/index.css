@@ -20,7 +20,6 @@ div.AppMainMenuWrap {
     align-items: center;
     font-size: 14px;
     height: 50px;
-    /* height: 49.6px; <- BUG: app bottom bar is broken by iframe content */
 }
 
 .AppMainMenu .AppMainMenuIcon {

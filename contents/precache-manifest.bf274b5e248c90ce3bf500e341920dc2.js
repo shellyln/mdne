@@ -82,7 +82,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/start.js"
   },
   {
-    "revision": "0d52c40f641df3af09a8e826d93cf884b0cda3cdfff1092698dd0904ff5ad61e",
+    "revision": "457033e58e4c8a4216806f919d9d79946bfb5210d1ef3e39d89e8472b0144712",
     "url": "./assets/style/index.css"
   },
   {
