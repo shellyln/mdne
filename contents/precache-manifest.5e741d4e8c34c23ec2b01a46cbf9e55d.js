@@ -6,6 +6,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/data/welcome.md"
   },
   {
+    "revision": "7307277ea8e8515112f1be108479258be71b363d688d3d01f4d5690ca494b35d",
+    "url": "./assets/script/backend-emu.js"
+  },
+  {
     "revision": "3d33a5a2099f59860faf4d895e78d15e99af2687d59c829591893dbc0f60aaa1",
     "url": "./assets/script/components/aceeditor.js"
   },
