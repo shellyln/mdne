@@ -14,6 +14,7 @@ export default class SettingsDialog extends React.Component {
         this.state.fontSize = 14;
         this.state.tabSize = 4;
         this.state.wrap = false;
+        this.state.darkThemePreview = false;
         this.state.theme = 'monokai';
     }
 
@@ -24,11 +25,12 @@ export default class SettingsDialog extends React.Component {
         this.handler = handler;
         this.setState({
             showFields: false,
-            fontFamily: options.fontFamily,
-            fontSize: options.fontSize > 0 ? options.fontSize : 14,
-            tabSize: options.tabSize,
-            wrap: options.wrap === 'off' ? false : (options.wrap === 'free'),
-            theme: (options.theme || '').replace('ace/theme/', ''),
+            fontFamily: options.editor.fontFamily,
+            fontSize: options.editor.fontSize > 0 ? options.editor.fontSize : 14,
+            tabSize: options.editor.tabSize,
+            wrap: options.editor.wrap === 'off' ? false : (options.editor.wrap === 'free'),
+            theme: (options.editor.theme || '').replace('ace/theme/', ''),
+            darkThemePreview: options.renderer.darkThemePreview,
         });
         setTimeout(() => this.setState({showFields: true}), 30);
     }
@@ -68,6 +70,13 @@ export default class SettingsDialog extends React.Component {
     }
 
     // eslint-disable-next-line no-unused-vars
+    handleDarkThemePreviewChange(ev) {
+        this.setState({
+            darkThemePreview: ev.target.checked,
+        });
+    }
+
+    // eslint-disable-next-line no-unused-vars
     handleThemeChange(ev) {
         this.setState({
             theme: ev.target.value,
@@ -81,11 +90,16 @@ export default class SettingsDialog extends React.Component {
 
         const fontSize = Number(this.state.fontSize);
         this.handler({
-            fontFamily: this.state.fontFamily,
-            fontSize: fontSize > 0 ? fontSize : 14,
-            tabSize: this.state.tabSize > 0 ? this.state.tabSize : 4,
-            wrap: this.state.wrap,
-            theme: `ace/theme/${this.state.theme}`,
+            editor: {
+                fontFamily: this.state.fontFamily,
+                fontSize: fontSize > 0 ? fontSize : 14,
+                tabSize: this.state.tabSize > 0 ? this.state.tabSize : 4,
+                wrap: this.state.wrap,
+                theme: `ace/theme/${this.state.theme}`,
+            },
+            renderer: {
+                darkThemePreview: this.state.darkThemePreview,
+            },
         });
     }
 
@@ -151,13 +165,20 @@ export default class SettingsDialog extends React.Component {
                                 "Tab size") ))
                     (div (@ (className "row")
                             (style (margin "0")) )
-                        (div (@ (className "input-field col s1"))
+                        (div (@ (className "input-field col s2"))
                             (label
                                 (input (@ (type "checkbox")
                                           (className "filled-in")
                                           (checked ${this.state.wrap ? 'checked' : ''})
                                           (onChange ${(ev) => this.handleWrapChange(ev)}) ))
-                                (span "Wrap") )))
+                                (span "Wrap") ))
+                        (div (@ (className "input-field col s4"))
+                            (label
+                                (input (@ (type "checkbox")
+                                          (className "filled-in")
+                                          (checked ${this.state.darkThemePreview ? 'checked' : ''})
+                                          (onChange ${(ev) => this.handleDarkThemePreviewChange(ev)}) ))
+                                (span "Preview in dark theme") )))
                     (div (@ (className "row")
                             (style (margin "40px 0 0 0")
                                    (color "white") ))

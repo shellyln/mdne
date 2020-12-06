@@ -3,6 +3,11 @@
 // https://github.com/shellyln
 
 
+import { loadFile,
+         pathJoin,
+         getDirName,
+         openURL,
+         openNewWindow } from '../backend-api.js';
 import AppState          from '../appstate.js';
 import { isPreviewable } from '../modes.js';
 import { backend }       from '../remote.js';

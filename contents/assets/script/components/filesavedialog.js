@@ -3,6 +3,17 @@
 // https://github.com/shellyln
 
 
+import { nativeFileSaveDialog,
+         listDirectory,
+         listDesktopDirectory,
+         listHomeDirectory,
+         fileExists,
+         getDirName,
+         getBaseName } from '../libs/backend-api.js';
+import { alertWrap,
+         confirmWrap } from '../libs/backend-wrap.js';
+
+
 
 export default class FileSaveDialog extends React.Component {
     constructor(props, context) {
@@ -41,7 +52,7 @@ export default class FileSaveDialog extends React.Component {
         this.options = options;
         this.handler = handler;
 
-        if (window.nativeFileSaveDialog) {
+        if (nativeFileSaveDialog) {
             (async () => {
                 const fileName = await nativeFileSaveDialog(
                     options.title,

@@ -3,6 +3,11 @@
 // https://github.com/shellyln
 
 
+import { loadFile,
+         pathJoin,
+         carlo }                 from '../libs/backend-api.js';
+import { notifyEditorDirty,
+         alertWrap }             from '../libs/backend-wrap.js';
 import AppState,
        { updateAppIndicatorBar } from '../libs/appstate.js';
 import { getInputFormat,

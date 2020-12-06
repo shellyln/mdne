@@ -65,6 +65,7 @@ export function getOperators({getCurrentAceId}) {
                     editor.session.setMode(aceMode);
 
                     updateAppIndicatorBar();
+                    AppState.invalidate();
 
                     return '';
                 } else {

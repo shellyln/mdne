@@ -3,6 +3,16 @@
 // https://github.com/shellyln
 
 
+import { nativeFileOpenDialog,
+         listDirectory,
+         listDesktopDirectory,
+         listHomeDirectory,
+         fileExists,
+         getDirName,
+         getBaseName } from '../libs/backend-api.js';
+import { alertWrap }   from '../libs/backend-wrap.js';
+
+
 
 export default class FileOpenDialog extends React.Component {
     constructor(props, context) {
@@ -33,7 +43,7 @@ export default class FileOpenDialog extends React.Component {
         this.options = options;
         this.handler = handler;
 
-        if (window.nativeFileOpenDialog) {
+        if (nativeFileOpenDialog) {
             (async () => {
                 const filePaths = await nativeFileOpenDialog(
                     options.title,

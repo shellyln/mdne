@@ -3,6 +3,8 @@
 // https://github.com/shellyln
 
 
+import { rpc,
+         carlo }     from './backend-api.js';
 import commandRunner from './cmdrunner.js';
 
 

@@ -10,6 +10,7 @@ const AppState = {
     filePath: null,
     inputFormat: 'md',
     fileChanged: false,
+    invalidate: () => void 0,
 };
 
 

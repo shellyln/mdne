@@ -3,6 +3,9 @@
 // https://github.com/shellyln
 
 
+import { saveFile }              from '../libs/backend-api.js';
+import { notifyEditorDirty,
+         alertWrap }             from '../libs/backend-wrap.js';
 import AppState,
        { updateAppIndicatorBar } from '../libs/appstate.js';
 
