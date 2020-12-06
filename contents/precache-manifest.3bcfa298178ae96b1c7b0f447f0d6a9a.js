@@ -50,7 +50,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/backend-wrap.js"
   },
   {
-    "revision": "6a4cb156b0962cf890af769c64fe8504368bfb87bbf6911d01eb23290cdb8cf9",
+    "revision": "e4f5a50c513426360be9eb8385b32b4c49f5c7d601ab1f20c8e4e7cf1df55570",
     "url": "./assets/script/libs/backends/browser.js"
   },
   {

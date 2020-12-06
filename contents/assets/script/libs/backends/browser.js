@@ -28,6 +28,28 @@ let rpc_ = void 0;
 let carlo_ = void 0;
 
 
+const additionalContentStyles = `
+<style>
+::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+}
+::-webkit-scrollbar-track {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(88, 88, 88);
+    background-color: rgb(56, 56, 56);
+}
+::-webkit-scrollbar-thumb {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(88, 88, 88);
+    background-color: rgb(102, 102, 102);
+}
+</style>
+`;
+
+
 if (!window._MDNE_BACKEND_TYPE || window._MDNE_BACKEND_TYPE === 'BROWSER_EMULATION') {
     // Fallback (for Browser)
 
@@ -54,18 +76,23 @@ if (!window._MDNE_BACKEND_TYPE || window._MDNE_BACKEND_TYPE === 'BROWSER_EMULATI
             const errText = `output format ${opts.outputFormat} is not available.`;
             throw new Error(errText);
         }
+
         // eslint-disable-next-line no-undef
         const buf = await menneu.render(source, {}, opts);
+        let bufStr = buf.toString();
+        if (exportPath.length === 0) {
+            bufStr += additionalContentStyles;
+        }
 
         // NOTE: Browsers treat Data URLs as cross-origin.
         //       To avoid cross-origin, use Blob URLs instead.
         // const resultUrl = 'data:text/html;base64,' + menneu.getAppEnv().RedAgateUtil.Base64.encode(buf);
 
         // eslint-disable-next-line no-undef
-        const resultUrl = URL.createObjectURL(new Blob([buf.toString()], { type: 'text/html' }));
+        const resultUrl = URL.createObjectURL(new Blob([bufStr], { type: 'text/html' }));
 
         if (exportPath.length > 0) {
-            internalSaveFileEx(true, buf.toString(), ...exportPath);
+            internalSaveFileEx(true, bufStr, ...exportPath);
         }
 
         // schedule revoking the Blob URL.
