@@ -34,7 +34,21 @@ if (window.carlo && window.rpc) {
     window._MDNE_BACKEND_CAPS_NO_PDF_RENDERER = false;
     window._MDNE_BACKEND_CAPS_NO_PDF_PREVIEW_PLUGIN = false;
 
-    // nothing to do.
+    renderByMenneu_ = window.renderByMenneu;
+    loadFile_ = window.loadFile;
+    saveFile_ = window.saveFile;
+    listDirectory_ = window.listDirectory;
+    listDesktopDirectory_ = window.listDesktopDirectory;
+    listHomeDirectory_ = window.listHomeDirectory;
+    fileExists_ = window.fileExists;
+    pathJoin_ = window.pathJoin;
+    getDirName_ = window.getDirName;
+    getBaseName_ = window.getBaseName;
+    getStartupFile_ = window.getStartupFile;
+    openURL_ = window.openURL;
+    openNewWindow_ = window.openNewWindow;
+    rpc_ = window.rpc;
+    carlo_ = window.carlo;
 } else if (window._MDNE_BACKEND_TYPE === 'ELECTRON_IPC') {
     // Electron backend
 

@@ -45,7 +45,8 @@
         "notifyEditorDirty": true,
         "nativeNotifyEditorDirty": true,
         "nativeFileOpenDialog": true,
-        "nativeFileSaveDialog": true
+        "nativeFileSaveDialog": true,
+        "mdneApi": true
     },
     "rules": {
         "no-console": "warn",
