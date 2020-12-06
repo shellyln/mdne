@@ -42,12 +42,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/appstate.js"
   },
   {
-    "revision": "71bf8ab676e65fab758024025321648582066fd280697ebe6e82fef30faf24e6",
+    "revision": "91919e8ce838453e853ea946d04a79f1e74d4fe0024b38c9f57b821aa367f1fb",
     "url": "./assets/script/libs/backend-api.js"
   },
   {
     "revision": "e3d892c5af83e1f59e7eb8d2680c163c7ea3bd0d88be6d3541debe4583569f21",
     "url": "./assets/script/libs/backend-wrap.js"
+  },
+  {
+    "revision": "6a4cb156b0962cf890af769c64fe8504368bfb87bbf6911d01eb23290cdb8cf9",
+    "url": "./assets/script/libs/backends/browser.js"
+  },
+  {
+    "revision": "a5d43cd1bedf81e93a7e258179d94aa67cd543ff8d3a019625cdb8a82c80303f",
+    "url": "./assets/script/libs/backends/carlo.js"
+  },
+  {
+    "revision": "11e4cfe50a08b275ed17b6c56ad4b1414cf058703725785ef266f53d61592f17",
+    "url": "./assets/script/libs/backends/electron.js"
   },
   {
     "revision": "86940d13be175381c9aa63d27c2259273ec1e8a8d522ccb764da04a4337f0d5f",
@@ -510,7 +522,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./error.html"
   },
   {
-    "revision": "c36dd8082177e5552257a4c379303a8da880ca166a8079547f880b91c7c272d2",
+    "revision": "a53a8dabedc4f3a34093ed20e8df546be1cd192cbab9e2ddb8bf70aeb0fc9d91",
     "url": "./index.html"
   },
   {
