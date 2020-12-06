@@ -6,10 +6,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/data/welcome.md"
   },
   {
-    "revision": "4e6a455fc6033e234fc1b14c8b8abbe972588693c7ab35c964fa2860fd29cb0a",
-    "url": "./assets/script/backend-electron.js"
-  },
-  {
     "revision": "7eb575467808d6c5d642bde049ff7ca140a6e204693b8acc3b161782af4bc980",
     "url": "./assets/script/components/aceeditor.js"
   },
@@ -46,7 +42,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./assets/script/libs/appstate.js"
   },
   {
-    "revision": "0e6a1ccd24c9fc78f5bc00906da5c76863b955a90cdd132efef1d6000b833696",
+    "revision": "71bf8ab676e65fab758024025321648582066fd280697ebe6e82fef30faf24e6",
     "url": "./assets/script/libs/backend-api.js"
   },
   {
