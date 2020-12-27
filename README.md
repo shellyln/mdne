@@ -1,6 +1,6 @@
 
 # mdne - Markdown Neo Edit
-<img src="https://raw.githubusercontent.com/shellyln/mdne/master/contents/logo.svg?sanitize=true" title="logo" style="width: 200px">
+<img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/logo.svg?sanitize=true" title="logo" style="width: 200px">
 
 ### A simple markdown and code editor powered by [Markdown-it](https://github.com/markdown-it/markdown-it), [Ace](https://ace.c9.io/) and [Carlo](https://github.com/GoogleChromeLabs/carlo).
 
@@ -61,17 +61,22 @@
 
 ## Distributions and Integrations
 
+* [mdne-electron](https://github.com/shellyln/mdne-electron)
+  * Standalone offline desktop app for Windows/Mac/Linux.
+    * [Electron](https://electronjs.org/) app
+* [mdne online](https://github.com/shellyln/mdne-electron)
+  * Online markdown editor for Chrome/Chromium Edge/Firefox.
+    * [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) (Progressive Web Apps)
+* [mdne-sf](https://github.com/shellyln/mdne-sf)
+  * Edit Salesforce record's field. (browser app)
+  * Markdown preview Visualforce page example
 * [mdne](https://github.com/shellyln/mdne)
   * Offline desktop app for Google Chrome browser + Node.js.
     * *This repository*
     * [Carlo](https://github.com/GoogleChromeLabs/carlo) app
-* [mdne-electron](https://github.com/shellyln/mdne-electron)
-  * Standalone offline desktop app for Windows/Mac/Linux.
-    * [Electron](https://electronjs.org/) app
 * [mdne-for-kintone](https://github.com/shellyln/mdne-for-kintone)
   * Edit kintone record's field. (browser app)
-* [mdne online](https://shellyln.github.io/mdne/)
-  * Live demo (PWA)
+
 
 ## Install
 
