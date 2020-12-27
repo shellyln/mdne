@@ -1,8 +1,13 @@
 
-# mdne - Markdown Neo Edit
+# mdne (mdne-classic) - Markdown Neo Edit
 <img src="https://raw.githubusercontent.com/shellyln/mdne/master/docs/images/logo.svg?sanitize=true" title="logo" style="width: 200px">
 
 ### A simple markdown and code editor powered by [Markdown-it](https://github.com/markdown-it/markdown-it), [Ace](https://ace.c9.io/) and [Carlo](https://github.com/GoogleChromeLabs/carlo).
+
+
+> ## ⚠️ We recommend migrating to [mdne-electron](https://github.com/shellyln/mdne-electron).  
+> ### [Carlo](https://github.com/GoogleChromeLabs/carlo) is no longer maintained.
+
 
 [![npm](https://img.shields.io/npm/v/mdne.svg)](https://www.npmjs.com/package/mdne)
 [![GitHub release](https://img.shields.io/github/release/shellyln/mdne.svg)](https://github.com/shellyln/mdne/releases)
@@ -70,7 +75,7 @@
 * [mdne-sf](https://github.com/shellyln/mdne-sf)
   * Edit Salesforce record's field. (browser app)
   * Markdown preview Visualforce page example
-* [mdne](https://github.com/shellyln/mdne)
+* [mdne (mdne-classic)](https://github.com/shellyln/mdne)
   * Offline desktop app for Google Chrome browser + Node.js.
     * *This repository*
     * [Carlo](https://github.com/GoogleChromeLabs/carlo) app
@@ -185,13 +190,15 @@ Please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 * Save and SaveAs commands download the file being edited.
 
 
-## Deploying Live demo
+## ~~Deploying Live demo~~
 
-1. Run `npm run manifest` after edit the `contents/*`.
-    * New `contents/precache-manifest.yyyyy.js` will generate.
-1. Remove the old `contents/precache-manifest.xxxxx.js`.
-1. Edit `contents/service-worker.js` to change the reference of `contents/precache-manifest.yyyyy.js` file name.
-1. Deploy the `contents/*`.
+1. ~~Run `npm run manifest` after edit the `contents/*`.~~
+    * ~~New `contents/precache-manifest.yyyyy.js` will generate.~~
+1. ~~Remove the old `contents/precache-manifest.xxxxx.js`.~~
+1. ~~Edit `contents/service-worker.js` to change the reference of `contents/precache-manifest.yyyyy.js` file name.~~
+1. ~~Deploy the `contents/*`.~~
+
+> See [mdne-electron #build-mdne-online-pwa-app](https://github.com/shellyln/mdne-electron#build-mdne-online-pwa-app).
 
 
 ## Security warning
@@ -199,6 +206,9 @@ Please use [Ménneu](https://github.com/shellyln/menneu#use-cli) CLI.
 Exposing of Node side functions by RPC is enabled in preview iframe.  
 **DON'T OPEN links to untrusted sites from the preview.**  
 Exposed functions have the ability to list / read / write local files.
+
+> ## ⚠️ We recommend migrating to [mdne-electron](https://github.com/shellyln/mdne-electron).
+
 
 ## License
 [ISC](https://github.com/shellyln/mdne/blob/master/LICENSE.md)  
