@@ -8,28 +8,46 @@
     <link rel="stylesheet" href="assets/vendor/normalize-8.0.1/normalize.min.css">
     <link rel="stylesheet" href="assets/vendor/materialize-1.0.0/materialize.min.css">
     <link rel="stylesheet" href="assets/vendor/materialize-1.0.0/icon.css">
+    <link rel="stylesheet" href="assets/vendor/dialog-polyfill/dialog-polyfill.css">
     <link rel="stylesheet" href="assets/style/index.css">
     <script src="assets/vendor/ace-1.4.12/ace.js" crossorigin="anonymous"></script>
     <script src="assets/vendor/ace-1.4.12/theme-monokai.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/liyad-0.6.0/lisp_highlight_rules.js"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-css.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-html.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-json.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-javascript.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-typescript.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-markdown.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-lisp.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/mode-svg.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-patch/lisp_highlight_rules.js"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-text.js" crossorigin="anonymous"></script>
     <script src="assets/vendor/ace-1.4.12/mode-xml.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/css.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/html.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/json.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/javascript.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/typescript.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/markdown.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/lisp.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/svg.js" crossorigin="anonymous"></script>
-    <script src="assets/vendor/ace-1.4.12/snippets/xml.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-html.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-csharp.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-css.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-dockerfile.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-golang.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-graphqlschema.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-ini.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-java.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-javascript.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-json.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-json5.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-jsx.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-kotlin.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-latex.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-less.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-lisp.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-makefile.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-protobuf.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-python.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-r.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-ruby.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-rust.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-sass.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-scss.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-sh.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-sql.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-svg.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-tex.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-toml.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-typescript.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-tsx.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-1.4.12/mode-yaml.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/ace-patch/mode-markdown.js" crossorigin="anonymous"></script>
     <script src="assets/vendor/react-17.0.1/react.production.min.js" crossorigin="anonymous"></script>
     <script src="assets/vendor/react-17.0.1/react-dom.production.min.js" crossorigin="anonymous"></script>
 <!--
@@ -37,6 +55,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
 -->
     <script src="assets/vendor/materialize-1.0.0/materialize.min.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/pako-1.0.10/pako.min.js" crossorigin="anonymous"></script>
+    <script src="assets/vendor/dialog-polyfill/dialog-polyfill.js"></script>
     <script src="assets/vendor/liyad-0.6.0/liyad.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="grey darken-2" style="overflow-x: hidden; overflow-y: auto;">
